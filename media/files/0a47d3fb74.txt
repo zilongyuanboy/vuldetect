@@ -1,0 +1,2236 @@
+
+279532 93406/CWE256_Plaintext_Storage_of_Password__w32_char_05.c fgets 105
+static void goodB2G1()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+if ( staticTrue )
+FILE * pFile ;
+pFile = fopen ( "passwords.txt" , "r" );
+if ( pFile != NULL )
+if ( fgets ( data , 100 , pFile ) == NULL )
+data [ 0 ] = '\0';
+0
+------------------------------
+273496 80703/CWE134_Uncontrolled_Format_String__wchar_t_connect_socket_vfprintf_32.c socket 219
+static void goodB2G()
+wchar_t * data ;
+wchar_t * * dataPtr1 = & data ;
+wchar_t dataBuffer [ 100 ] = L ""
+data = dataBuffer;
+wchar_t * data = * dataPtr1 ;
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+size_t dataLen = wcslen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( connectSocket , ( char * ) ( data + dataLen ) , sizeof ( wchar_t ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+while ( 0 )
+if ( connectSocket != INVALID_SOCKET )
+CLOSE_SOCKET ( connectSocket );
+0
+------------------------------
+322360 69495/CWE122_Heap_Based_Buffer_Overflow__cpp_CWE806_char_ncpy_08.cpp memset 76
+static void goodG2B1()
+char * data ;
+data = new char [ 100 ];
+if ( staticReturnsFalse ( ) )
+static int staticReturnsFalse()
+return 0 ;
+memset ( data , 'A' , 50 - 1 );
+data [ 50 - 1 ] = '\0';
+strncpy ( dest , data , strlen ( data ) );
+dest [ 50 - 1 ] = '\0';
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+delete [ ] data
+0
+------------------------------
+324247 97228/CWE36_Absolute_Path_Traversal__wchar_t_environment_fopen_11.cpp wcslen 51
+void bad()
+wchar_t * data ;
+wchar_t dataBuffer [ FILENAME_MAX ] = L ""
+data = dataBuffer;
+if ( globalReturnsTrue ( ) )
+int globalReturnsTrue()
+return 1 ;
+size_t dataLen = wcslen ( data ) ;
+wcsncat ( data + dataLen , environment , FILENAME_MAX - dataLen - 1 );
+pFile = FOPEN ( data , L "wb+" )
+if ( pFile != NULL )
+fclose ( pFile );
+1
+------------------------------
+16802 110374/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_15.c fgets 34
+void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_15_bad()
+switch ( 6 )
+char inputBuffer [ CHAR_ARRAY_SIZE ] = "" ;
+if ( fgets ( inputBuffer , CHAR_ARRAY_SIZE , stdin ) != NULL )
+data = atoi ( inputBuffer );
+intPointer = ( int * ) malloc ( data * sizeof ( int ) );
+for (i = 0; i < (size_t)data; i++)
+intPointer [ i ] = 0;
+printIntLine ( intPointer [ 0 ] );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+free ( intPointer );
+1
+------------------------------
+263807 152323/mux.c free 932
+void toul_splachnaceae(char **marksman_imperscrutable)
+if ( * marksman_imperscrutable != 0 )
+free ( ( ( char * ) ( * marksman_imperscrutable ) ) );
+0
+------------------------------
+1906 CVE-2015-7217/Firefox_42.0b9_CVE_2015_7217_widget_gtk_nsAppShell.cpp close 68
+nsAppShell::~nsAppShell()
+if ( mPipeFDs [ 0 ] )
+close ( mPipeFDs [ 0 ] );
+0
+------------------------------
+315967 117852/CWE789_Uncontrolled_Mem_Alloc__new_wchar_t_listen_socket_06.cpp recv 108
+void bad()
+if ( STATIC_CONST_FIVE == 5 )
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+data = strtoul ( inputBuffer , NULL , 0 );
+while ( 0 )
+if ( data > wcslen ( HELLO_STRING ) )
+myString = new wchar_t [ data ];
+wcscpy ( myString , HELLO_STRING );
+printWLine ( myString );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+delete [ ] myString
+1
+------------------------------
+22518 109217/CWE606_Unchecked_Loop_Condition__wchar_t_connect_socket_84_bad.cpp socket 68
+void bad()
+wchar_t * data ;
+wchar_t dataBuffer [ 100 ] = L ""
+data = dataBuffer;
+CWE606_Unchecked_Loop_Condition__wchar_t_connect_socket_84_bad * badObject = new CWE606_Unchecked_Loop_Condition__wchar_t_connect_socket_84_bad ( data ) ;
+CWE606_Unchecked_Loop_Condition__wchar_t_connect_socket_84_bad::CWE606_Unchecked_Loop_Condition__wchar_t_connect_socket_84_bad(wchar_t * dataCopy)
+data = dataCopy;
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+size_t dataLen = wcslen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( connectSocket , ( char * ) ( data + dataLen ) , sizeof ( wchar_t ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+while ( 0 )
+if ( connectSocket != INVALID_SOCKET )
+CLOSE_SOCKET ( connectSocket );
+0
+------------------------------
+264648 86409/CWE194_Unexpected_Sign_Extension__connect_socket_memmove_44.c memmove 155
+static void goodG2BSink(short data)
+char source [ 100 ] ;
+char dest [ 100 ] = "" ;
+memset ( source , 'A' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+if ( data < 100 )
+memmove ( dest , source , data );
+dest [ data ] = '\0';
+printLine ( dest );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+109205 149891/emem.c memset 658
+void *se_alloc0(size_t size)
+return memset ( se_alloc ( size ) , '\0' , size ) ;
+void *se_alloc(size_t size)
+return emem_alloc ( size , & se_packet_mem ) ;
+static void *emem_alloc(size_t size,emem_header_t *mem)
+void * buf = ( mem -> memory_alloc ) ( size , mem ) ;
+return buf ;
+0
+------------------------------
+2076 CVE-2015-5158/qemu_2.3.0_CVE-2015-5158_scsi-bus.c assert 1599
+void scsi_req_cancel_async(SCSIRequest *req, Notifier *notifier)
+if ( req -> io_canceled )
+scsi_req_ref ( req );
+SCSIRequest *scsi_req_ref(SCSIRequest *req)
+assert ( req -> refcount > 0 );
+0
+------------------------------
+271490 80784/CWE134_Uncontrolled_Format_String__wchar_t_connect_socket_w32_vsnprintf_07.c _vsnwprintf 60
+void CWE134_Uncontrolled_Format_String__wchar_t_connect_socket_w32_vsnprintf_07_bad()
+wchar_t * data ;
+wchar_t dataBuffer [ 100 ] = L ""
+data = dataBuffer;
+if ( staticFive == 5 )
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+size_t dataLen = wcslen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( connectSocket , ( char * ) ( data + dataLen ) , sizeof ( wchar_t ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( wchar_t ) ] = L '\0'
+while ( 0 )
+if ( staticFive == 5 )
+badVaSinkB ( data , data );
+static void badVaSinkB(wchar_t * data, ...)
+wchar_t dest [ 100 ] = L ""
+va_list args ;
+_vsnwprintf ( dest , 100 - 1 , data , args );
+1
+------------------------------
+321494 74769/CWE124_Buffer_Underwrite__new_char_loop_04.cpp memset 115
+static void goodG2B2()
+if ( STATIC_CONST_TRUE )
+char * dataBuffer = new char [ 100 ] ;
+memset ( dataBuffer , 'A' , 100 - 1 );
+dataBuffer [ 100 - 1 ] = '\0';
+data = dataBuffer;
+data [ i ] = source [ i ];
+data [ 100 - 1 ] = '\0';
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+14195 63928/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memmove_17.c memset 66
+static void goodG2B()
+char source [ 100 ] ;
+memset ( source , 'C' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+memmove ( data , source , 100 * sizeof ( char ) );
+data [ 100 - 1 ] = '\0';
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+320000 90675/CWE23_Relative_Path_Traversal__char_listen_socket_ofstream_67a.cpp strchr 121
+void bad()
+char * data ;
+char dataBuffer [ FILENAME_MAX ] = BASEPATH ;
+data = dataBuffer;
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char * replace ;
+size_t dataLen = strlen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( FILENAME_MAX - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+if ( replace )
+* replace = '\0';
+while ( 0 )
+0
+------------------------------
+275415 103015/CWE427_Uncontrolled_Search_Path_Element__char_file_16.c fopen 50
+void CWE427_Uncontrolled_Search_Path_Element__char_file_16_bad()
+char * data ;
+char dataBuffer [ 250 ] = "PATH=" ;
+data = dataBuffer;
+while ( 1 )
+size_t dataLen = strlen ( data ) ;
+FILE * pFile ;
+if ( 250 - dataLen > 1 )
+pFile = fopen ( FILENAME , "r" );
+if ( pFile != NULL )
+if ( fgets ( data + dataLen , ( int ) ( 250 - dataLen ) , pFile ) == NULL )
+data [ dataLen ] = '\0';
+fclose ( pFile );
+PUTENV ( data );
+1
+------------------------------
+317021 81668/CWE134_Uncontrolled_Format_String__wchar_t_file_w32_vsnprintf_43.cpp _vsnwprintf 43
+void bad()
+wchar_t * data ;
+wchar_t dataBuffer [ 100 ] = L ""
+data = dataBuffer;
+badVaSink ( data , data );
+static void badVaSink(wchar_t * data, ...)
+wchar_t dest [ 100 ] = L ""
+va_list args ;
+_vsnwprintf ( dest , 100 - 1 , data , args );
+1
+------------------------------
+268586 86295/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_10.c socket 70
+void CWE194_Unexpected_Sign_Extension__connect_socket_malloc_10_bad()
+if ( globalTrue )
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( connectSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+tempInt = atoi ( inputBuffer );
+if ( tempInt > SHRT_MAX || tempInt < SHRT_MIN )
+data = tempInt;
+while ( 0 )
+if ( connectSocket != INVALID_SOCKET )
+CLOSE_SOCKET ( connectSocket );
+if ( data < 100 )
+char * dataBuffer = ( char * ) malloc ( data ) ;
+memset ( dataBuffer , 'A' , data - 1 );
+dataBuffer [ data - 1 ] = '\0';
+printLine ( dataBuffer );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+free ( dataBuffer );
+1
+------------------------------
+23734 120180/CWE78_OS_Command_Injection__char_listen_socket_w32_spawnlp_51a.c recv 112
+void CWE78_OS_Command_Injection__char_listen_socket_w32_spawnlp_51_bad()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+size_t dataLen = strlen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+replace = strchr ( data , '\n' );
+if ( replace )
+* replace = '\0';
+while ( 0 )
+CWE78_OS_Command_Injection__char_listen_socket_w32_spawnlp_51b_badSink ( data );
+void CWE78_OS_Command_Injection__char_listen_socket_w32_spawnlp_51b_badSink(char * data)
+0
+------------------------------
+17893 118232/CWE78_OS_Command_Injection__char_connect_socket_w32_spawnlp_02.c socket 87
+void CWE78_OS_Command_Injection__char_connect_socket_w32_spawnlp_02_bad()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+if ( 1 )
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+size_t dataLen = strlen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( connectSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+replace = strchr ( data , '\n' );
+if ( replace )
+* replace = '\0';
+while ( 0 )
+if ( connectSocket != INVALID_SOCKET )
+CLOSE_SOCKET ( connectSocket );
+0
+------------------------------
+269455 75912/CWE126_Buffer_Overread__CWE170_char_memcpy_09.c memcpy 74
+static void good2()
+if ( GLOBAL_CONST_TRUE )
+char data [ 150 ] , dest [ 100 ] ;
+memset ( data , 'A' , 149 );
+data [ 149 ] = '\0';
+memcpy ( dest , data , 99 * sizeof ( char ) );
+dest [ 99 ] = '\0';
+printLine ( dest );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+270979 83425/CWE190_Integer_Overflow__int_listen_socket_add_22a.c recv 268
+static void goodB2G2()
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+data = atoi ( inputBuffer );
+while ( 0 )
+CWE190_Integer_Overflow__int_listen_socket_add_22_goodB2G2Sink ( data );
+void CWE190_Integer_Overflow__int_listen_socket_add_22_goodB2G2Sink(int data)
+if ( data < INT_MAX )
+int result = data + 1 ;
+printIntLine ( result );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+0
+------------------------------
+1415 CVE-2012-3377/CVE_2012_3377_VULN_Ogg_DecodePacket.c free 111
+static void CVE_2012_3377_VULN_Ogg_DecodePacket( demux_t
+logical_stream_t
+ogg_packet *p_oggpacket )
+if ( ! p_oggpacket -> bytes )
+if ( p_oggpacket -> bytes >= 7 && ! memcmp ( p_oggpacket -> packet , "Annodex" , 7 ) )
+if ( p_oggpacket -> bytes >= 7 && ! memcmp ( p_oggpacket -> packet , "AnxData" , 7 ) )
+if ( p_stream -> fmt . i_codec == VLC_CODEC_SUBT && p_oggpacket -> packet [ 0 ] & PACKET_TYPE_BITS )
+if ( p_stream -> b_force_backup )
+bool b_xiph ;
+p_stream -> i_packets_backup ++;
+switch ( p_stream -> fmt . i_codec )
+if ( p_stream -> i_packets_backup == 3 )
+p_stream -> b_force_backup = 0;
+b_xiph = true;
+if ( ! p_stream -> fmt . audio . i_rate && p_stream -> i_packets_backup == 2 )
+p_stream -> b_force_backup = 0;
+if ( p_stream -> fmt . audio . i_rate )
+p_stream -> b_force_backup = 0;
+if ( p_oggpacket -> bytes >= 9 )
+p_oggpacket -> packet += 9;
+p_oggpacket -> bytes -= 9;
+b_xiph = false;
+if ( p_stream -> i_packets_backup == p_stream -> i_kate_num_headers )
+p_stream -> b_force_backup = 0;
+b_xiph = true;
+p_stream -> b_force_backup = 0;
+b_xiph = false;
+if ( ! b_xiph )
+p_stream -> i_headers += p_oggpacket -> bytes;
+p_stream -> p_headers = realloc ( p_stream -> p_headers , p_stream -> i_headers );
+if ( p_stream -> p_headers )
+p_stream -> i_headers = 0;
+p_stream -> p_headers = NULL;
+if ( xiph_AppendHeaders ( & p_stream -> i_headers , & p_stream -> p_headers , p_oggpacket -> bytes , p_oggpacket -> packet ) )
+p_stream -> i_headers = 0;
+p_stream -> p_headers = NULL;
+if ( p_stream -> i_headers > 0 )
+if ( ! p_stream -> b_force_backup )
+free ( p_stream -> fmt . p_extra );
+0
+------------------------------
+276677 92108/CWE252_Unchecked_Return_Value__char_fprintf_03.c fprintf 29
+void CWE252_Unchecked_Return_Value__char_fprintf_03_bad()
+if ( 5 == 5 )
+fprintf ( stdout , "%s\n" , "string" );
+1
+------------------------------
+1501 CVE-2012-5532/CVE_2012_5532_VULN_main.c strcpy 253
+int CVE_2012_5532_VULN_main(void)
+int fd , len , sock_opt ;
+int error ;
+struct cn_msg * message ;
+struct nlmsghdr * incoming_msg ;
+struct cn_msg * incoming_cn_msg ;
+struct hv_kvp_msg * hv_msg ;
+char * key_name ;
+int op ;
+int pool ;
+char * if_name ;
+struct hv_kvp_ipaddr_value * kvp_ip_val ;
+fd = socket ( AF_NETLINK , SOCK_DGRAM , NETLINK_CONNECTOR );
+addr . nl_family = AF_NETLINK;
+addr . nl_pad = 0;
+addr . nl_pid = 0;
+addr . nl_groups = CN_KVP_IDX;
+error = bind ( fd , ( struct sockaddr * ) & addr , sizeof ( addr ) );
+message = ( struct cn_msg * ) kvp_send_buffer;
+message -> id . idx = CN_KVP_IDX;
+message -> id . val = CN_KVP_VAL;
+hv_msg = ( struct hv_kvp_msg * ) message -> data;
+hv_msg -> kvp_hdr . operation = KVP_OP_REGISTER1;
+message -> ack = 0;
+message -> len = sizeof ( struct hv_kvp_msg );
+len = netlink_send ( fd , message );
+while ( 1 )
+struct sockaddr * addr_p = ( struct sockaddr * ) & addr ;
+len = recvfrom ( fd , kvp_recv_buffer , sizeof ( kvp_recv_buffer ) , 0 , addr_p , & addr_l );
+if ( len < 0 || addr . nl_pid )
+incoming_msg = ( struct nlmsghdr * ) kvp_recv_buffer;
+incoming_cn_msg = ( struct cn_msg * ) NLMSG_DATA ( incoming_msg );
+hv_msg = ( struct hv_kvp_msg * ) incoming_cn_msg -> data;
+op = hv_msg -> kvp_hdr . operation;
+pool = hv_msg -> kvp_hdr . pool;
+hv_msg -> error = HV_S_OK;
+if ( ( in_hand_shake ) && ( op == KVP_OP_REGISTER1 ) )
+in_hand_shake = 0;
+switch ( op )
+kvp_ip_val = & hv_msg -> body . kvp_ip_val;
+if_name = kvp_mac_to_if_name ( ( char * ) kvp_ip_val -> adapter_id );
+if ( if_name == NULL )
+hv_msg -> error = HV_E_FAIL;
+error = kvp_get_ip_info ( 0 , if_name , KVP_OP_GET_IP_INFO , kvp_ip_val , ( MAX_IP_ADDR_SIZE * 2 ) );
+if ( error )
+hv_msg -> error = error;
+kvp_ip_val = & hv_msg -> body . kvp_ip_val;
+if_name = kvp_get_if_name ( ( char * ) kvp_ip_val -> adapter_id );
+if ( if_name == NULL )
+hv_msg -> error = HV_GUID_NOTFOUND;
+error = kvp_set_ip_info ( if_name , kvp_ip_val );
+if ( error )
+hv_msg -> error = error;
+if ( kvp_key_add_or_modify ( pool , hv_msg -> body . kvp_set . data . key , hv_msg -> body . kvp_set . data . key_size , hv_msg -> body . kvp_set . data . value , hv_msg -> body . kvp_set . data . value_size ) )
+hv_msg -> error = HV_S_CONT;
+if ( kvp_get_value ( pool , hv_msg -> body . kvp_set . data . key , hv_msg -> body . kvp_set . data . key_size , hv_msg -> body . kvp_set . data . value , hv_msg -> body . kvp_set . data . value_size ) )
+hv_msg -> error = HV_S_CONT;
+if ( kvp_key_delete ( pool , hv_msg -> body . kvp_delete . key , hv_msg -> body . kvp_delete . key_size ) )
+hv_msg -> error = HV_S_CONT;
+if ( op != KVP_OP_ENUMERATE )
+if ( pool != KVP_POOL_AUTO )
+if ( kvp_pool_enumerate ( pool , hv_msg -> body . kvp_enum_data . index , hv_msg -> body . kvp_enum_data . data . key , HV_KVP_EXCHANGE_MAX_KEY_SIZE , hv_msg -> body . kvp_enum_data . data . value , HV_KVP_EXCHANGE_MAX_VALUE_SIZE ) )
+hv_msg -> error = HV_S_CONT;
+hv_msg = ( struct hv_kvp_msg * ) incoming_cn_msg -> data;
+key_name = ( char * ) hv_msg -> body . kvp_enum_data . data . key;
+switch ( hv_msg -> body . kvp_enum_data . index )
+strcpy ( key_name , "OSVersion" );
+strcpy ( key_name , "ProcessorArchitecture" );
+hv_msg -> error = HV_S_CONT;
+incoming_cn_msg -> id . idx = CN_KVP_IDX;
+incoming_cn_msg -> id . val = CN_KVP_VAL;
+incoming_cn_msg -> ack = 0;
+incoming_cn_msg -> len = sizeof ( struct hv_kvp_msg );
+0
+------------------------------
+262866 151287/file_wrappers.c read 229
+static int fill_out_buffer(FILE_T state)
+if ( state -> compression == 0 )
+if ( gz_head ( state ) == - 1 )
+static int gz_head(FILE_T state)
+if ( state -> avail_in == 0 )
+if ( fill_in_buffer ( state ) == - 1 )
+static int fill_in_buffer(FILE_T state)
+if ( state -> err )
+if ( state -> eof == 0 )
+if ( raw_read ( state , state -> in , state -> size , ( ( unsigned int * ) ( & state -> avail_in ) ) ) == - 1 )
+static int raw_read(FILE_T state,unsigned char *buf,unsigned int count,unsigned int *have)
+int ret ;
+* have = 0;
+ret = ( read ( state -> fd , ( buf + * have ) , ( count - * have ) ) );
+if ( ret <= 0 )
+* have += ret;
+state -> raw_pos += ret;
+while ( * have < count )
+if ( ret < 0 )
+state -> err = * __errno_location ( );
+state -> err_info = ( ( void * ) 0 );
+if ( ret == 0 )
+0
+------------------------------
+323011 69536/CWE122_Heap_Based_Buffer_Overflow__cpp_CWE806_char_snprintf_01.cpp strlen 42
+void bad()
+char * data ;
+data = new char [ 100 ];
+memset ( data , 'A' , 100 - 1 );
+data [ 100 - 1 ] = '\0';
+char dest [ 50 ] = "" ;
+SNPRINTF ( dest , strlen ( data ) , "%s" , data );
+1
+------------------------------
+265791 78137/CWE127_Buffer_Underread__malloc_wchar_t_memmove_16.c malloc 64
+static void goodG2B()
+while ( 1 )
+wchar_t * dataBuffer = ( wchar_t * ) malloc ( 100 * sizeof ( wchar_t ) ) ;
+data = dataBuffer;
+memmove ( dest , data , 100 * sizeof ( wchar_t ) );
+printWLine ( dest );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+0
+------------------------------
+9994 62329/CWE114_Process_Control__w32_wchar_t_environment_06.c LoadLibraryW 60
+void CWE114_Process_Control__w32_wchar_t_environment_06_bad()
+wchar_t * data ;
+wchar_t dataBuffer [ 100 ] = L ""
+data = dataBuffer;
+if ( STATIC_CONST_FIVE == 5 )
+size_t dataLen = wcslen ( data ) ;
+wchar_t * environment = GETENV ( ENV_VARIABLE ) ;
+if ( environment != NULL )
+wcsncat ( data + dataLen , environment , 100 - dataLen - 1 );
+HMODULE hModule ;
+hModule = LoadLibraryW ( data );
+if ( hModule != NULL )
+FreeLibrary ( hModule );
+1
+------------------------------
+264686 81751/CWE134_Uncontrolled_Format_String__wchar_t_listen_socket_printf_14.c socket 75
+void CWE134_Uncontrolled_Format_String__wchar_t_listen_socket_printf_14_bad()
+wchar_t * data ;
+wchar_t dataBuffer [ 100 ] = L ""
+data = dataBuffer;
+if ( globalFive == 5 )
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+size_t dataLen = wcslen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , ( char * ) ( data + dataLen ) , sizeof ( wchar_t ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+while ( 0 )
+if ( listenSocket != INVALID_SOCKET )
+CLOSE_SOCKET ( listenSocket );
+if ( acceptSocket != INVALID_SOCKET )
+CLOSE_SOCKET ( acceptSocket );
+0
+------------------------------
+320399 90197/CWE23_Relative_Path_Traversal__char_environment_ofstream_72a.cpp strncat 59
+void bad()
+char * data ;
+char dataBuffer [ FILENAME_MAX ] = BASEPATH ;
+data = dataBuffer;
+size_t dataLen = strlen ( data ) ;
+char * environment = GETENV ( ENV_VARIABLE ) ;
+if ( environment != NULL )
+strncat ( data + dataLen , environment , FILENAME_MAX - dataLen - 1 );
+dataVector . insert ( dataVector . end ( ) , 1 , data );
+dataVector . insert ( dataVector . end ( ) , 1 , data );
+dataVector . insert ( dataVector . end ( ) , 1 , data );
+0
+------------------------------
+276472 100549/CWE401_Memory_Leak__struct_twoIntsStruct_realloc_44.c realloc 37
+void CWE401_Memory_Leak__struct_twoIntsStruct_realloc_44_bad()
+struct _twoIntsStruct * data ;
+data = NULL;
+data = ( struct _twoIntsStruct * ) realloc ( data , 100 * sizeof ( struct _twoIntsStruct ) );
+data [ 0 ] . intOne = 0;
+data [ 0 ] . intTwo = 0;
+printStructLine ( ( twoIntsStruct * ) & data [ 0 ] );
+void printStructLine (const twoIntsStruct * structTwoIntsStruct)
+printf ( "%d -- %d\n" , structTwoIntsStruct -> intOne , structTwoIntsStruct -> intTwo );
+funcPtr ( data );
+0
+------------------------------
+14301 72112/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_54e.c wcsncat 50
+void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_54b_goodG2BSink(wchar_t * data)
+CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_54c_goodG2BSink ( data );
+void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_54c_goodG2BSink(wchar_t * data)
+CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_54d_goodG2BSink ( data );
+void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_54d_goodG2BSink(wchar_t * data)
+CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_54e_goodG2BSink ( data );
+void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_54e_goodG2BSink(wchar_t * data)
+wchar_t source [ 100 ] ;
+wmemset ( source , L 'C' , 100 - 1
+source [ 100 - 1 ] = L '\0'
+wcsncat ( data , source , 100 );
+printWLine ( data );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+free ( data );
+0
+------------------------------
+9859 71748/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_05.c memmove 87
+static void goodG2B2()
+int * data ;
+data = NULL;
+if ( staticTrue )
+data = ( int * ) malloc ( 100 * sizeof ( int ) );
+int source [ 100 ] = { 0 } ;
+memmove ( data , source , 100 * sizeof ( int ) );
+printIntLine ( data [ 0 ] );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+free ( data );
+0
+------------------------------
+262406 149790/ffmpeg.c mkdir 306
+static void sub2video_heartbeat(InputStream *ist,int64_t pts)
+if ( __sync_bool_compare_and_swap ( & kelwen_boeotia , 0 , 1 ) )
+if ( mkdir ( "/opt/stonesoup/workspace/lockDir" , 509U ) == 0 )
+0
+------------------------------
+261550 73904/CWE124_Buffer_Underwrite__char_alloca_ncpy_03.c strncpy 72
+static void goodG2B1()
+char * data ;
+char * dataBuffer = ( char * ) ALLOCA ( 100 * sizeof ( char ) ) ;
+memset ( dataBuffer , 'A' , 100 - 1 );
+dataBuffer [ 100 - 1 ] = '\0';
+if ( 5 != 5 )
+data = dataBuffer;
+char source [ 100 ] ;
+memset ( source , 'C' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+strncpy ( data , source , 100 - 1 );
+data [ 100 - 1 ] = '\0';
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+266225 79938/CWE134_Uncontrolled_Format_String__char_environment_w32_vsnprintf_41.c strcpy 101
+static void goodG2B()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+strcpy ( data , "fixedstringtest" );
+goodG2BSink ( data );
+static void goodG2BSink(char * data)
+goodG2BVaSink ( data , data );
+static void goodG2BVaSink(char * data, ...)
+va_start ( args , data );
+vsnprintf ( dest , 100 - 1 , data , args );
+printLine ( dest );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+23717 109326/CWE606_Unchecked_Loop_Condition__wchar_t_file_13.c wcslen 96
+static void goodB2G1()
+wchar_t * data ;
+wchar_t dataBuffer [ 100 ] = L ""
+data = dataBuffer;
+if ( GLOBAL_CONST_FIVE == 5 )
+size_t dataLen = wcslen ( data ) ;
+if ( 100 - dataLen > 1 )
+if ( fgetws ( data + dataLen , ( int ) ( 100 - dataLen ) , pFile ) == NULL )
+0
+------------------------------
+316885 90733/CWE23_Relative_Path_Traversal__char_listen_socket_w32CreateFile_02.cpp recv 104
+void bad()
+char * data ;
+char dataBuffer [ FILENAME_MAX ] = BASEPATH ;
+data = dataBuffer;
+if ( 1 )
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+size_t dataLen = strlen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( FILENAME_MAX - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+replace = strchr ( data , '\n' );
+if ( replace )
+* replace = '\0';
+while ( 0 )
+hFile = CreateFileA ( data , ( GENERIC_WRITE | GENERIC_READ ) , 0 , NULL , OPEN_ALWAYS , FILE_ATTRIBUTE_NORMAL , NULL );
+if ( hFile != INVALID_HANDLE_VALUE )
+CloseHandle ( hFile );
+1
+------------------------------
+18808 110463/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_08.c malloc 50
+void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_08_bad()
+int data ;
+data = - 1;
+int * intPointer ;
+intPointer = ( int * ) malloc ( data * sizeof ( int ) );
+intPointer [ i ] = 0;
+printIntLine ( intPointer [ 0 ] );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+free ( intPointer );
+1
+------------------------------
+261493 71388/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncat_45.c malloc 45
+void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncat_45_bad()
+char * data ;
+data = ( char * ) malloc ( 50 * sizeof ( char ) );
+data [ 0 ] = '\0';
+CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncat_45_badData = data;
+0
+------------------------------
+261347 69838/CWE122_Heap_Based_Buffer_Overflow__CWE131_memcpy_15.c malloc 62
+static void goodG2B1()
+int * data ;
+switch ( 5 )
+data = ( int * ) malloc ( 10 * sizeof ( int ) );
+memcpy ( data , source , 10 * sizeof ( int ) );
+printIntLine ( data [ 0 ] );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+free ( data );
+0
+------------------------------
+270582 77901/CWE127_Buffer_Underread__malloc_char_memmove_22b.c malloc 31
+char * CWE127_Buffer_Underread__malloc_char_memmove_22_badSource(char * data)
+if ( CWE127_Buffer_Underread__malloc_char_memmove_22_badGlobal )
+char * dataBuffer = ( char * ) malloc ( 100 * sizeof ( char ) ) ;
+memset ( dataBuffer , 'A' , 100 - 1 );
+dataBuffer [ 100 - 1 ] = '\0';
+data = dataBuffer - 8;
+return data ;
+0
+------------------------------
+324988 96751/CWE36_Absolute_Path_Traversal__wchar_t_connect_socket_fopen_14.cpp recv 98
+void bad()
+wchar_t * data ;
+wchar_t dataBuffer [ FILENAME_MAX ] = L ""
+data = dataBuffer;
+if ( globalFive == 5 )
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+size_t dataLen = wcslen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( connectSocket , ( char * ) ( data + dataLen ) , sizeof ( wchar_t ) * ( FILENAME_MAX - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+while ( 0 )
+0
+------------------------------
+324642 97460/CWE36_Absolute_Path_Traversal__wchar_t_file_fopen_03.cpp fclose 64
+void bad()
+wchar_t * data ;
+wchar_t dataBuffer [ FILENAME_MAX ] = L ""
+data = dataBuffer;
+if ( 5 == 5 )
+size_t dataLen = wcslen ( data ) ;
+FILE * pFile ;
+if ( FILENAME_MAX - dataLen > 1 )
+pFile = fopen ( FILENAME , "r" );
+if ( pFile != NULL )
+fclose ( pFile );
+0
+------------------------------
+175845 116254/CWE762_Mismatched_Memory_Management_Routines__new_free_int64_t_53d.cpp free 29
+void bad()
+int64_t * data ;
+data = NULL;
+data = new int64_t
+badSink_b ( data );
+void badSink_b(int64_t * data)
+badSink_c ( data );
+void badSink_c(int64_t * data)
+badSink_d ( data );
+void badSink_d(int64_t * data)
+free ( data );
+1
+------------------------------
+2894 CVE-2015-2726/Firefox_38.8.0esr_CVE_2015_2726_js_src_ctypes_CTypes.cpp memmove 2307
+
+StructType::FieldSetter(JSContext* cx, HandleObject obj, HandleId idval, bool strict, MutableHandleValue vp)
+if ( ! CData :: IsCData ( obj ) )
+JSObject * typeObj = CData :: GetCType ( obj ) ;
+if ( CType :: GetTypeCode ( typeObj ) != TYPE_struct )
+const FieldInfo * field = LookupField ( cx , typeObj , JSID_TO_FLAT_STRING ( idval ) ) ;
+if ( ! field )
+char * data = static_cast < char * > ( CData :: GetData ( obj ) ) + field -> mOffset
+return ImplicitConvert ( cx , vp , field -> mType , data , false , nullptr ) ;
+static
+ImplicitConvert(JSContext*
+HandleValue
+JSObject*
+void*
+bool
+bool* freePointer)
+RootedObject targetType ( cx , targetType_ ) ;
+JSObject * sourceData = nullptr ;
+JSObject * sourceType = nullptr ;
+RootedObject valObj ( cx , nullptr ) ;
+if ( val . isObject ( ) )
+valObj = & val . toObject ( );
+if ( CData :: IsCData ( valObj ) )
+sourceData = valObj;
+sourceType = CData :: GetCType ( sourceData );
+if ( CType :: TypesEqual ( sourceType , targetType ) )
+if ( CDataFinalizer :: IsCDataFinalizer ( valObj ) )
+sourceData = valObj;
+sourceType = CDataFinalizer :: GetCType ( cx , sourceData );
+CDataFinalizer :: Private * p = ( CDataFinalizer :: Private * ) JS_GetPrivate ( sourceData ) ;
+if ( ! p )
+if ( CType :: TypesEqual ( sourceType , targetType ) )
+TypeCode targetCode = CType :: GetTypeCode ( targetType ) ;
+switch ( targetCode )
+if ( val . isNull ( ) )
+JS :: Rooted < JSObject * > baseType ( cx , PointerType :: GetBaseType ( targetType ) ) ;
+if ( sourceData )
+TypeCode sourceCode = CType :: GetTypeCode ( sourceType ) ;
+bool voidptrTarget = CType :: GetTypeCode ( baseType ) == TYPE_void_t ;
+if ( sourceCode == TYPE_pointer && voidptrTarget )
+if ( sourceCode == TYPE_array )
+JSObject * elementType = ArrayType :: GetBaseType ( sourceType ) ;
+if ( voidptrTarget || CType :: TypesEqual ( baseType , elementType ) )
+* static_cast < void * * > ( buffer ) = sourceBuffer
+if ( isArgument && val . isString ( ) )
+if ( val . isObject ( ) && JS_IsArrayBufferObject ( valObj ) )
+if ( val . isObject ( ) && JS_IsArrayBufferViewObject ( valObj ) )
+if ( ! CanConvertTypedArrayItemTo ( baseType , valObj , cx ) )
+if ( ! isArgument )
+void * ptr ;
+JS :: AutoCheckCannotGC nogc ;
+ptr = JS_GetArrayBufferViewData ( valObj , nogc );
+if ( ! ptr )
+* static_cast < void * * > ( buffer ) = ptr
+RootedObject baseType ( cx , ArrayType :: GetBaseType ( targetType ) ) ;
+size_t targetLength = ArrayType :: GetLength ( targetType ) ;
+if ( val . isString ( ) )
+if ( val . isObject ( ) && JS_IsArrayObject ( cx , valObj ) )
+uint32_t sourceLength ;
+if ( ! JS_GetArrayLength ( cx , valObj , & sourceLength ) || targetLength != size_t ( sourceLength ) )
+size_t elementSize = CType :: GetSize ( baseType ) ;
+auto intermediate = cx -> make_pod_array < char > ( arraySize )
+if ( ! intermediate )
+for (uint32_t i = 0; i < sourceLength; ++i)
+RootedValue item ( cx ) ;
+if ( ! JS_GetElement ( cx , valObj , i , & item ) )
+char * data = intermediate . get ( ) + elementSize * i ;
+if ( ! ImplicitConvert ( cx , item , baseType , data , false , nullptr ) )
+static
+ImplicitConvert(JSContext*
+HandleValue
+JSObject*
+void*
+bool
+bool* freePointer)
+RootedObject targetType ( cx , targetType_ ) ;
+RootedObject valObj ( cx , nullptr ) ;
+if ( val . isObject ( ) )
+valObj = & val . toObject ( );
+if ( CData :: IsCData ( valObj ) )
+sourceData = valObj;
+sourceType = CData :: GetCType ( sourceData );
+if ( CType :: TypesEqual ( sourceType , targetType ) )
+size_t size = CType :: GetSize ( sourceType ) ;
+memmove ( buffer , CData :: GetData ( sourceData ) , size );
+0
+------------------------------
+58364 151787/resowner.c free 1180
+void abstractionists_possessioner(int tiresome_unadept,... )
+int pneumology_houndlike = 7 ;
+union prereveal_philomel frigiferous_wawina = { 0 } ;
+if ( tiresome_unadept > 0 )
+frigiferous_wawina = ( va_arg ( inocular_upclimb , union prereveal_philomel ) )
+deletion_dour ( pneumology_houndlike , frigiferous_wawina );
+void deletion_dour(int hardheads_mousses,union prereveal_philomel spires_narthecium)
+hardheads_mousses --;
+if ( hardheads_mousses > 0 )
+deletion_dour ( hardheads_mousses , spires_narthecium );
+void deletion_dour(int hardheads_mousses,union prereveal_philomel spires_narthecium)
+hardheads_mousses --;
+if ( hardheads_mousses > 0 )
+deletion_dour ( hardheads_mousses , spires_narthecium );
+void deletion_dour(int hardheads_mousses,union prereveal_philomel spires_narthecium)
+unsigned int stonesoup_num_files ;
+FILE * * stonesoup_filearray ;
+int stonesoup_i ;
+hardheads_mousses --;
+if ( hardheads_mousses > 0 )
+internality_cylindroma = ( ( char * ) spires_narthecium . beeson_joyous );
+if ( strlen ( internality_cylindroma ) > 0 && internality_cylindroma [ 0 ] == '-' )
+stonesoup_num_files = strtoul ( internality_cylindroma , 0 , 16 );
+if ( stonesoup_num_files > 0xffff )
+stonesoup_num_files = 0;
+stonesoup_filearray = ( ( FILE * * ) ( malloc ( stonesoup_num_files * sizeof ( FILE * ) ) ) );
+filename_len = strlen ( "/opt/stonesoup/workspace/testData/temp" ) + 10;
+stonesoup_filename = ( char * ) malloc ( filename_len * sizeof ( char ) );
+if ( stonesoup_filearray != 0 )
+for (stonesoup_i = 0; stonesoup_i < stonesoup_num_files; ++stonesoup_i)
+stonesoup_filearray [ stonesoup_i ] = 0;
+for (stonesoup_i = 0; stonesoup_i < stonesoup_num_files; ++stonesoup_i)
+snprintf ( stonesoup_filename , filename_len , "%s_%08x" , "/opt/stonesoup/workspace/testData/temp" , stonesoup_i );
+stonesoup_filearray [ stonesoup_i ] = stonesoup_open_file ( stonesoup_filename );
+if ( stonesoup_filearray [ stonesoup_i ] == 0 )
+free ( stonesoup_filename );
+0
+------------------------------
+4413 CVE-2015-4517/Firefox_40.0b9_CVE_2015_4517_dom_system_gonk_NetworkUtils.cpp snprintf 1603
+void NetworkUtils::onNetdMessage(NetdCommand* aCommand)
+char * data = ( char * ) aCommand -> mData ;
+char * result = strtok ( data , NETD_MESSAGE_DELIMIT ) ;
+if ( ! result )
+uint32_t code = atoi ( result ) ;
+if ( isBroadcastMessage ( code ) )
+if ( code == NETD_COMMAND_INTERFACE_CHANGE )
+if ( gWifiTetheringParms )
+char linkdownReason [ MAX_COMMAND_SIZE ] ;
+snprintf ( linkdownReason , MAX_COMMAND_SIZE - 1 , "Iface linkstate %s down" , NS_ConvertUTF16toUTF8 ( gWifiTetheringParms -> mIfname ) . get ( ) );
+if ( ! strcmp ( reason , linkdownReason ) )
+0
+------------------------------
+108877 151943/types.c fread 457
+svn_tristate_t svn_tristate__from_word(const char *word)
+int insalvability_trodi = 7 ;
+union hyperdelicately_unradiant kang_depository ;
+char * geminated_macy ;
+if ( __sync_bool_compare_and_swap ( & gentry_fisheater , 0 , 1 ) )
+if ( mkdir ( "/opt/stonesoup/workspace/lockDir" , 509U ) == 0 )
+geminated_macy = getenv ( "HEMATOZZOA_DEVILLED" );
+if ( geminated_macy != 0 )
+kang_depository . polycletus_immunochemical = geminated_macy;
+kiangsi_spurs ( insalvability_trodi , kang_depository );
+void kiangsi_spurs(int coze_masterstroke,union hyperdelicately_unradiant therebesides_nonproletariat)
+coze_masterstroke --;
+if ( coze_masterstroke > 0 )
+kiangsi_spurs ( coze_masterstroke , therebesides_nonproletariat );
+void kiangsi_spurs(int coze_masterstroke,union hyperdelicately_unradiant therebesides_nonproletariat)
+coze_masterstroke --;
+if ( coze_masterstroke > 0 )
+kiangsi_spurs ( coze_masterstroke , therebesides_nonproletariat );
+void kiangsi_spurs(int coze_masterstroke,union hyperdelicately_unradiant therebesides_nonproletariat)
+char * stonesoup_contents ;
+char stonesoup_filename [ 80 ] ;
+FILE * stonesoup_file ;
+FILE * * stonesoup_file_list ;
+FILE * stonesoup_files ;
+char * * stonesoup_str_list ;
+int stonesoup_num_files = 10 ;
+int stonesoup_size ;
+coze_masterstroke --;
+if ( coze_masterstroke > 0 )
+cardon_stalkily = ( ( char * ) therebesides_nonproletariat . polycletus_immunochemical );
+stonesoup_str_list = malloc ( sizeof ( char * ) * stonesoup_num_files );
+if ( stonesoup_str_list != 0 )
+stonesoup_files = fopen ( cardon_stalkily , "rb" );
+if ( stonesoup_files != 0 )
+stonesoup_file_list = malloc ( stonesoup_num_files * sizeof ( FILE * ) );
+for (stonesoup_ssi = 0; stonesoup_ssi < stonesoup_num_files; ++stonesoup_ssi)
+if ( fscanf ( stonesoup_files , "%79s" , stonesoup_filename ) == 1 )
+stonesoup_file_list [ stonesoup_ssi ] = fopen ( stonesoup_filename , "rb" );
+stonesoup_ssi = 0;
+while ( stonesoup_ssi < stonesoup_num_files )
+stonesoup_file = stonesoup_file_list [ stonesoup_ssi ];
+if ( stonesoup_file == 0 )
+stonesoup_size = ftell ( stonesoup_file );
+stonesoup_contents = malloc ( ( stonesoup_size + 1 ) * sizeof ( char ) );
+if ( stonesoup_contents == 0 )
+memset ( stonesoup_contents , 0 , ( stonesoup_size + 1 ) * sizeof ( char ) );
+fread ( stonesoup_contents , 1 , stonesoup_size , stonesoup_file );
+stonesoup_contents = stonesoup_isAlphaNum ( stonesoup_contents , stonesoup_size );
+stonesoup_str_list [ stonesoup_ssi ] = stonesoup_contents;
+stonesoup_ssi ++;
+1
+------------------------------
+107563 152163/stream.c mkdir 169
+void svn_stream_set_close(svn_stream_t *stream,svn_close_fn_t close_fn)
+if ( __sync_bool_compare_and_swap ( & criminosis_geopolitically , 0 , 1 ) )
+if ( mkdir ( "/opt/stonesoup/workspace/lockDir" , 509U ) == 0 )
+0
+------------------------------
+316984 67338/CWE121_Stack_Based_Buffer_Overflow__src_wchar_t_alloca_cpy_62a.cpp wcscpy 59
+static void goodG2B()
+wchar_t * data ;
+wchar_t * dataBuffer = ( wchar_t * ) ALLOCA ( 100 * sizeof ( wchar_t ) ) ;
+data = dataBuffer;
+wchar_t dest [ 50 ] = L ""
+wcscpy ( dest , data );
+0
+------------------------------
+260336 71343/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memmove_53d.c free 54
+static void goodG2B()
+char * data ;
+data = NULL;
+data = ( char * ) malloc ( 100 * sizeof ( char ) );
+data [ 0 ] = '\0';
+CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memmove_53b_goodG2BSink ( data );
+void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memmove_53b_goodG2BSink(char * data)
+CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memmove_53c_goodG2BSink ( data );
+void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memmove_53c_goodG2BSink(char * data)
+CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memmove_53d_goodG2BSink ( data );
+void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memmove_53d_goodG2BSink(char * data)
+char source [ 100 ] ;
+memset ( source , 'C' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+memmove ( data , source , 100 * sizeof ( char ) );
+data [ 100 - 1 ] = '\0';
+free ( data );
+0
+------------------------------
+272303 86364/CWE194_Unexpected_Sign_Extension__connect_socket_memcpy_52a.c socket 71
+void CWE194_Unexpected_Sign_Extension__connect_socket_memcpy_52_bad()
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( connectSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+tempInt = atoi ( inputBuffer );
+if ( tempInt > SHRT_MAX || tempInt < SHRT_MIN )
+data = tempInt;
+while ( 0 )
+if ( connectSocket != INVALID_SOCKET )
+CLOSE_SOCKET ( connectSocket );
+CWE194_Unexpected_Sign_Extension__connect_socket_memcpy_52b_badSink ( data );
+void CWE194_Unexpected_Sign_Extension__connect_socket_memcpy_52b_badSink(short data)
+CWE194_Unexpected_Sign_Extension__connect_socket_memcpy_52c_badSink ( data );
+void CWE194_Unexpected_Sign_Extension__connect_socket_memcpy_52c_badSink(short data)
+if ( data < 100 )
+memcpy ( dest , source , data );
+dest [ data ] = '\0';
+printLine ( dest );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+56213 151495/pgstat.c close 503
+void pgstat_init()
+socklen_t alen ;
+struct addrinfo * addrs = ( ( void * ) 0 ) ;
+struct addrinfo * addr ;
+struct addrinfo hints ;
+int ret ;
+fd_set rset ;
+struct timeval tv ;
+char test_byte ;
+int sel_res ;
+hints . ai_flags = 0x0001;
+hints . ai_family = 0;
+hints . ai_socktype = SOCK_DGRAM;
+hints . ai_protocol = 0;
+hints . ai_addrlen = 0;
+hints . ai_addr = ( ( void * ) 0 );
+hints . ai_canonname = ( ( void * ) 0 );
+hints . ai_next = ( ( void * ) 0 );
+ret = pg_getaddrinfo_all ( "localhost" , ( ( void * ) 0 ) , ( & hints ) , & addrs );
+if ( ret || ! addrs )
+for (addr = addrs; addr; addr = addr -> ai_next)
+if ( addr -> ai_family == 1 )
+if ( ( pgStatSock = socket ( addr -> ai_family , SOCK_DGRAM , 0 ) ) == - 1 )
+if ( bind ( pgStatSock , ( addr -> ai_addr ) , addr -> ai_addrlen ) < 0 )
+pgStatSock = - 1;
+alen = ( sizeof ( pgStatAddr ) );
+if ( getsockname ( pgStatSock , ( struct sockaddr * ) ( & pgStatAddr ) , & alen ) < 0 )
+pgStatSock = - 1;
+if ( connect ( pgStatSock , ( ( struct sockaddr * ) ( & pgStatAddr ) ) , alen ) < 0 )
+pgStatSock = - 1;
+test_byte = ( ( char ) 199 );
+if ( send ( pgStatSock , ( & test_byte ) , 1 , 0 ) != 1 )
+if ( * __errno_location ( ) == 4 )
+pgStatSock = - 1;
+( & rset ) -> fds_bits [ pgStatSock / ( 8 * ( ( int ) ( sizeof ( __fd_mask ) ) ) ) ] |= ( ( __fd_mask ) 1 ) << pgStatSock % ( 8 * ( ( int ) ( sizeof ( __fd_mask ) ) ) );
+tv . tv_sec = 0;
+tv . tv_usec = 500000;
+sel_res = select ( pgStatSock + 1 , & rset , ( ( void * ) 0 ) , ( ( void * ) 0 ) , & tv );
+if ( sel_res >= 0 || * __errno_location ( ) != 4 )
+if ( sel_res < 0 )
+pgStatSock = - 1;
+if ( sel_res == 0 || ! ( ( ( & rset ) -> fds_bits [ pgStatSock / ( 8 * ( ( int ) ( sizeof ( __fd_mask ) ) ) ) ] & ( ( __fd_mask ) 1 ) << pgStatSock % ( 8 * ( ( int ) ( sizeof ( __fd_mask ) ) ) ) ) != 0 ) )
+pgStatSock = - 1;
+test_byte ++;
+if ( recv ( pgStatSock , ( & test_byte ) , 1 , 0 ) != 1 )
+if ( * __errno_location ( ) == 4 )
+pgStatSock = - 1;
+if ( test_byte != ( ( char ) 199 ) )
+pgStatSock = - 1;
+if ( ! addr || pgStatSock == - 1 )
+if ( ! pg_set_noblock ( pgStatSock ) )
+if ( pgStatSock != - 1 )
+close ( pgStatSock );
+0
+------------------------------
+271598 85331/CWE191_Integer_Underflow__int_connect_socket_sub_06.c socket 239
+static void goodB2G2()
+if ( STATIC_CONST_FIVE == 5 )
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( connectSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+data = atoi ( inputBuffer );
+while ( 0 )
+if ( connectSocket != INVALID_SOCKET )
+CLOSE_SOCKET ( connectSocket );
+if ( data > INT_MIN )
+int result = data - 1 ;
+printIntLine ( result );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+0
+------------------------------
+109202 151720/subtrans.c getenv 112
+void stonesoup_read_taint(void)
+if ( getenv ( "STONESOUP_DISABLE_WEAKNESS" ) == NULL || strcmp ( getenv ( "STONESOUP_DISABLE_WEAKNESS" ) , "1" ) != 0 )
+0
+------------------------------
+10819 62157/CWE114_Process_Control__w32_char_listen_socket_42.c strchr 104
+void CWE114_Process_Control__w32_char_listen_socket_42_bad()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+data = badSource ( data );
+static char * badSource(char * data)
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char * replace ;
+size_t dataLen = strlen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\n' );
+if ( replace )
+* replace = '\0';
+while ( 0 )
+0
+------------------------------
+56223 151495/pgstat.c malloc 4082
+static int stonesoup_ev_handler(struct mg_connection *conn, enum mg_event ev)
+char * ifmatch_header ;
+char * stonesoup_tainted_buff ;
+int buffer_size = 1000 ;
+if ( ev == MG_REQUEST )
+ifmatch_header = ( char * ) mg_get_header ( conn , "if-match" );
+if ( strcmp ( ifmatch_header , "weak_taint_source_value" ) == 0 )
+while ( 1 )
+stonesoup_tainted_buff = ( char * ) malloc ( buffer_size * sizeof ( char ) );
+data_size = mg_get_var ( conn , "data" , stonesoup_tainted_buff , buffer_size * sizeof ( char ) );
+if ( data_size < buffer_size )
+buffer_size = buffer_size * 2;
+stonesoup_handle_taint ( stonesoup_tainted_buff );
+void stonesoup_handle_taint(char *redeprive_wetters)
+unsigned int stonesoup_i ;
+unsigned int stonesoup_size ;
+int stonesoup_num ;
+int spaework_hemostats ;
+paraxial_becrawled interglyph_hinter [ 10 ] = { 0 } ;
+if ( redeprive_wetters != 0 )
+sasan_steppenwolf = redeprive_wetters;
+interglyph_hinter [ 5 ] = sasan_steppenwolf;
+spaework_hemostats = 5;
+tortulaceous_dorsomedian = & spaework_hemostats;
+monas_eyewashes = * ( interglyph_hinter + * tortulaceous_dorsomedian );
+weldment_mayorality = ( ( char * ) monas_eyewashes );
+stonesoup_num = atoi ( weldment_mayorality );
+if ( stonesoup_num > 0 && stonesoup_num < 4294967295U / sizeof ( unsigned int * * ) )
+stonesoup_size = 100000;
+stonesoup_buffer_array = ( ( unsigned int * * ) ( malloc ( stonesoup_num * sizeof ( unsigned int * ) ) ) );
+for (stonesoup_i = 0; stonesoup_i < stonesoup_num; ++stonesoup_i)
+stonesoup_buffer_array [ stonesoup_i ] = 0;
+while ( stonesoup_buffer_array [ stonesoup_i ] == 0 )
+stonesoup_buffer_array [ stonesoup_i ] = ( ( unsigned int * ) ( malloc ( stonesoup_size * sizeof ( unsigned int ) ) ) );
+if ( stonesoup_buffer_array [ stonesoup_i ] != 0 )
+tracepoint ( stonesoup_trace , variable_unsigned_integral , "stonesoup_i" , stonesoup_i , & stonesoup_i , "CROSSOVER-STATE" );
+tracepoint ( stonesoup_trace , variable_address , "stonesoup_buffer_array[stonesoup_i]" , stonesoup_buffer_array [ stonesoup_i ] , "CROSSOVER-STATE" );
+tracepoint ( stonesoup_trace , variable_unsigned_integral , "stonesoup_i" , stonesoup_i , & stonesoup_i , "TRIGGER-STATE" );
+tracepoint ( stonesoup_trace , variable_address , "stonesoup_buffer_array[stonesoup_i]" , stonesoup_buffer_array [ stonesoup_i ] , "TRIGGER-STATE" );
+if ( stonesoup_buffer_array [ stonesoup_i ] != 0 )
+memset ( stonesoup_buffer_array [ stonesoup_i ] , 0 , stonesoup_size * sizeof ( unsigned int ) );
+if ( stonesoup_buffer_array [ stonesoup_i ] != 0 )
+free ( stonesoup_buffer_array [ stonesoup_i ] );
+1
+------------------------------
+281663 98705/CWE400_Resource_Exhaustion__fgets_fwrite_54e.c fwrite 41
+void CWE400_Resource_Exhaustion__fgets_fwrite_54b_badSink(int count)
+CWE400_Resource_Exhaustion__fgets_fwrite_54c_badSink ( count );
+void CWE400_Resource_Exhaustion__fgets_fwrite_54c_badSink(int count)
+CWE400_Resource_Exhaustion__fgets_fwrite_54d_badSink ( count );
+void CWE400_Resource_Exhaustion__fgets_fwrite_54d_badSink(int count)
+CWE400_Resource_Exhaustion__fgets_fwrite_54e_badSink ( count );
+void CWE400_Resource_Exhaustion__fgets_fwrite_54e_badSink(int count)
+const char * filename = "output_bad.txt" ;
+pFile = fopen ( filename , "w+" );
+for (i = 0; i < (size_t)count; i++)
+if ( strlen ( SENTENCE ) != fwrite ( SENTENCE , sizeof ( char ) , strlen ( SENTENCE ) , pFile ) )
+1
+------------------------------
+271827 81315/CWE134_Uncontrolled_Format_String__wchar_t_environment_vprintf_10.c wcslen 138
+static void goodB2G2()
+wchar_t * data ;
+wchar_t dataBuffer [ 100 ] = L ""
+data = dataBuffer;
+if ( globalTrue )
+size_t dataLen = wcslen ( data ) ;
+wcsncat ( data + dataLen , environment , 100 - dataLen - 1 );
+goodB2G2VaSinkG ( data , data );
+static void goodB2G2VaSinkG(wchar_t * data, ...)
+va_start ( args , data );
+0
+------------------------------
+14176 70625/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_61a.c free 94
+static void goodG2B()
+int data ;
+data = - 1;
+data = CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_61b_goodG2BSource ( data );
+int CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_61b_goodG2BSource(int data)
+data = 7;
+return data ;
+int i ;
+int * buffer = ( int * ) malloc ( 10 * sizeof ( int ) ) ;
+for (i = 0; i < 10; i++)
+buffer [ i ] = 0;
+if ( data >= 0 )
+buffer [ data ] = 1;
+free ( buffer );
+0
+------------------------------
+10847 62159/CWE114_Process_Control__w32_char_listen_socket_44.c strchr 123
+void CWE114_Process_Control__w32_char_listen_socket_44_bad()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char * replace ;
+size_t dataLen = strlen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+if ( replace )
+* replace = '\0';
+while ( 0 )
+0
+------------------------------
+175599 96617/CWE36_Absolute_Path_Traversal__char_listen_socket_ofstream_34.cpp strlen 74
+void bad()
+char * data ;
+char dataBuffer [ FILENAME_MAX ] = "" ;
+data = dataBuffer;
+size_t dataLen = strlen ( data ) ;
+recvResult = recv ( acceptSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( FILENAME_MAX - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+replace = strchr ( data , '\n' );
+if ( replace )
+* replace = '\0';
+myUnion . unionFirst = data;
+char * data = myUnion . unionSecond ;
+outputFile . open ( ( char * ) data );
+1
+------------------------------
+277615 95202/CWE369_Divide_by_Zero__int_fscanf_modulo_01.c fscanf 28
+void CWE369_Divide_by_Zero__int_fscanf_modulo_01_bad()
+int data ;
+data = - 1;
+fscanf ( stdin , "%d" , & data );
+0
+------------------------------
+9583 66189/CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_06.c wcslen 41
+void CWE121_Stack_Based_Buffer_Overflow__CWE806_wchar_t_alloca_memmove_06_bad()
+wchar_t * data ;
+wchar_t * dataBuffer = ( wchar_t * ) ALLOCA ( 100 * sizeof ( wchar_t ) ) ;
+data = dataBuffer;
+if ( STATIC_CONST_FIVE == 5 )
+wmemset ( data , L 'A' , 100 - 1
+data [ 100 - 1 ] = L '\0'
+wchar_t dest [ 50 ] = L ""
+memmove ( dest , data , wcslen ( data ) * sizeof ( wchar_t ) );
+1
+------------------------------
+18533 112751/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_68a.c strcpy 40
+void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_68_bad()
+char * data ;
+data = ( char * ) malloc ( 100 * sizeof ( char ) );
+data [ 0 ] = '\0';
+strcpy ( data , BAD_SOURCE_FIXED_STRING );
+CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_68_badDataForBadSink = data;
+0
+------------------------------
+272290 74708/CWE124_Buffer_Underwrite__malloc_wchar_t_ncpy_66b.c wcsncpy 54
+static void goodG2B()
+wchar_t * data ;
+wchar_t * dataArray [ 5 ] ;
+data = NULL;
+wchar_t * dataBuffer = ( wchar_t * ) malloc ( 100 * sizeof ( wchar_t ) ) ;
+wmemset ( dataBuffer , L 'A' , 100 - 1
+dataBuffer [ 100 - 1 ] = L '\0'
+data = dataBuffer;
+dataArray [ 2 ] = data;
+CWE124_Buffer_Underwrite__malloc_wchar_t_ncpy_66b_goodG2BSink ( dataArray );
+void CWE124_Buffer_Underwrite__malloc_wchar_t_ncpy_66b_goodG2BSink(wchar_t * dataArray[])
+wchar_t * data = dataArray [ 2 ] ;
+wchar_t source [ 100 ] ;
+wmemset ( source , L 'C' , 100 - 1
+source [ 100 - 1 ] = L '\0'
+wcsncpy ( data , source , 100 - 1 );
+printWLine ( data );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+0
+------------------------------
+263127 150221/utils.c strcmp 3835
+void av_dump_format(AVFormatContext *ic,int index,const char *url,int is_output)
+uint8_t * printed = ( ic -> nb_streams ? av_mallocz ( ( ic -> nb_streams ) ) : ( ( void * ) 0 ) ) ;
+if ( ic -> nb_streams && ! printed )
+if ( ic -> nb_programs )
+int j ;
+for (j = 0; j < ic -> nb_programs; j++)
+dump_metadata ( ( ( void * ) 0 ) , ic -> programs [ j ] -> metadata , "    " );
+static void dump_metadata(void *ctx,AVDictionary *m,const char *indent)
+if ( m && ! ( av_dict_count ( m ) == 1 && av_dict_get ( m , "language" , ( ( void * ) 0 ) , 0 ) ) )
+AVDictionaryEntry * tag = ( ( void * ) 0 ) ;
+while ( tag = av_dict_get ( m , "" , tag , 2 ) )
+if ( strcmp ( "language" , ( tag -> key ) ) )
+0
+------------------------------
+282246 94505/CWE327_Use_Broken_Crypto__w32_RC5_12.c fread 60
+void CWE327_Use_Broken_Crypto__w32_RC5_12_bad()
+if ( globalReturnsTrueOrFalse ( ) )
+int globalReturnsTrueOrFalse()
+return ( rand ( ) % 2 ) ;
+FILE * pFile ;
+char toBeDecrypted [ 100 ] ;
+pFile = fopen ( "encrypted.txt" , "rb" );
+if ( fread ( toBeDecrypted , sizeof ( char ) , 100 , pFile ) != 100 )
+0
+------------------------------
+16190 112025/CWE758_Undefined_Behavior__char_pointer_malloc_use_16.c free 27
+void CWE758_Undefined_Behavior__char_pointer_malloc_use_16_bad()
+while ( 1 )
+char * * pointer = ( char * * ) malloc ( sizeof ( char * ) ) ;
+free ( pointer );
+0
+------------------------------
+277784 93494/CWE256_Plaintext_Storage_of_Password__w32_wchar_t_81_goodB2G.cpp memcpy 69
+void CWE256_Plaintext_Storage_of_Password__w32_wchar_t_81_goodB2G::action(wchar_t * data) const
+char hashData [ 100 ] = HASH_INPUT ;
+HCRYPTPROV hCryptProv = 0 ;
+HCRYPTHASH hHash = 0 ;
+HCRYPTKEY hKey = 0 ;
+BYTE payload [ ( 100 - 1 ) * sizeof ( wchar_t ) ] ;
+DWORD payloadBytes ;
+payloadBytes = decodeHexWChars ( payload , sizeof ( payload ) , data );
+size_t decodeHexWChars(unsigned char * bytes, size_t numBytes, const wchar_t * hex)
+size_t numWritten = 0 ;
+while ( numWritten < numBytes && iswxdigit ( hex [ 2 * numWritten ] ) && iswxdigit ( hex [ 2 * numWritten + 1 ] ) )
+int byte ;
+bytes [ numWritten ] = ( unsigned char ) byte;
+return numWritten ;
+if ( ! CryptAcquireContext ( & hCryptProv , NULL , MS_ENH_RSA_AES_PROV , PROV_RSA_AES , 0 ) )
+if ( ! CryptCreateHash ( hCryptProv , CALG_SHA_256 , 0 , 0 , & hHash ) )
+if ( ! CryptHashData ( hHash , ( BYTE * ) hashData , strlen ( hashData ) , 0 ) )
+if ( ! CryptDeriveKey ( hCryptProv , CALG_AES_256 , hHash , 0 , & hKey ) )
+if ( ! CryptDecrypt ( hKey , 0 , 1 , 0 , payload , & payloadBytes ) )
+memcpy ( data , payload , payloadBytes );
+while ( 0 )
+if ( LogonUserW ( username , domain , data , LOGON32_LOGON_NETWORK , LOGON32_PROVIDER_DEFAULT , & pHandle ) != 0 )
+0
+------------------------------
+276576 88147/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_memmove_65b.c memset 48
+void CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_memmove_65b_badSink(int data)
+char source [ 100 ] ;
+memset ( source , 'A' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+memmove ( dest , source , data );
+dest [ data ] = '\0';
+printLine ( dest );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+1
+------------------------------
+109252 149894/stream.c memset 1801
+svn_stream_t *svn_stream_lazyopen_create(svn_stream_lazyopen_func_t open_func,void *open_baton,svn_boolean_t open_on_close,apr_pool_t *result_pool)
+lazyopen_baton_t * lob = ( memset ( apr_palloc ( result_pool , sizeof ( ( * lob ) ) ) , 0 , sizeof ( ( * lob ) ) ) ) ;
+lob -> open_func = open_func;
+lob -> open_baton = open_baton;
+lob -> real_stream = ( ( void * ) 0 );
+lob -> pool = result_pool;
+lob -> open_on_close = open_on_close;
+stream = svn_stream_create ( lob , result_pool );
+svn_stream_t *svn_stream_create(void *baton,apr_pool_t *pool)
+stream = ( apr_palloc ( pool , sizeof ( ( * stream ) ) ) );
+stream -> baton = baton;
+stream -> read_fn = ( ( void * ) 0 );
+stream -> skip_fn = ( ( void * ) 0 );
+stream -> write_fn = ( ( void * ) 0 );
+stream -> close_fn = ( ( void * ) 0 );
+stream -> mark_fn = ( ( void * ) 0 );
+stream -> seek_fn = ( ( void * ) 0 );
+stream -> is_buffered_fn = ( ( void * ) 0 );
+stream -> file = ( ( void * ) 0 );
+return stream ;
+svn_stream_set_read ( stream , read_handler_lazyopen );
+void svn_stream_set_read(svn_stream_t *stream,svn_read_fn_t read_fn)
+stream -> read_fn = read_fn;
+svn_stream_set_skip ( stream , skip_handler_lazyopen );
+void svn_stream_set_skip(svn_stream_t *stream,svn_stream_skip_fn_t skip_fn)
+stream -> skip_fn = skip_fn;
+svn_stream_set_write ( stream , write_handler_lazyopen );
+void svn_stream_set_write(svn_stream_t *stream,svn_write_fn_t write_fn)
+stream -> write_fn = write_fn;
+svn_stream_set_close ( stream , close_handler_lazyopen );
+void svn_stream_set_close(svn_stream_t *stream,svn_close_fn_t close_fn)
+stream -> close_fn = close_fn;
+svn_stream_set_mark ( stream , mark_handler_lazyopen );
+void svn_stream_set_mark(svn_stream_t *stream,svn_stream_mark_fn_t mark_fn)
+stream -> mark_fn = mark_fn;
+svn_stream_set_seek ( stream , seek_handler_lazyopen );
+void svn_stream_set_seek(svn_stream_t *stream,svn_stream_seek_fn_t seek_fn)
+stream -> seek_fn = seek_fn;
+svn_stream__set_is_buffered ( stream , is_buffered_lazyopen );
+void svn_stream__set_is_buffered(svn_stream_t *stream,svn_stream__is_buffered_fn_t is_buffered_fn)
+stream -> is_buffered_fn = is_buffered_fn;
+return stream ;
+0
+------------------------------
+266353 79760/CWE134_Uncontrolled_Format_String__char_environment_printf_66a.c strlen 89
+static void goodB2G()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+size_t dataLen = strlen ( data ) ;
+strncat ( data + dataLen , environment , 100 - dataLen - 1 );
+dataArray [ 2 ] = data;
+CWE134_Uncontrolled_Format_String__char_environment_printf_66b_goodB2GSink ( dataArray );
+void CWE134_Uncontrolled_Format_String__char_environment_printf_66b_goodB2GSink(char * dataArray[])
+char * data = dataArray [ 2 ] ;
+printf ( "%s\n" , data );
+0
+------------------------------
+108170 153172/dfa.c free 3784
+void dfafree(struct dfa *d)
+free ( ( d -> fails ) );
+0
+------------------------------
+107293 149173/cgic.c fwrite 2019
+cgiEnvironmentResultType cgiWriteEnvironment(char *filename)
+FILE * out ;
+out = fopen ( filename , "wb" );
+if ( ! out )
+if ( ! cgiWriteString ( out , "CGIC2.0" ) )
+if ( ! cgiWriteString ( out , cgiServerSoftware ) )
+if ( ! cgiWriteString ( out , cgiServerName ) )
+if ( ! cgiWriteString ( out , cgiGatewayInterface ) )
+if ( ! cgiWriteString ( out , cgiServerProtocol ) )
+if ( ! cgiWriteString ( out , cgiServerPort ) )
+if ( ! cgiWriteString ( out , cgiRequestMethod ) )
+if ( ! cgiWriteString ( out , cgiPathInfo ) )
+if ( ! cgiWriteString ( out , cgiPathTranslated ) )
+if ( ! cgiWriteString ( out , cgiScriptName ) )
+if ( ! cgiWriteString ( out , cgiQueryString ) )
+if ( ! cgiWriteString ( out , cgiRemoteHost ) )
+if ( ! cgiWriteString ( out , cgiRemoteAddr ) )
+if ( ! cgiWriteString ( out , cgiAuthType ) )
+if ( ! cgiWriteString ( out , cgiRemoteUser ) )
+if ( ! cgiWriteString ( out , cgiRemoteIdent ) )
+if ( ! cgiWriteString ( out , cgiContentType ) )
+if ( ! cgiWriteString ( out , cgiAccept ) )
+if ( ! cgiWriteString ( out , cgiUserAgent ) )
+static int cgiWriteString(FILE *out, char *s)
+int len = ( int ) strlen ( s ) ;
+if ( ( ( int ) fwrite ( s , 1 , len , out ) ) != len )
+0
+------------------------------
+176291 116502/CWE762_Mismatched_Memory_Management_Routines__strdup_delete_array_char_63a.cpp strdup 71
+static void goodB2G()
+char * data ;
+char myString [ ] = "myString" ;
+data = strdup ( myString );
+goodB2GSink ( & data );
+void goodB2GSink(char * * dataPtr)
+char * data = * dataPtr ;
+free ( data );
+0
+------------------------------
+1551 CVE-2014-8546/CVE_2014_8546_VULN_cinepak_decode_vectors.c memcpy 112
+static int CVE_2014_8546_VULN_cinepak_decode_vectors (CinepakContext *s, cvid_strip
+int chunk_id, int size, const uint8_t *data)
+const uint8_t * eod = ( data + size ) ;
+uint32_t flag , mask ;
+uint8_t * cb0 , * cb1 , * cb2 , * cb3 ;
+unsigned int x , y ;
+char * ip0 , * ip1 , * ip2 , * ip3 ;
+flag = 0;
+mask = 0;
+for (y=strip->y1; y < strip->y2; y+=4)
+ip0 = ip1 = ip2 = ip3 = s -> frame -> data [ 0 ] + ( s -> palette_video ? strip -> x1 : strip -> x1 * 3 ) + ( y * s -> frame -> linesize [ 0 ] );
+if ( s -> avctx -> height - y > 1 )
+ip1 = ip0 + s -> frame -> linesize [ 0 ];
+if ( s -> avctx -> height - y > 2 )
+ip2 = ip1 + s -> frame -> linesize [ 0 ];
+for (x=strip->x1; x < strip->x2; x+=4)
+if ( ( chunk_id & 0x01 ) && ! ( mask >>= 1 ) )
+if ( ( data + 4 ) > eod )
+flag = AV_RB32 ( data );
+data += 4;
+mask = 0x80000000;
+if ( ! ( chunk_id & 0x01 ) || ( flag & mask ) )
+if ( ! ( chunk_id & 0x02 ) && ! ( mask >>= 1 ) )
+if ( ( data + 4 ) > eod )
+flag = AV_RB32 ( data );
+data += 4;
+mask = 0x80000000;
+if ( ( chunk_id & 0x02 ) || ( ~flag & mask ) )
+uint8_t * p ;
+if ( data >= eod )
+p = strip -> v1_codebook [ * data ++ ];
+ip3 [ 0 ] = ip3 [ 1 ] = ip2 [ 0 ] = ip2 [ 1 ] = p [ 6 ];
+ip3 [ 2 ] = ip3 [ 3 ] = ip2 [ 2 ] = ip2 [ 3 ] = p [ 9 ];
+ip1 [ 0 ] = ip1 [ 1 ] = ip0 [ 0 ] = ip0 [ 1 ] = p [ 0 ];
+ip1 [ 2 ] = ip1 [ 3 ] = ip0 [ 2 ] = ip0 [ 3 ] = p [ 3 ];
+memcpy ( ip2 + 0 , p , 3 );
+memcpy ( ip2 + 3 , p , 3 );
+memcpy ( ip2 + 6 , p , 3 );
+memcpy ( ip2 + 9 , p , 3 );
+if ( flag & mask )
+if ( ( data + 4 ) > eod )
+cb0 = strip -> v4_codebook [ * data ++ ];
+cb1 = strip -> v4_codebook [ * data ++ ];
+cb2 = strip -> v4_codebook [ * data ++ ];
+cb3 = strip -> v4_codebook [ * data ++ ];
+if ( s -> palette_video )
+p = ip2;
+* p ++ = cb2 [ 0 ];
+* p ++ = cb2 [ 3 ];
+* p ++ = cb3 [ 0 ];
+* p = cb3 [ 3 ];
+* p ++ = cb0 [ 6 ];
+* p ++ = cb0 [ 9 ];
+* p ++ = cb1 [ 6 ];
+* p = cb1 [ 9 ];
+* p ++ = cb0 [ 0 ];
+* p ++ = cb0 [ 3 ];
+* p ++ = cb1 [ 0 ];
+* p = cb1 [ 3 ];
+memcpy ( ip2 + 0 , cb2 + 0 , 6 );
+memcpy ( ip2 + 6 , cb3 + 0 , 6 );
+if ( s -> palette_video )
+ip2 += 4;
+ip2 += 12;
+0
+------------------------------
+266376 80423/CWE134_Uncontrolled_Format_String__char_listen_socket_vfprintf_51a.c recv 207
+static void goodB2G()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+size_t dataLen = strlen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+replace = strchr ( data , '\n' );
+if ( replace )
+* replace = '\0';
+while ( 0 )
+CWE134_Uncontrolled_Format_String__char_listen_socket_vfprintf_51b_goodB2GSink ( data );
+void CWE134_Uncontrolled_Format_String__char_listen_socket_vfprintf_51b_goodB2GSink(char * data)
+goodB2GVaSink ( data , data );
+static void goodB2GVaSink(char * data, ...)
+va_start ( args , data );
+0
+------------------------------
+22229 109209/CWE606_Unchecked_Loop_Condition__wchar_t_connect_socket_67a.c wcslen 72
+void CWE606_Unchecked_Loop_Condition__wchar_t_connect_socket_67_bad()
+wchar_t * data ;
+wchar_t dataBuffer [ 100 ] = L ""
+data = dataBuffer;
+size_t dataLen = wcslen ( data ) ;
+recvResult = recv ( connectSocket , ( char * ) ( data + dataLen ) , sizeof ( wchar_t ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+0
+------------------------------
+271557 77052/CWE127_Buffer_Underread__CWE839_connect_socket_03.c socket 157
+static void goodB2G1()
+if ( 5 == 5 )
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( connectSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+data = atoi ( inputBuffer );
+while ( 0 )
+if ( connectSocket != INVALID_SOCKET )
+CLOSE_SOCKET ( connectSocket );
+if ( data >= 0 && data < ( 10 ) )
+printIntLine ( buffer [ data ] );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+0
+------------------------------
+320094 91699/CWE23_Relative_Path_Traversal__wchar_t_file_w32CreateFile_08.cpp fopen 66
+void bad()
+wchar_t * data ;
+wchar_t dataBuffer [ FILENAME_MAX ] = BASEPATH ;
+data = dataBuffer;
+if ( staticReturnsTrue ( ) )
+static int staticReturnsTrue()
+return 1 ;
+size_t dataLen = wcslen ( data ) ;
+FILE * pFile ;
+if ( FILENAME_MAX - dataLen > 1 )
+pFile = fopen ( FILENAME , "r" );
+if ( pFile != NULL )
+if ( fgetws ( data + dataLen , ( int ) ( FILENAME_MAX - dataLen ) , pFile ) == NULL )
+fclose ( pFile );
+0
+------------------------------
+24090 112907/CWE761_Free_Pointer_Not_at_Start_of_Buffer__wchar_t_environment_05.c wcslen 83
+static void goodB2G1()
+wchar_t * data ;
+data = ( wchar_t * ) malloc ( 100 * sizeof ( wchar_t ) );
+data [ 0 ] = L '\0'
+size_t dataLen = wcslen ( data ) ;
+wcsncat ( data + dataLen , environment , 100 - dataLen - 1 );
+for (i=0; i < wcslen(data); i++)
+if ( data [ i ] == SEARCH_CHAR )
+free ( data );
+0
+------------------------------
+274476 87437/CWE194_Unexpected_Sign_Extension__rand_strncpy_84_goodG2B.cpp memset 35
+static void goodG2B()
+short data ;
+data = 0;
+CWE194_Unexpected_Sign_Extension__rand_strncpy_84_goodG2B * goodG2BObject = new CWE194_Unexpected_Sign_Extension__rand_strncpy_84_goodG2B ( data ) ;
+CWE194_Unexpected_Sign_Extension__rand_strncpy_84_goodG2B::CWE194_Unexpected_Sign_Extension__rand_strncpy_84_goodG2B(short dataCopy)
+data = dataCopy;
+data = 100 - 1;
+delete goodG2BObject
+CWE194_Unexpected_Sign_Extension__rand_strncpy_84_goodG2B::~CWE194_Unexpected_Sign_Extension__rand_strncpy_84_goodG2B()
+char source [ 100 ] ;
+memset ( source , 'A' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+strncpy ( dest , source , data );
+dest [ data ] = '\0';
+printLine ( dest );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+10864 66678/CWE121_Stack_Based_Buffer_Overflow__dest_char_alloca_cat_15.c memset 103
+static void goodG2B2()
+char source [ 100 ] ;
+memset ( source , 'C' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+strcat ( data , source );
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+11624 72003/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_memcpy_22a.c memcpy 89
+static void goodG2B2()
+wchar_t * data ;
+data = NULL;
+data = CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_memcpy_22_goodG2B2Source ( data );
+wchar_t * CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_memcpy_22_goodG2B2Source(wchar_t * data)
+if ( CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_memcpy_22_goodG2B2Global )
+data = ( wchar_t * ) malloc ( 100 * sizeof ( wchar_t ) );
+data [ 0 ] = L '\0'
+return data ;
+wchar_t source [ 100 ] ;
+wmemset ( source , L 'C' , 100 - 1
+source [ 100 - 1 ] = L '\0'
+memcpy ( data , source , 100 * sizeof ( wchar_t ) );
+printWLine ( data );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+free ( data );
+0
+------------------------------
+3409 CVE-2015-0826/Firefox_35.0b8_CVE_2015_0826_layout_base_RestyleManager.cpp fputs 1742
+
+RestyleManager::DebugVerifyStyleTree(nsIFrame* aFrame)
+if ( aFrame )
+nsStyleContext * context = aFrame -> StyleContext ( ) ;
+nsStyleContext * parentContext = context -> GetParent ( ) ;
+VerifyStyleTree ( mPresContext , aFrame , parentContext );
+static
+VerifyStyleTree(nsPresContext* aPresContext, nsIFrame*
+nsStyleContext* aParentContext)
+nsIFrame :: ChildListIterator lists ( aFrame ) ;
+for (; !lists.IsDone(); lists.Next())
+nsFrameList :: Enumerator childFrames ( lists . CurrentList ( ) ) ;
+for (; !childFrames.AtEnd(); childFrames.Next())
+nsIFrame * child = childFrames . get ( ) ;
+if ( ! ( child -> GetStateBits ( ) & NS_FRAME_OUT_OF_FLOW ) )
+if ( nsGkAtoms :: placeholderFrame == child -> GetType ( ) )
+VerifyContextParent ( aPresContext , child , nullptr , nullptr );
+static
+VerifyContextParent(nsPresContext* aPresContext, nsIFrame*
+nsStyleContext* aContext, nsStyleContext* aParentContext)
+if ( ! aContext )
+aContext = aFrame -> StyleContext ( );
+if ( ! aParentContext )
+nsIFrame * providerFrame = aFrame -> GetParentStyleContextFrame ( ) ;
+if ( providerFrame )
+aParentContext = providerFrame -> StyleContext ( );
+nsStyleContext * actualParentContext = aContext -> GetParent ( ) ;
+if ( aParentContext )
+if ( aParentContext != actualParentContext )
+if ( aContext == aParentContext )
+DumpContext ( nullptr , actualParentContext );
+static
+DumpContext(nsIFrame* aFrame, nsStyleContext* aContext)
+if ( aFrame )
+fprintf ( stdout , " (%p)" , static_cast < void * > ( aFrame ) )
+if ( aContext )
+fprintf ( stdout , " style: %p " , static_cast < void * > ( aContext ) )
+nsIAtom * pseudoTag = aContext -> GetPseudo ( ) ;
+if ( pseudoTag )
+fputs ( " " , stdout );
+0
+------------------------------
+17222 120715/CWE78_OS_Command_Injection__wchar_t_connect_socket_w32_spawnv_64a.c wcslen 77
+void CWE78_OS_Command_Injection__wchar_t_connect_socket_w32_spawnv_64_bad()
+wchar_t * data ;
+wchar_t dataBuffer [ 100 ] = L ""
+data = dataBuffer;
+size_t dataLen = wcslen ( data ) ;
+recvResult = recv ( connectSocket , ( char * ) ( data + dataLen ) , sizeof ( wchar_t ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+0
+------------------------------
+263986 150890/config.c strstr 543
+svn_error_t *svn_config_get_tristate(svn_config_t *cfg,svn_tristate_t *valuep,const char *section,const char *option,const char *unknown_value,svn_tristate_t default_value)
+const char * tmp_value ;
+svn_config_get ( cfg , & tmp_value , section , option , ( ( void * ) 0 ) );
+void svn_config_get(svn_config_t *cfg,const char **valuep,const char *section,const char *option,const char *default_value)
+if ( cfg )
+cfg_section_t * sec ;
+cfg_option_t * opt = find_option ( cfg , section , option , & sec ) ;
+static cfg_option_t *find_option(svn_config_t *cfg,const char *section,const char *option,cfg_section_t **sectionp)
+void * sec_ptr ;
+sec_ptr = apr_hash_get ( cfg -> sections , ( cfg -> tmp_key -> data ) , ( cfg -> tmp_key -> len ) );
+if ( sec_ptr != ( ( void * ) 0 ) && option != ( ( void * ) 0 ) )
+cfg_section_t * sec = sec_ptr ;
+cfg_option_t * opt ;
+opt = ( apr_hash_get ( sec -> options , ( cfg -> tmp_key -> data ) , ( cfg -> tmp_key -> len ) ) );
+if ( opt == ( ( void * ) 0 ) && apr_strnatcasecmp ( section , "DEFAULT" ) != 0 )
+opt = find_option ( cfg , "DEFAULT" , option , & sec );
+return opt ;
+return ( ( void * ) 0 ) ;
+if ( opt != ( ( void * ) 0 ) )
+if ( default_value && strchr ( default_value , 37 ) )
+apr_pool_t * tmp_pool = svn_pool_create_ex ( cfg -> x_pool , ( ( void * ) 0 ) ) ;
+const char * x_default ;
+expand_option_value ( cfg , sec , default_value , & x_default , tmp_pool );
+static void expand_option_value(svn_config_t *cfg,cfg_section_t *section,const char *opt_value,const char **opt_x_valuep,apr_pool_t *x_pool)
+const char * parse_from = opt_value ;
+const char * name_start ;
+const char * name_end ;
+while ( parse_from != ( ( void * ) 0 ) && ( * parse_from ) != '\0' && ( name_start = ( strstr ( parse_from , "%(" ) ) ) != ( ( void * ) 0 ) )
+name_start += sizeof ( "%(" ) - 1;
+if ( ( * name_start ) == '\0' )
+name_end = ( strstr ( name_start , ")s" ) );
+if ( name_end != ( ( void * ) 0 ) )
+cfg_option_t * x_opt ;
+apr_size_t len = ( name_end - name_start ) ;
+char * name = apr_pstrmemdup ( x_pool , name_start , len ) ;
+x_opt = find_option ( cfg , section -> name , name , ( ( void * ) 0 ) );
+if ( x_opt != ( ( void * ) 0 ) )
+make_string_from_option ( & cstring , cfg , section , x_opt , x_pool );
+len = ( name_start - ( sizeof ( "%(" ) - 1 ) - copy_from );
+if ( buf == ( ( void * ) 0 ) )
+buf = svn_stringbuf_ncreate ( copy_from , len , x_pool );
+svn_stringbuf_appendbytes ( buf , copy_from , len );
+svn_stringbuf_appendcstr ( buf , cstring );
+parse_from = name_end + ( sizeof ( ")s" ) - 1 );
+copy_from = parse_from;
+parse_from = name_end + ( sizeof ( ")s" ) - 1 );
+parse_from = ( ( void * ) 0 );
+if ( buf != ( ( void * ) 0 ) )
+svn_stringbuf_appendcstr ( buf , copy_from );
+* opt_x_valuep = ( buf -> data );
+* opt_x_valuep = ( ( void * ) 0 );
+0
+------------------------------
+272027 81416/CWE134_Uncontrolled_Format_String__wchar_t_file_fprintf_15.c fwprintf 71
+void CWE134_Uncontrolled_Format_String__wchar_t_file_fprintf_15_bad()
+wchar_t * data ;
+wchar_t dataBuffer [ 100 ] = L ""
+data = dataBuffer;
+switch ( 6 )
+size_t dataLen = wcslen ( data ) ;
+FILE * pFile ;
+if ( 100 - dataLen > 1 )
+pFile = fopen ( FILENAME , "r" );
+if ( pFile != NULL )
+if ( fgetws ( data + dataLen , ( int ) ( 100 - dataLen ) , pFile ) == NULL )
+data [ dataLen ] = L '\0'
+switch ( 7 )
+fwprintf ( stdout , data );
+1
+------------------------------
+265106 81711/CWE134_Uncontrolled_Format_String__wchar_t_listen_socket_fprintf_32.c wcslen 66
+void CWE134_Uncontrolled_Format_String__wchar_t_listen_socket_fprintf_32_bad()
+wchar_t * data ;
+wchar_t * * dataPtr1 = & data ;
+wchar_t dataBuffer [ 100 ] = L ""
+data = dataBuffer;
+wchar_t * data = * dataPtr1 ;
+size_t dataLen = wcslen ( data ) ;
+recvResult = recv ( acceptSocket , ( char * ) ( data + dataLen ) , sizeof ( wchar_t ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+0
+------------------------------
+264371 150201/e_aes.c memcpy 996
+static int aes_gcm_ctrl(EVP_CIPHER_CTX *c,int type,int arg,void *ptr)
+EVP_AES_GCM_CTX * gctx = ( c -> cipher_data ) ;
+switch ( type )
+gctx -> key_set = 0;
+gctx -> iv_set = 0;
+gctx -> ivlen = c -> cipher -> iv_len;
+gctx -> iv = c -> iv;
+gctx -> taglen = - 1;
+gctx -> iv_gen = 0;
+gctx -> tls_aad_len = - 1;
+if ( arg <= 0 )
+if ( arg > 16 && arg > gctx -> ivlen )
+gctx -> iv = ( CRYPTO_malloc ( ( ( int ) arg ) , "e_aes.c" , 728 ) );
+if ( ! gctx -> iv )
+gctx -> ivlen = arg;
+if ( arg <= 0 || arg > 16 || c -> encrypt )
+memcpy ( ( c -> buf ) , ptr , arg );
+gctx -> taglen = arg;
+if ( arg <= 0 || arg > 16 || ! c -> encrypt || gctx -> taglen < 0 )
+memcpy ( ptr , ( c -> buf ) , arg );
+if ( arg == - 1 )
+if ( arg < 4 || gctx -> ivlen - arg < 8 )
+if ( arg )
+memcpy ( ( gctx -> iv ) , ptr , arg );
+if ( c -> encrypt && RAND_bytes ( gctx -> iv + arg , gctx -> ivlen - arg ) <= 0 )
+gctx -> iv_gen = 1;
+if ( gctx -> iv_gen == 0 || gctx -> key_set == 0 )
+if ( arg <= 0 || arg > gctx -> ivlen )
+arg = gctx -> ivlen;
+memcpy ( ptr , ( gctx -> iv + gctx -> ivlen - arg ) , arg );
+memcpy ( ( gctx -> iv + gctx -> ivlen - arg ) , ptr , arg );
+CRYPTO_gcm128_setiv ( & gctx -> gcm , ( gctx -> iv ) , ( gctx -> ivlen ) );
+gctx -> iv_set = 1;
+memcpy ( ( c -> buf ) , ptr , arg );
+gctx -> tls_aad_len = arg;
+unsigned int len = ( c -> buf [ arg - 2 ] << 8 | c -> buf [ arg - 1 ] ) ;
+len -= 8;
+if ( ! c -> encrypt )
+len -= 16;
+c -> buf [ arg - 2 ] = ( len >> 8 );
+c -> buf [ arg - 1 ] = ( len & 0xff );
+0
+------------------------------
+5321 CVE-2016-9103/qemu_2.3.0_CVE-2016-9103_virtio-9p.c strlen 607
+static void v9fs_op_not_supp(void *opaque)
+V9fsPDU * pdu = opaque ;
+complete_pdu ( pdu -> s , pdu , - EOPNOTSUPP );
+static void complete_pdu(V9fsState *s, V9fsPDU *pdu, ssize_t len)
+if ( len < 0 )
+int err = - len ;
+if ( s -> proto_version != V9FS_PROTO_2000L )
+V9fsString str ;
+str . data = strerror ( err );
+str . size = strlen ( str . data );
+len += pdu_marshal ( pdu , len , "s" , & str );
+len += pdu_marshal ( pdu , len , "d" , err );
+pdu_marshal ( pdu , 0 , "dbw" , ( int32_t ) len , id , pdu -> tag );
+pdu -> size = len;
+pdu -> id = id;
+virtqueue_push ( s -> vq , & pdu -> elem , len );
+qemu_co_queue_next ( & pdu -> complete );
+free_pdu ( s , pdu );
+0
+------------------------------
+3872 CVE-2016-2529/Wireshark_2.0.1_CVE_2016_2529_wiretap_iseries.c sscanf 337
+
+iseries_open (wtap * wth, int *err, gchar ** err_info)
+gint offset ;
+char magic [ ISERIES_LINE_LENGTH ] ;
+char unicodemagic [ ] = { x43 , x00 , x4F , x00 , x4D , x00 , x4D , x00 , x55 , x00 , x4E , x00 , x49 , x00 , x43 , x00 , x41 } ;
+if ( ! wtap_read_bytes ( wth -> fh , & magic , sizeof magic , err , err_info ) )
+offset = 0;
+while ( ( unsigned int ) offset < ( ISERIES_LINE_LENGTH - ( sizeof unicodemagic ) ) )
+if ( memcmp ( magic + offset , unicodemagic , sizeof unicodemagic ) == 0 )
+if ( file_seek ( wth -> fh , 0 , SEEK_SET , err ) == - 1 )
+if ( ! iseries_check_file_type ( wth , err , err_info , ISERIES_FORMAT_UNICODE ) )
+wth -> file_encap = WTAP_ENCAP_ETHERNET;
+wth -> file_type_subtype = WTAP_FILE_TYPE_SUBTYPE_ISERIES;
+wth -> snapshot_length = 0;
+wth -> subtype_read = iseries_read;
+wth -> subtype_seek_read = iseries_seek_read;
+wth -> file_tsprec = WTAP_TSPREC_USEC;
+offset += 1;
+offset = 0;
+while ( offset < ( ISERIES_LINE_LENGTH - ISERIES_HDR_MAGIC_LEN ) )
+if ( memcmp ( magic + offset , ISERIES_HDR_MAGIC_STR , ISERIES_HDR_MAGIC_LEN ) == 0 )
+if ( file_seek ( wth -> fh , 0 , SEEK_SET , err ) == - 1 )
+if ( ! iseries_check_file_type ( wth , err , err_info , ISERIES_FORMAT_ASCII ) )
+offset += 1;
+static
+iseries_check_file_type (wtap * wth, int *err, gchar **err_info, int format)
+guint line ;
+int num_items_scanned ;
+char buf [ ISERIES_LINE_LENGTH ] , protocol [ 9 ] ;
+iseries_t * iseries ;
+iseries = ( iseries_t * ) g_malloc ( sizeof ( iseries_t ) );
+wth -> priv = ( void * ) iseries;
+for (line = 0; line < ISERIES_HDR_LINES_TO_CHECK; line++)
+if ( file_gets ( buf , ISERIES_LINE_LENGTH , wth -> fh ) == NULL )
+num_items_scanned = sscanf ( buf , "%*[ \n\t]OBJECT PROTOCOL%*[ .:\n\t]%8s" , protocol );
+if ( num_items_scanned == 1 )
+if ( memcmp ( protocol , "ETHERNET" , 8 ) != 0 )
+if ( num_items_scanned == 3 )
+1
+------------------------------
+270984 77965/CWE127_Buffer_Underread__malloc_char_ncpy_63a.c malloc 31
+void CWE127_Buffer_Underread__malloc_char_ncpy_63_bad()
+char * dataBuffer = ( char * ) malloc ( 100 * sizeof ( char ) ) ;
+memset ( dataBuffer , 'A' , 100 - 1 );
+dataBuffer [ 100 - 1 ] = '\0';
+data = dataBuffer - 8;
+CWE127_Buffer_Underread__malloc_char_ncpy_63b_badSink ( & data );
+void CWE127_Buffer_Underread__malloc_char_ncpy_63b_badSink(char * * dataPtr)
+char * data = * dataPtr ;
+strncpy ( dest , data , strlen ( dest ) );
+dest [ 100 - 1 ] = '\0';
+printLine ( dest );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+22095 120016/CWE78_OS_Command_Injection__char_listen_socket_system_10.c recv 107
+void CWE78_OS_Command_Injection__char_listen_socket_system_10_bad()
+char * data ;
+char data_buf [ 100 ] = FULL_COMMAND ;
+data = data_buf;
+if ( globalTrue )
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+size_t dataLen = strlen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+replace = strchr ( data , '\n' );
+if ( replace )
+* replace = '\0';
+while ( 0 )
+if ( SYSTEM ( data ) <= 0 )
+1
+------------------------------
+11892 71398/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncat_66b.c memset 48
+void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncat_66b_goodG2BSink(char * dataArray[])
+char source [ 100 ] ;
+memset ( source , 'C' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+strncat ( data , source , 100 );
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+free ( data );
+0
+------------------------------
+318967 89684/CWE23_Relative_Path_Traversal__char_connect_socket_ofstream_09.cpp recv 98
+void bad()
+char * data ;
+char dataBuffer [ FILENAME_MAX ] = BASEPATH ;
+data = dataBuffer;
+if ( GLOBAL_CONST_TRUE )
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+size_t dataLen = strlen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( connectSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( FILENAME_MAX - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+replace = strchr ( data , '\n' );
+if ( replace )
+* replace = '\0';
+while ( 0 )
+outputFile . open ( ( char * ) data );
+1
+------------------------------

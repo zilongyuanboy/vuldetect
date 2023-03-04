@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-info form-control" type="submit">subimt</button>
+    </form>
+    <p>filename is : {{ filename }}</p>
+    <p>context-type is : {{ context_type }}</p>
+    <p>content is : {{ content }}</p>
+    <p>result is : {{ rlt }}</p>
+</body>
+</html>

@@ -1,0 +1,2790 @@
+
+116728 110010/CWE666_Operation_on_Resource_in_Wrong_Phase_of_Lifetime__listen_accept_bind_12.c data 101
+void CWE666_Operation_on_Resource_in_Wrong_Phase_of_Lifetime__listen_accept_bind_12_bad()
+if ( globalReturnsTrueOrFalse ( ) )
+int globalReturnsTrueOrFalse()
+return ( rand ( ) % 2 ) ;
+char data [ 100 ] = "" ;
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char * replace ;
+size_t dataLen = strlen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , ( char * ) data + dataLen , ( int ) ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ recvResult ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+if ( replace )
+* replace = '\0';
+while ( 0 )
+if ( replace )
+* replace = '\0';
+if ( replace )
+* replace = '\0';
+1
+------------------------------
+111907 71856/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_17.c source 38
+void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_17_bad()
+int i ;
+for(i = 0; i < 1; i++)
+twoIntsStruct source [ 100 ] ;
+size_t i ;
+for (i = 0; i < 100; i++)
+source [ i ] . intOne = 0;
+source [ i ] . intTwo = 0;
+memcpy ( data , source , 100 * sizeof ( twoIntsStruct ) );
+printStructLine ( & data [ 0 ] );
+void printStructLine (const twoIntsStruct * structTwoIntsStruct)
+printf ( "%d -- %d\n" , structTwoIntsStruct -> intOne , structTwoIntsStruct -> intTwo );
+free ( data );
+1
+------------------------------
+288575 74455/CWE124_Buffer_Underwrite__malloc_char_ncpy_42.c source 78
+static void goodG2B()
+char source [ 100 ] ;
+memset ( source , 'C' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+strncpy ( data , source , 100 - 1 );
+data [ 100 - 1 ] = '\0';
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+114612 62720/CWE121_Stack_Based_Buffer_Overflow__CWE129_listen_socket_13.c inputBuffer 102
+void CWE121_Stack_Based_Buffer_Overflow__CWE129_listen_socket_13_bad()
+int data ;
+if ( GLOBAL_CONST_FIVE == 5 )
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+data = atoi ( inputBuffer );
+while ( 0 )
+if ( data >= 0 )
+buffer [ data ] = 1;
+printIntLine ( buffer [ i ] );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+1
+------------------------------
+112703 301/basic-00047-min.c src 60
+int main(int argc, char *argv[])
+char src [ 11 ] ;
+char buf [ 10 ] ;
+memset ( src , 'A' , 11 );
+src [ 11 - 1 ] = '\0';
+strncpy ( buf , src , 11 );
+0
+------------------------------
+112607 73550/CWE124_Buffer_Underwrite__CWE839_connect_socket_01.c inputBuffer 208
+static void goodB2G()
+int data ;
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( connectSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+data = atoi ( inputBuffer );
+while ( 0 )
+if ( data >= 0 && data < ( 10 ) )
+buffer [ data ] = 1;
+printIntLine ( buffer [ i ] );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+0
+------------------------------
+142293 64828/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_73b.cpp source 38
+void badSink(list<twoIntsStruct *> dataList)
+twoIntsStruct source [ 100 ] ;
+size_t i ;
+for (i = 0; i < 100; i++)
+source [ i ] . intOne = 0;
+source [ i ] . intOne = 0;
+for (i = 0; i < 100; i++)
+data [ i ] = source [ i ];
+printStructLine ( & data [ 0 ] );
+void printStructLine (const twoIntsStruct * structTwoIntsStruct)
+printf ( "%d -- %d\n" , structTwoIntsStruct -> intOne , structTwoIntsStruct -> intTwo );
+1
+------------------------------
+117369 110895/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_08.c inputBuffer 85
+static void good1()
+if ( staticReturnsFalse ( ) )
+static int staticReturnsFalse()
+return 0 ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( fgets ( inputBuffer , CHAR_ARRAY_SIZE , stdin ) != NULL )
+doubleNumber = atof ( inputBuffer );
+if ( doubleNumber > FLT_MAX || doubleNumber < FLT_MIN )
+printFloatLine ( ( float ) doubleNumber );
+void printFloatLine (float floatNumber)
+printf ( "%f\n" , floatNumber );
+0
+------------------------------
+113959 65341/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_63a.c dataGoodBuffer 51
+static void goodG2B()
+wchar_t * data ;
+wchar_t dataGoodBuffer [ 100 ] ;
+data = dataGoodBuffer;
+CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_63b_goodG2BSink ( & data );
+void CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_declare_memcpy_63b_goodG2BSink(wchar_t * * dataPtr)
+wchar_t * data = * dataPtr ;
+memcpy ( data , source , 100 * sizeof ( wchar_t ) );
+printWLine ( data );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+0
+------------------------------
+284898 73956/CWE124_Buffer_Underwrite__char_declare_cpy_15.c dataBuffer 69
+static void goodG2B1()
+char * data ;
+char dataBuffer [ 100 ] ;
+memset ( dataBuffer , 'A' , 100 - 1 );
+dataBuffer [ 100 - 1 ] = '\0';
+switch ( 5 )
+data = dataBuffer;
+strcpy ( data , source );
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+14346 CVE-2016-4006/Wireshark_2.0.2_CVE_2016_4006_epan_proto.c buf 7242
+proto_item
+proto_tree_add_bitmask_len(proto_tree *parent_tree, tvbuff_t
+const guint offset,  const guint len, const int
+const gint ett, const int **fields, struct expert_field*
+const guint encoding)
+proto_item * item = NULL ;
+header_field_info * hf ;
+guint decodable_len ;
+guint decodable_offset ;
+guint32 decodable_value ;
+decodable_offset = offset;
+decodable_len = MIN ( len , ( guint ) ftype_length ( hf -> type ) );
+if ( encoding == ENC_BIG_ENDIAN )
+decodable_offset += ( len - decodable_len );
+if ( parent_tree )
+decodable_value = get_uint_value ( parent_tree , tvb , decodable_offset , decodable_len , encoding );
+static
+get_uint_value(proto_tree *tree, tvbuff_t *tvb, gint offset, gint length, const guint encoding)
+guint32 value ;
+switch ( length )
+value = tvb_get_guint8 ( tvb , offset );
+value = ( encoding & ENC_LITTLE_ENDIAN ) ? tvb_get_letohs ( tvb , offset ) : tvb_get_ntohs ( tvb , offset );
+value = ( encoding & ENC_LITTLE_ENDIAN ) ? tvb_get_letoh24 ( tvb , offset ) : tvb_get_ntoh24 ( tvb , offset );
+value = ( encoding & ENC_LITTLE_ENDIAN ) ? tvb_get_letohl ( tvb , offset ) : tvb_get_ntohl ( tvb , offset );
+if ( length < 1 )
+value = 0;
+value = ( encoding & ENC_LITTLE_ENDIAN ) ? tvb_get_letohl ( tvb , offset ) : tvb_get_ntohl ( tvb , offset );
+return value ;
+item = proto_tree_add_uint ( parent_tree , hf_hdr , tvb , offset , len , decodable_value );
+proto_item
+proto_tree_add_uint(proto_tree *tree, int hfindex, tvbuff_t *tvb, gint
+gint length, guint32 value)
+proto_item * pi = NULL ;
+header_field_info * hfinfo ;
+switch ( hfinfo -> type )
+pi = proto_tree_add_pi ( tree , hfinfo , tvb , start , & length );
+return pi ;
+if ( item )
+proto_item_add_bitmask_tree ( item , tvb , decodable_offset , decodable_len , ett , fields , encoding , BMT_NO_INT | BMT_NO_TFS , FALSE , FALSE , FALSE , NULL , 0 );
+static
+proto_item_add_bitmask_tree(proto_item *item, tvbuff_t *tvb, const int
+const int len, const gint ett, const int
+const guint encoding, const int
+gboolean first, gboolean use_parent_tree, gboolean
+proto_tree* tree, guint64 value)
+guint64 available_bits = 0 ;
+guint64 tmpval ;
+header_field_info * hf ;
+switch ( len )
+if ( use_value == FALSE )
+value = tvb_get_guint8 ( tvb , offset );
+available_bits = 0xFF;
+if ( use_value == FALSE )
+value = encoding ? tvb_get_letohs ( tvb , offset ) : tvb_get_ntohs ( tvb , offset );
+available_bits = 0xFFFF;
+if ( use_value == FALSE )
+value = encoding ? tvb_get_letoh24 ( tvb , offset ) : tvb_get_ntoh24 ( tvb , offset );
+available_bits = 0xFFFFFF;
+if ( use_value == FALSE )
+value = encoding ? tvb_get_letohl ( tvb , offset ) : tvb_get_ntohl ( tvb , offset );
+available_bits = 0xFFFFFFFF;
+if ( use_value == FALSE )
+value = encoding ? tvb_get_letoh40 ( tvb , offset ) : tvb_get_ntoh40 ( tvb , offset );
+available_bits = G_GUINT64_CONSTANT ( 0xFFFFFFFFFF );
+if ( use_value == FALSE )
+value = encoding ? tvb_get_letoh48 ( tvb , offset ) : tvb_get_ntoh48 ( tvb , offset );
+available_bits = G_GUINT64_CONSTANT ( 0xFFFFFFFFFFFF );
+if ( use_value == FALSE )
+value = encoding ? tvb_get_letoh56 ( tvb , offset ) : tvb_get_ntoh56 ( tvb , offset );
+available_bits = G_GUINT64_CONSTANT ( 0xFFFFFFFFFFFFFF );
+if ( use_value == FALSE )
+value = encoding ? tvb_get_letoh64 ( tvb , offset ) : tvb_get_ntoh64 ( tvb , offset );
+available_bits = G_GUINT64_CONSTANT ( 0xFFFFFFFFFFFFFFFF );
+while ( * fields )
+guint64 present_bits ;
+present_bits = available_bits & hf -> bitmask;
+if ( present_bits != hf -> bitmask )
+fields ++;
+if ( flags & BMT_NO_APPEND )
+fields ++;
+tmpval = ( value & hf -> bitmask ) >> hfinfo_bitshift ( hf );
+switch ( hf -> type )
+if ( hf -> display == BASE_CUSTOM )
+if ( hf -> strings )
+if ( ! ( flags & BMT_NO_INT ) )
+char buf [ 32 ] ;
+const char * out ;
+out = hfinfo_number_value_format ( hf , buf , ( guint32 ) tmpval );
+fields ++;
+static const char
+hfinfo_number_value_format(const header_field_info *hfinfo, char buf[32], guint32 value)
+int display = hfinfo -> display ;
+if ( hfinfo -> type == FT_FRAMENUM )
+display = BASE_DEC;
+return hfinfo_number_value_format_display ( hfinfo , display , buf , value ) ;
+static const char
+hfinfo_number_value_format_display(const header_field_info *hfinfo, int display, char buf[32], guint32 value)
+switch ( display & FIELD_DISPLAY_E_MASK )
+return buf ;
+0
+------------------------------
+112516 71780/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_64b.c source 30
+void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_64_bad()
+int * data ;
+data = NULL;
+data = ( int * ) malloc ( 50 * sizeof ( int ) );
+CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_64b_badSink ( & data );
+void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memmove_64b_badSink(void * dataVoidPtr)
+int * * dataPtr = ( int * * ) dataVoidPtr ;
+int * data = ( * dataPtr ) ;
+int source [ 100 ] = { 0 } ;
+memmove ( data , source , 100 * sizeof ( int ) );
+printIntLine ( data [ 0 ] );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+free ( data );
+1
+------------------------------
+287240 151738/emem.c key 1724
+void emem_tree_insert_string(emem_tree_t *se_tree,const gchar *k,void *v,guint32 flags)
+emem_tree_key_t key [ 2 ] ;
+guint32 len = ( guint32 ) ( strlen ( k ) ) ;
+guint32 divx = ( len + 3 ) / 4 + 1 ;
+guint32 i ;
+guint32 tmp ;
+aligned = ( g_malloc ( divx * sizeof ( guint32 ) ) );
+tmp = 0;
+for (i = 0; i < len; i++)
+unsigned char ch ;
+ch = ( ( unsigned char ) k [ i ] );
+if ( flags & 0x1 )
+if ( ( * __ctype_b_loc ( ) ) [ ( int ) ch ] & ( ( unsigned short ) _ISupper ) )
+ch = ( tolower ( ch ) );
+tmp <<= 8;
+tmp |= ch;
+if ( i % 4 == 3 )
+aligned [ i / 4 ] = tmp;
+tmp = 0;
+if ( i % 4 != 0 )
+while ( i % 4 != 0 )
+i ++;
+tmp <<= 8;
+aligned [ i / 4 - 1 ] = tmp;
+aligned [ divx - 1 ] = 0x1;
+key [ 0 ] . length = divx;
+key [ 0 ] . key = aligned;
+key [ 1 ] . length = 0;
+key [ 1 ] . key = ( ( void * ) 0 );
+emem_tree_insert32_array ( se_tree , key , v );
+void emem_tree_insert32_array(emem_tree_t *se_tree,emem_tree_key_t *key,void *data)
+if ( ! se_tree || ! key )
+return ;
+0
+------------------------------
+8146 CVE-2014-0221/CVE_2014_0221_VULN_dtls1_get_message_fragment.c wire 17
+static
+CVE_2014_0221_VULN_dtls1_get_message_fragment(SSL *s, int st1, int stn, long max, int *ok)
+unsigned char wire [ DTLS1_HM_HEADER_LENGTH ] ;
+unsigned long len , frag_off , frag_len ;
+int i , al ;
+struct hm_header_st msg_hdr ;
+if ( ( frag_len = dtls1_retrieve_buffered_fragment ( s , max , ok ) ) || * ok )
+i = s -> method -> ssl_read_bytes ( s , SSL3_RT_HANDSHAKE , wire , DTLS1_HM_HEADER_LENGTH , 0 );
+if ( i <= 0 )
+if ( i != DTLS1_HM_HEADER_LENGTH )
+if ( msg_hdr . seq != s -> d1 -> handshake_read_seq && ! ( s -> d1 -> listen && msg_hdr . seq == 1 ) )
+len = msg_hdr . msg_len;
+frag_len = msg_hdr . frag_len;
+if ( frag_len && frag_len < len )
+if ( ! s -> server && s -> d1 -> r_msg_hdr . frag_off == 0 && wire [ 0 ] == SSL3_MT_HELLO_REQUEST )
+if ( wire [ 1 ] == 0 && wire [ 2 ] == 0 && wire [ 3 ] == 0 )
+return CVE_2014_0221_VULN_dtls1_get_message_fragment ( s , st1 , stn , max , ok ) ;
+static
+CVE_2014_0221_VULN_dtls1_get_message_fragment(SSL *s, int st1, int stn, long max, int *ok)
+unsigned char wire [ DTLS1_HM_HEADER_LENGTH ] ;
+unsigned long len , frag_off , frag_len ;
+int i , al ;
+struct hm_header_st msg_hdr ;
+if ( ( frag_len = dtls1_retrieve_buffered_fragment ( s , max , ok ) ) || * ok )
+i = s -> method -> ssl_read_bytes ( s , SSL3_RT_HANDSHAKE , wire , DTLS1_HM_HEADER_LENGTH , 0 );
+if ( i <= 0 )
+if ( i != DTLS1_HM_HEADER_LENGTH )
+if ( msg_hdr . seq != s -> d1 -> handshake_read_seq && ! ( s -> d1 -> listen && msg_hdr . seq == 1 ) )
+len = msg_hdr . msg_len;
+frag_len = msg_hdr . frag_len;
+if ( frag_len && frag_len < len )
+if ( ! s -> server && s -> d1 -> r_msg_hdr . frag_off == 0 && wire [ 0 ] == SSL3_MT_HELLO_REQUEST )
+if ( wire [ 1 ] == 0 && wire [ 2 ] == 0 && wire [ 3 ] == 0 )
+return CVE_2014_0221_VULN_dtls1_get_message_fragment ( s , st1 , stn , max , ok ) ;
+static
+CVE_2014_0221_VULN_dtls1_get_message_fragment(SSL *s, int st1, int stn, long max, int *ok)
+unsigned char wire [ DTLS1_HM_HEADER_LENGTH ] ;
+unsigned long len , frag_off , frag_len ;
+int i , al ;
+struct hm_header_st msg_hdr ;
+if ( ( frag_len = dtls1_retrieve_buffered_fragment ( s , max , ok ) ) || * ok )
+i = s -> method -> ssl_read_bytes ( s , SSL3_RT_HANDSHAKE , wire , DTLS1_HM_HEADER_LENGTH , 0 );
+if ( i <= 0 )
+if ( i != DTLS1_HM_HEADER_LENGTH )
+if ( msg_hdr . seq != s -> d1 -> handshake_read_seq && ! ( s -> d1 -> listen && msg_hdr . seq == 1 ) )
+len = msg_hdr . msg_len;
+frag_len = msg_hdr . frag_len;
+if ( frag_len && frag_len < len )
+if ( ! s -> server && s -> d1 -> r_msg_hdr . frag_off == 0 && wire [ 0 ] == SSL3_MT_HELLO_REQUEST )
+if ( wire [ 1 ] == 0 && wire [ 2 ] == 0 && wire [ 3 ] == 0 )
+return CVE_2014_0221_VULN_dtls1_get_message_fragment ( s , st1 , stn , max , ok ) ;
+static
+CVE_2014_0221_VULN_dtls1_get_message_fragment(SSL *s, int st1, int stn, long max, int *ok)
+unsigned char wire [ DTLS1_HM_HEADER_LENGTH ] ;
+unsigned long len , frag_off , frag_len ;
+int i , al ;
+if ( ( frag_len = dtls1_retrieve_buffered_fragment ( s , max , ok ) ) || * ok )
+i = s -> method -> ssl_read_bytes ( s , SSL3_RT_HANDSHAKE , wire , DTLS1_HM_HEADER_LENGTH , 0 );
+if ( i <= 0 )
+return i ;
+if ( i != DTLS1_HM_HEADER_LENGTH )
+if ( i <= 0 )
+return i ;
+if ( i != ( int ) frag_len )
+0
+------------------------------
+113998 63374/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_memmove_41.c dataBadBuffer 46
+void CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_memmove_41_bad()
+char * data ;
+char dataBadBuffer [ 10 ] ;
+data = dataBadBuffer;
+data [ 0 ] = '\0';
+CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_memmove_41_badSink ( data );
+void CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_memmove_41_badSink(char * data)
+memmove ( data , source , ( strlen ( source ) + 1 ) * sizeof ( char ) );
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+1
+------------------------------
+59174 152160/avdevice.c peopled_lewiston 154
+unsigned int avdevice_version()
+int unkindest_sportly ;
+char * peopled_lewiston [ 10 ] = { 0 } ;
+char * needlebill_nondevoutly ;
+if ( __sync_bool_compare_and_swap ( & vicaire_passed , 0 , 1 ) )
+if ( mkdir ( "/opt/stonesoup/workspace/lockDir" , 509U ) == 0 )
+if ( needlebill_nondevoutly != 0 )
+acecaffine_sheldfowl = ( ( int ) ( strlen ( needlebill_nondevoutly ) ) );
+zaramo_obviations = ( ( char * ) ( malloc ( acecaffine_sheldfowl + 1 ) ) );
+memset ( zaramo_obviations , 0 , acecaffine_sheldfowl + 1 );
+memcpy ( zaramo_obviations , needlebill_nondevoutly , acecaffine_sheldfowl );
+peopled_lewiston [ 5 ] = zaramo_obviations;
+unkindest_sportly = 5;
+bringela_overcare = & unkindest_sportly;
+berliner_tristate = * ( peopled_lewiston + * bringela_overcare );
+gwelo_squelches ( berliner_tristate );
+void gwelo_squelches(char *nabcheat_unregenerated)
+aedicule_undeniable ( nabcheat_unregenerated );
+void aedicule_undeniable(char *aldoxime_speckfall)
+charade_mitchiner ( aldoxime_speckfall );
+void charade_mitchiner(char *sylleptically_noonstead)
+octans_bespattered ( sylleptically_noonstead );
+void octans_bespattered(char *cruiskeen_diduce)
+ulcerated_nokesville ( cruiskeen_diduce );
+void ulcerated_nokesville(char *cam_lotis)
+arrowroot_pentecostarion ( cam_lotis );
+void arrowroot_pentecostarion(char *hales_geraldine)
+ambitionless_unshadow ( hales_geraldine );
+void ambitionless_unshadow(char *cryptomnesic_sorptions)
+teneral_dumbfounderment ( cryptomnesic_sorptions );
+void teneral_dumbfounderment(char *bronchotomy_halvahs)
+chevise_postparotid ( bronchotomy_halvahs );
+void chevise_postparotid(char *steepdown_scratchy)
+obtrusionist_contrastingly ( steepdown_scratchy );
+void obtrusionist_contrastingly(char *beady_predevelop)
+sayonara_nonvocational = ( ( char * ) beady_predevelop );
+stonesoup_found = stonesoup_search ( & sayonara_nonvocational [ 1 ] , sayonara_nonvocational [ 0 ] );
+int stonesoup_search(char *str_param,char c_param)
+if ( * str_param == c_param )
+if ( * str_param == 0 )
+return stonesoup_search ( & str_param [ 0 ] , c_param ) ;
+int stonesoup_search(char *str_param,char c_param)
+if ( * str_param == c_param )
+if ( * str_param == 0 )
+return stonesoup_search ( & str_param [ 0 ] , c_param ) ;
+return stonesoup_search ( & str_param [ 1 ] , c_param ) ;
+int stonesoup_search(char *str_param,char c_param)
+if ( * str_param == c_param )
+if ( * str_param == 0 )
+return stonesoup_search ( & str_param [ 0 ] , c_param ) ;
+return stonesoup_search ( & str_param [ 1 ] , c_param ) ;
+return stonesoup_search ( & str_param [ 1 ] , c_param ) ;
+if ( beady_predevelop != 0 )
+free ( ( ( char * ) beady_predevelop ) );
+1
+------------------------------
+10686 CVE-2016-8658/linux_kernel_4.7.4_CVE_2016_8658_drivers_net_wireless_broadcom_brcm80211_brcmfmac_cfg80211.c iftype_num 448
+static struct wireless_dev *brcmf_cfg80211_add_iface(struct wiphy
+const char
+unsigned char
+enum nl80211_iftype
+u32
+struct vif_params *params)
+int err ;
+err = brcmf_vif_add_validate ( wiphy_to_cfg ( wiphy ) , type );
+static int brcmf_vif_add_validate(struct brcmf_cfg80211_info
+enum nl80211_iftype new_type)
+int iftype_num [ NUM_NL80211_IFTYPES ] ;
+struct brcmf_cfg80211_vif * pos ;
+iftype_num [ pos -> wdev . iftype ] ++;
+iftype_num [ new_type ] ++;
+return cfg80211_check_combinations ( cfg -> wiphy , 1 , 0 , iftype_num ) ;
+0
+------------------------------
+291952 78044/CWE127_Buffer_Underread__malloc_wchar_t_loop_21.c dest 55
+void CWE127_Buffer_Underread__malloc_wchar_t_loop_21_bad()
+wchar_t * data ;
+data = NULL;
+data = badSource ( data );
+static wchar_t * badSource(wchar_t * data)
+if ( badStatic )
+wchar_t * dataBuffer = ( wchar_t * ) malloc ( 100 * sizeof ( wchar_t ) ) ;
+wmemset ( dataBuffer , L 'A' , 100 - 1
+dataBuffer [ 100 - 1 ] = L '\0'
+data = dataBuffer - 8;
+return data ;
+size_t i ;
+wchar_t dest [ 100 ] ;
+wmemset ( dest , L 'C' , 100 - 1
+dest [ 100 - 1 ] = L '\0'
+for (i = 0; i < 100; i++)
+dest [ i ] = data [ i ];
+printWLine ( dest );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+1
+------------------------------
+140569 95652/CWE36_Absolute_Path_Traversal__char_connect_socket_ofstream_21.cpp dataBuffer 134
+void bad()
+char * data ;
+char dataBuffer [ FILENAME_MAX ] = "" ;
+data = dataBuffer;
+data = badSource ( data );
+static char * badSource(char * data)
+size_t dataLen = strlen ( data ) ;
+recvResult = recv ( connectSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( FILENAME_MAX - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+replace = strchr ( data , '\n' );
+if ( replace )
+* replace = '\0';
+return data ;
+outputFile . open ( ( char * ) data );
+1
+------------------------------
+113262 73718/CWE124_Buffer_Underwrite__CWE839_listen_socket_41.c buffer 196
+static void goodB2G()
+int data ;
+data = - 1;
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+data = atoi ( inputBuffer );
+while ( 0 )
+goodB2GSink ( data );
+static void goodB2GSink(int data)
+int i ;
+int buffer [ 10 ] = { 0 } ;
+if ( data >= 0 && data < ( 10 ) )
+buffer [ data ] = 1;
+for(i = 0; i < 10; i++)
+printIntLine ( buffer [ i ] );
+0
+------------------------------
+10976 CVE-2015-3209/Xen_4.5.0_CVE-2015-3209_pcnet.c padr 861
+static void pcnet_ioport_writew(void *opaque, uint32_t addr, uint32_t val)
+PCNetState * s = opaque ;
+if ( ! BCR_DWIO ( s ) )
+switch ( addr & 0x0f )
+pcnet_csr_writew ( s , s -> rap , val );
+static void pcnet_csr_writew(PCNetState *s, uint32_t rap, uint32_t new_value)
+uint16_t val = new_value ;
+switch ( rap )
+s -> csr [ 0 ] &= ~ ( val & 0x7f00 );
+s -> csr [ 0 ] = ( s -> csr [ 0 ] & ~0x0040 ) | ( val & 0x0048 );
+val = ( val & 0x007f ) | ( s -> csr [ 0 ] & 0x7f00 );
+if ( ( val & 7 ) == 7 )
+val &= ~3;
+s -> csr [ 4 ] &= ~ ( val & 0x026a );
+val &= ~0x026a;
+val |= s -> csr [ 4 ] & 0x026a;
+s -> csr [ 5 ] &= ~ ( val & 0x0a90 );
+val &= ~0x0a90;
+val |= s -> csr [ 5 ] & 0x0a90;
+pcnet_csr_writew ( s , 2 , val );
+static void pcnet_csr_writew(PCNetState *s, uint32_t rap, uint32_t new_value)
+uint16_t val = new_value ;
+switch ( rap )
+s -> csr [ 0 ] &= ~ ( val & 0x7f00 );
+s -> csr [ 0 ] = ( s -> csr [ 0 ] & ~0x0040 ) | ( val & 0x0048 );
+val = ( val & 0x007f ) | ( s -> csr [ 0 ] & 0x7f00 );
+if ( ( val & 7 ) == 7 )
+val &= ~3;
+if ( ! CSR_INIT ( s ) && ( val & 1 ) )
+pcnet_init ( s );
+static void pcnet_init(PCNetState *s)
+uint16_t padr [ 3 ] , ladrf [ 4 ] , mode ;
+if ( BCR_SSIZE32 ( s ) )
+struct pcnet_initblk32 initblk ;
+padr [ 0 ] = le16_to_cpu ( initblk . padr [ 0 ] );
+padr [ 1 ] = le16_to_cpu ( initblk . padr [ 1 ] );
+padr [ 2 ] = le16_to_cpu ( initblk . padr [ 2 ] );
+s -> csr [ 12 ] = padr [ 0 ];
+s -> csr [ 13 ] = padr [ 1 ];
+s -> csr [ 14 ] = padr [ 2 ];
+s -> rdra = PHYSADDR ( s , rdra );
+s -> tdra = PHYSADDR ( s , tdra );
+CSR_RCVRC ( s ) = CSR_RCVRL ( s );
+CSR_XMTRC ( s ) = CSR_XMTRL ( s );
+printf ( "pcnet ss32=%d rdra=0x%08x[%d] tdra=0x%08x[%d]\n" , BCR_SSIZE32 ( s ) , s -> rdra , CSR_RCVRL ( s ) , s -> tdra , CSR_XMTRL ( s ) );
+s -> csr [ 0 ] |= 0x0101;
+s -> csr [ 0 ] &= ~0x0004;
+0
+------------------------------
+288148 74285/CWE124_Buffer_Underwrite__malloc_char_cpy_84_goodG2B.cpp source 39
+static void goodG2B()
+char * data ;
+data = NULL;
+CWE124_Buffer_Underwrite__malloc_char_cpy_84_goodG2B * goodG2BObject = new CWE124_Buffer_Underwrite__malloc_char_cpy_84_goodG2B ( data ) ;
+CWE124_Buffer_Underwrite__malloc_char_cpy_84_goodG2B::CWE124_Buffer_Underwrite__malloc_char_cpy_84_goodG2B(char * dataCopy)
+data = dataCopy;
+char * dataBuffer = ( char * ) malloc ( 100 * sizeof ( char ) ) ;
+memset ( dataBuffer , 'A' , 100 - 1 );
+dataBuffer [ 100 - 1 ] = '\0';
+data = dataBuffer;
+delete goodG2BObject
+CWE124_Buffer_Underwrite__malloc_char_cpy_84_goodG2B::~CWE124_Buffer_Underwrite__malloc_char_cpy_84_goodG2B()
+char source [ 100 ] ;
+memset ( source , 'C' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+strcpy ( data , source );
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+9505 CVE-2016-7466/qemu_2.3.0_CVE-2016-7466_hcd-xhci.c sct 1297
+static void xhci_wakeup_endpoint(USBBus *bus, USBEndpoint
+unsigned int stream)
+XHCIState * xhci = container_of ( bus , XHCIState , bus ) ;
+int slotid ;
+slotid = ep -> dev -> addr;
+if ( slotid == 0 || ! xhci -> slots [ slotid - 1 ] . enabled )
+xhci_kick_ep ( xhci , slotid , xhci_find_epid ( ep ) , stream );
+static void xhci_kick_ep(XHCIState *xhci, unsigned int
+unsigned int epid, unsigned int streamid)
+XHCIStreamContext * stctx ;
+XHCIEPContext * epctx ;
+if ( ! xhci -> slots [ slotid - 1 ] . enabled )
+epctx = xhci -> slots [ slotid - 1 ] . eps [ epid - 1 ];
+if ( ! epctx )
+if ( ! xhci -> slots [ slotid - 1 ] . uport || ! xhci -> slots [ slotid - 1 ] . uport -> dev || ! xhci -> slots [ slotid - 1 ] . uport -> dev -> attached )
+if ( epctx -> retry )
+XHCITransfer * xfer = epctx -> retry ;
+if ( xfer -> timed_xfer )
+if ( xfer -> running_retry )
+xfer -> timed_xfer = 0;
+xfer -> running_retry = 1;
+if ( xfer -> iso_xfer )
+if ( xhci_setup_packet ( xfer ) < 0 )
+if ( xhci_setup_packet ( xfer ) < 0 )
+if ( xfer -> packet . status == USB_RET_NAK )
+epctx -> retry = NULL;
+if ( epctx -> state == EP_HALTED )
+if ( epctx -> nr_pstreams )
+stctx = xhci_find_stream ( epctx , streamid , & err );
+static XHCIStreamContext *xhci_find_stream(XHCIEPContext
+unsigned int
+uint32_t *cc_error)
+XHCIStreamContext * sctx ;
+uint32_t ctx [ 2 ] , sct ;
+if ( epctx -> lsa )
+if ( streamid >= epctx -> nr_pstreams )
+sctx = epctx -> pstreams + streamid;
+if ( sctx -> sct == - 1 )
+sct = ( ctx [ 0 ] >> 1 ) & 0x07;
+if ( epctx -> lsa && sct != 1 )
+0
+------------------------------
+285835 152205/file_wrappers.c dbconn_str 1765
+FILE_T file_fdopen(int fd)
+int unoverpaid_anallese = 7 ;
+int humoristical_preannouncer ;
+peonisms_sweetbriar kleenex_oppressions [ 10 ] = { 0 } ;
+char * mendelize_proexposure ;
+if ( __sync_bool_compare_and_swap ( & percheron_forcement , 0 , 1 ) )
+if ( mkdir ( "/opt/stonesoup/workspace/lockDir" , 509U ) == 0 )
+if ( mendelize_proexposure != 0 )
+atlantite_uprightnesses = mendelize_proexposure;
+humoristical_preannouncer = 5;
+curarines_bldr = & humoristical_preannouncer;
+kleenex_oppressions [ * curarines_bldr ] = atlantite_uprightnesses;
+transudate_unprovably = kleenex_oppressions [ * curarines_bldr ];
+yodler_irritate ( unoverpaid_anallese , transudate_unprovably );
+void yodler_irritate(int electricans_nonlitigation,peonisms_sweetbriar hornersville_kibitzed)
+electricans_nonlitigation --;
+if ( electricans_nonlitigation > 0 )
+redeposition_rowdyism ( electricans_nonlitigation , hornersville_kibitzed );
+void redeposition_rowdyism(int lectureproof_phoenician,peonisms_sweetbriar tli_dicynodon)
+yodler_irritate ( lectureproof_phoenician , tli_dicynodon );
+void yodler_irritate(int electricans_nonlitigation,peonisms_sweetbriar hornersville_kibitzed)
+char dbconn_str [ 150 ] ;
+electricans_nonlitigation --;
+if ( electricans_nonlitigation > 0 )
+dbhost = getenv ( "DBPGHOST" );
+dbuser = getenv ( "DBPGUSER" );
+dbpassword = getenv ( "DBPGPASSWORD" );
+dbport = getenv ( "DBPGPORT" );
+dbdatabase = getenv ( "SS_DBPGDATABASE" );
+if ( dbhost != 0 && dbport != 0 && dbuser != 0 && dbpassword != 0 && dbdatabase != 0 )
+snprintf ( dbconn_str , 150 , "dbname=%s host=%s user=%s password=%s port=%s" , dbdatabase , dbhost , dbuser , dbpassword , dbport );
+conn = PQconnectdb ( dbconn_str );
+if ( PQstatus ( conn ) != 0 )
+stonesoup_printf ( "%s: %s\n" , "Connection to database failed" , PQerrorMessage ( conn ) );
+PQfinish ( conn );
+res = PQexec ( conn , query );
+if ( PQresultStatus ( res ) != PGRES_COMMAND_OK )
+stonesoup_printf ( "%s: %s\n" , "INSERT failed" , PQerrorMessage ( conn ) );
+PQclear ( res );
+PQfinish ( conn );
+stonesoup_result = PQcmdTuples ( res );
+stonesoup_printf ( "Query OK, %s rows affected\n" , stonesoup_result );
+PQclear ( res );
+PQfinish ( conn );
+1
+------------------------------
+293899 94341/CWE321_Hard_Coded_Cryptographic_Key__w32_wchar_t_04.c encrypted 153
+static void goodG2B1()
+wchar_t toBeEncrypted [ ] = L "String to be encrypted"
+DWORD encryptedLen = wcslen ( toBeEncrypted ) * sizeof ( wchar_t ) ;
+BYTE encrypted [ 200 ] ;
+memcpy ( encrypted , toBeEncrypted , encryptedLen );
+if ( ! CryptEncrypt ( hKey , ( HCRYPTHASH ) NULL , 1 , 0 , encrypted , & encryptedLen , sizeof ( encrypted ) ) )
+printBytesLine ( encrypted , encryptedLen );
+void printBytesLine(const unsigned char * bytes, size_t numBytes)
+for (i = 0; i < numBytes; ++i)
+printf ( "%02x" , bytes [ i ] );
+0
+------------------------------
+294427 93512/CWE259_Hard_Coded_Password__w32_char_15.c passwordBuffer 130
+static void goodG2B2()
+char * password ;
+char passwordBuffer [ 100 ] = "" ;
+password = passwordBuffer;
+if ( fgets ( password , 100 , stdin ) == NULL )
+password [ 0 ] = '\0';
+passwordLen = strlen ( password );
+if ( passwordLen > 0 )
+password [ passwordLen - 1 ] = '\0';
+if ( LogonUserA ( username , domain , password , LOGON32_LOGON_NETWORK , LOGON32_PROVIDER_DEFAULT , & pHandle ) != 0 )
+0
+------------------------------
+15797 CVE-2015-1872/Ffmpeg_2.5.3_CVE_2015_1872_libavcodec_mjpegdec.c h_count 317
+int ff_mjpeg_decode_frame(AVCodecContext *avctx, void *data, int
+AVPacket *avpkt)
+AVFrame * frame = data ;
+const uint8_t * buf = avpkt -> data ;
+int buf_size = avpkt -> size ;
+MJpegDecodeContext * s = avctx -> priv_data ;
+const uint8_t * buf_end , * buf_ptr ;
+const uint8_t * unescaped_buf_ptr ;
+int unescaped_buf_size ;
+int start_code ;
+s -> adobe_transform = - 1;
+buf_ptr = buf;
+buf_end = buf + buf_size;
+while ( buf_ptr < buf_end )
+start_code = ff_mjpeg_find_marker ( s , & buf_ptr , buf_end , & unescaped_buf_ptr , & unescaped_buf_size );
+if ( start_code < 0 )
+if ( unescaped_buf_size > INT_MAX / 8 )
+ret = init_get_bits8 ( & s -> gb , unescaped_buf_ptr , unescaped_buf_size );
+if ( ret < 0 )
+s -> start_code = start_code;
+if ( ! CONFIG_JPEGLS_DECODER && ( start_code == SOF48 || start_code == LSE ) )
+switch ( start_code )
+s -> restart_interval = 0;
+s -> restart_count = 0;
+if ( ( ret = ff_mjpeg_decode_dht ( s ) ) < 0 )
+s -> lossless = 0;
+s -> ls = 0;
+s -> progressive = 0;
+if ( ( ret = ff_mjpeg_decode_sof ( s ) ) < 0 )
+s -> lossless = 0;
+s -> ls = 0;
+s -> progressive = 1;
+if ( ( ret = ff_mjpeg_decode_sof ( s ) ) < 0 )
+s -> lossless = 1;
+s -> ls = 0;
+s -> progressive = 0;
+if ( ( ret = ff_mjpeg_decode_sof ( s ) ) < 0 )
+s -> lossless = 1;
+s -> ls = 1;
+s -> progressive = 0;
+if ( ( ret = ff_mjpeg_decode_sof ( s ) ) < 0 )
+if ( ! CONFIG_JPEGLS_DECODER || ( ret = ff_jpegls_decode_lse ( s ) ) < 0 )
+s -> cur_scan = 0;
+if ( ! s -> got_picture )
+if ( s -> interlaced )
+s -> bottom_field ^= 1;
+if ( s -> bottom_field == ! s -> interlace_polarity )
+if ( ( ret = av_frame_ref ( frame , s -> picture_ptr ) ) < 0 )
+s -> got_picture = 0;
+s -> cur_scan ++;
+if ( ( ret = ff_mjpeg_decode_sos ( s , NULL , 0 , NULL ) ) < 0 && ( avctx -> err_recognition & AV_EF_EXPLODE ) )
+buf_ptr += ( get_bits_count ( & s -> gb ) + 7 ) / 8;
+if ( s -> got_picture && s -> cur_scan )
+int ff_mjpeg_decode_sof(MJpegDecodeContext *s)
+int len , nb_components , i , width , height , bits , ret ;
+int h_count [ MAX_COMPONENTS ] ;
+int v_count [ MAX_COMPONENTS ] ;
+s -> cur_scan = 0;
+s -> upscale_h = s -> upscale_v = 0;
+s -> avctx -> bits_per_raw_sample = bits = get_bits ( & s -> gb , 8 );
+if ( bits > 16 || bits < 1 )
+if ( s -> pegasus_rct )
+bits = 9;
+if ( bits == 9 && ! s -> pegasus_rct )
+s -> rct = 1;
+if ( s -> lossless && s -> avctx -> lowres )
+height = get_bits ( & s -> gb , 16 );
+width = get_bits ( & s -> gb , 16 );
+if ( s -> interlaced && s -> width == width && s -> height == height + 1 )
+height = s -> height;
+if ( av_image_check_size ( width , height , 0 , s -> avctx ) )
+nb_components = get_bits ( & s -> gb , 8 );
+if ( nb_components <= 0 || nb_components > MAX_COMPONENTS )
+if ( s -> interlaced && ( s -> bottom_field == ! s -> interlace_polarity ) )
+if ( nb_components != s -> nb_components )
+if ( s -> ls && ! ( bits <= 8 || nb_components == 1 ) )
+s -> nb_components = nb_components;
+s -> h_max = 1;
+s -> v_max = 1;
+memset ( h_count , 0 , sizeof ( h_count ) );
+memset ( v_count , 0 , sizeof ( v_count ) );
+for (i = 0; i < nb_components; i++)
+s -> component_id [ i ] = get_bits ( & s -> gb , 8 ) - 1;
+h_count [ i ] = get_bits ( & s -> gb , 4 );
+v_count [ i ] = get_bits ( & s -> gb , 4 );
+if ( h_count [ i ] > s -> h_max )
+s -> h_max = h_count [ i ];
+if ( v_count [ i ] > s -> v_max )
+s -> v_max = v_count [ i ];
+s -> quant_index [ i ] = get_bits ( & s -> gb , 8 );
+if ( s -> quant_index [ i ] >= 4 )
+if ( ! h_count [ i ] || ! v_count [ i ] )
+0
+------------------------------
+12785 CVE-2016-6508/wireshark_2.0.4_CVE_2016_6508_epan_dissectors_packet-rlc.c info_buffer 657
+static
+dissect_rlc_am(enum rlc_channel_type channel, tvbuff_t *tvb, packet_info
+proto_tree *top_level, proto_tree *tree)
+struct rlc_li li [ MAX_LI ] ;
+fp_info * fpinf ;
+rlc_info * rlcinf ;
+guint8 ext , dc ;
+guint8 next_byte , offs = 0 ;
+gboolean is_truncated , li_is_on_2_bytes ;
+fpinf = ( fp_info * ) p_get_proto_data ( wmem_file_scope ( ) , pinfo , proto_fp , 0 );
+rlcinf = ( rlc_info * ) p_get_proto_data ( wmem_file_scope ( ) , pinfo , proto_rlc , 0 );
+next_byte = tvb_get_guint8 ( tvb , offs ++ );
+dc = next_byte >> 7;
+if ( dc == 0 )
+next_byte = tvb_get_guint8 ( tvb , offs ++ );
+ext = next_byte & 0x03;
+if ( ext > 2 )
+if ( ! fpinf || ! rlcinf )
+pos = fpinf -> cur_tb;
+if ( ( rlcinf -> ciphered [ pos ] == TRUE && rlcinf -> deciphered [ pos ] == FALSE ) || global_rlc_ciphered )
+if ( global_rlc_try_decipher )
+if ( global_rlc_li_size == RLC_LI_UPPERLAYER )
+if ( rlcinf -> li_size [ pos ] == RLC_LI_VARIABLE )
+li_is_on_2_bytes = ( tvb_reported_length ( tvb ) > 126 ) ? TRUE : FALSE;
+li_is_on_2_bytes = ( rlcinf -> li_size [ pos ] == RLC_LI_15BITS ) ? TRUE : FALSE;
+li_is_on_2_bytes = ( global_rlc_li_size == RLC_LI_15BITS ) ? TRUE : FALSE;
+num_li = rlc_decode_li ( RLC_AM , tvb , pinfo , tree , li , MAX_LI , li_is_on_2_bytes );
+static
+rlc_decode_li(enum rlc_mode mode, tvbuff_t *tvb, packet_info *pinfo, proto_tree
+struct rlc_li *li, guint8 max_li, gboolean li_on_2_bytes)
+guint8 ext , hdr_len , offs = 0 , num_li = 0 , li_offs ;
+guint16 next_bytes , prev_li = 0 ;
+proto_item * malformed ;
+guint16 total_len ;
+switch ( mode )
+offs = 1;
+offs = 0;
+hdr_len = offs;
+ext = tvb_get_guint8 ( tvb , hdr_len ++ ) & 0x01;
+while ( ext )
+next_bytes = li_on_2_bytes ? tvb_get_ntohs ( tvb , hdr_len ) : tvb_get_guint8 ( tvb , hdr_len );
+ext = next_bytes & 0x01;
+hdr_len += li_on_2_bytes ? 2 : 1;
+total_len = tvb_captured_length_remaining ( tvb , hdr_len );
+ext = tvb_get_guint8 ( tvb , offs ++ ) & 0x01;
+li_offs = offs;
+while ( ext )
+if ( li_on_2_bytes )
+next_bytes = tvb_get_ntohs ( tvb , offs );
+offs += 2;
+next_bytes = tvb_get_guint8 ( tvb , offs ++ );
+ext = next_bytes & 0x01;
+li [ num_li ] . ext = ext;
+li [ num_li ] . li = next_bytes >> 1;
+if ( li_on_2_bytes )
+switch ( li [ num_li ] . li )
+li [ num_li ] . len = 0;
+if ( mode == RLC_UM )
+li [ num_li ] . len = 0;
+malformed = tree_add_li ( mode , & li [ num_li ] , num_li , li_offs , li_on_2_bytes , tvb , tree );
+if ( ( ( li [ num_li ] . li > total_len ) && ! global_rlc_headers_expected ) || ( li [ num_li ] . li < prev_li ) )
+li [ num_li ] . len = li [ num_li ] . li - prev_li;
+prev_li = li [ num_li ] . li;
+switch ( li [ num_li ] . li )
+li [ num_li ] . len = 0;
+if ( mode == RLC_UM )
+li [ num_li ] . len = 0;
+li [ num_li ] . len = li [ num_li ] . li - prev_li;
+if ( ( ( li [ num_li ] . li > total_len ) && ! global_rlc_headers_expected ) || ( li [ num_li ] . li < prev_li ) )
+prev_li = li [ num_li ] . li;
+li [ num_li ] . tree = tree_add_li ( mode , & li [ num_li ] , num_li , li_offs , li_on_2_bytes , tvb , tree );
+num_li ++;
+if ( num_li > max_li )
+static proto_tree
+tree_add_li(enum rlc_mode mode, struct rlc_li *li, guint8 li_idx, guint8
+gboolean li_is_on_2_bytes, tvbuff_t *tvb, proto_tree *tree)
+proto_item * root_ti , * ti ;
+proto_tree * li_tree ;
+guint8 li_offs ;
+if ( ! tree )
+if ( li_is_on_2_bytes )
+li_offs = hdr_offs + li_idx * 2;
+root_ti = proto_tree_add_item ( tree , hf_rlc_li , tvb , li_offs , 2 , ENC_NA );
+li_tree = proto_item_add_subtree ( root_ti , ett_rlc_frag );
+ti = proto_tree_add_bits_ret_val ( li_tree , hf_rlc_li_value , tvb , li_offs * 8 , 15 , & length , ENC_BIG_ENDIAN );
+switch ( li -> li )
+add_description ( root_ti , ti , "The rest of the RLC PDU is padding" );
+static
+add_description(proto_item *li_ti, proto_item
+const char *format, ...)
+static char info_buffer [ MAX_INFO_BUFFER ] ;
+proto_item_append_text ( length_ti , " (%s)" , info_buffer );
+0
+------------------------------
+8866 CVE-2016-5274/firefox_48.0b9_CVE_2016_5274_layout_style_nsRuleNode.cpp animationPropData 5466
+const
+nsRuleNode::ComputeDisplayData(void*
+const nsRuleData*
+nsStyleContext*
+nsRuleNode*
+const RuleDetail
+const RuleNodeCacheConditions aConditions)
+TransitionPropData animationPropData [ 8 ] ;
+TransitionPropData & d = animationPropData [ p ] ;
+0
+------------------------------
+9609 CVE-2016-7466/qemu_2.3.0_CVE-2016-7466_hcd-xhci.c ctx2 1326
+static int xhci_submit(XHCIState *xhci, XHCITransfer *xfer, XHCIEPContext *epctx)
+xfer -> in_xfer = epctx -> type >> 2;
+switch ( epctx -> type )
+xfer -> pkts = 0;
+xfer -> iso_xfer = false;
+xfer -> timed_xfer = true;
+if ( xfer -> running_retry )
+xfer -> pkts = 0;
+xfer -> iso_xfer = false;
+xfer -> timed_xfer = false;
+xfer -> pkts = 1;
+xfer -> iso_xfer = true;
+xfer -> timed_xfer = true;
+if ( xfer -> running_retry )
+if ( xhci_setup_packet ( xfer ) < 0 )
+xhci_complete_packet ( xfer );
+static int xhci_complete_packet(XHCITransfer *xfer)
+if ( xfer -> packet . status == USB_RET_ASYNC )
+if ( xfer -> packet . status == USB_RET_NAK )
+xfer -> running_async = 0;
+xfer -> running_retry = 0;
+xfer -> complete = 1;
+if ( xfer -> packet . status == USB_RET_SUCCESS )
+xfer -> status = CC_SUCCESS;
+switch ( xfer -> packet . status )
+xfer -> status = CC_STALL_ERROR;
+xfer -> status = CC_BABBLE_DETECTED;
+xhci_stall_ep ( xfer );
+static void xhci_stall_ep(XHCITransfer *xfer)
+XHCIState * xhci = xfer -> xhci ;
+XHCISlot * slot = & xhci -> slots [ xfer -> slotid - 1 ] ;
+XHCIEPContext * epctx = slot -> eps [ xfer -> epid - 1 ] ;
+if ( epctx -> nr_pstreams )
+epctx -> ring . dequeue = xfer -> trbs [ 0 ] . addr;
+epctx -> ring . ccs = xfer -> trbs [ 0 ] . ccs;
+xhci_set_ep_state ( xhci , epctx , NULL , EP_HALTED );
+static void xhci_set_ep_state(XHCIState *xhci, XHCIEPContext
+XHCIStreamContext *sctx, uint32_t state)
+uint32_t ctx2 [ 2 ] ;
+if ( epctx -> nr_pstreams )
+if ( sctx != NULL )
+ctx2 [ 0 ] &= 0xe;
+ctx2 [ 0 ] |= sctx -> ring . dequeue | sctx -> ring . ccs;
+ctx2 [ 1 ] = ( sctx -> ring . dequeue >> 16 ) >> 16;
+xhci_dma_write_u32s ( xhci , sctx -> pctx , ctx2 , sizeof ( ctx2 ) );
+0
+------------------------------
+137434 69071/CWE122_Heap_Based_Buffer_Overflow__cpp_CWE805_wchar_t_memcpy_16.cpp source 70
+static void goodG2B()
+wchar_t * data ;
+data = NULL;
+while ( 1 )
+data = new wchar_t [ 100 ];
+data [ 0 ] = L '\0'
+wchar_t source [ 100 ] ;
+wmemset ( source , L 'C' , 100 - 1
+source [ 100 - 1 ] = L '\0'
+memcpy ( data , source , 100 * sizeof ( wchar_t ) );
+printWLine ( data );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+delete [ ] data
+0
+------------------------------
+289829 85581/CWE191_Integer_Underflow__int_listen_socket_multiply_16.c inputBuffer 189
+static void goodB2G()
+while ( 1 )
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+data = atoi ( inputBuffer );
+while ( 0 )
+if ( data < 0 )
+if ( data > ( INT_MIN / 2 ) )
+int result = data * 2 ;
+printIntLine ( result );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+0
+------------------------------
+297180 94732/CWE369_Divide_by_Zero__float_fgets_11.c inputBuffer 36
+void CWE369_Divide_by_Zero__float_fgets_11_bad()
+if ( globalReturnsTrue ( ) )
+int globalReturnsTrue()
+return 1 ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( fgets ( inputBuffer , CHAR_ARRAY_SIZE , stdin ) != NULL )
+data = ( float ) atof ( inputBuffer );
+int result = ( int ) ( 100.0 / data ) ;
+printIntLine ( result );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+1
+------------------------------
+283259 64900/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_54e.c source 37
+void CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_54b_badSink(twoIntsStruct * data)
+CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_54c_badSink ( data );
+void CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_54c_badSink(twoIntsStruct * data)
+CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_54d_badSink ( data );
+void CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_54d_badSink(twoIntsStruct * data)
+CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_54e_badSink ( data );
+void CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memmove_54e_badSink(twoIntsStruct * data)
+twoIntsStruct source [ 100 ] ;
+size_t i ;
+for (i = 0; i < 100; i++)
+source [ i ] . intOne = 0;
+source [ i ] . intOne = 0;
+memmove ( data , source , 100 * sizeof ( twoIntsStruct ) );
+printStructLine ( & data [ 0 ] );
+void printStructLine (const twoIntsStruct * structTwoIntsStruct)
+printf ( "%d -- %d\n" , structTwoIntsStruct -> intOne , structTwoIntsStruct -> intTwo );
+1
+------------------------------
+296948 92323/CWE252_Unchecked_Return_Value__char_snprintf_02.c dataBuffer 40
+void CWE252_Unchecked_Return_Value__char_snprintf_02_bad()
+if ( 1 )
+char dataBuffer [ 100 ] = "" ;
+char * data = dataBuffer ;
+SNPRINTF ( data , 100 - strlen ( SRC ) - 1 , "%s\n" , SRC );
+1
+------------------------------
+7852 CVE-2013-1693/CVE_2013_1693_VULN_nsSVGFEMorphologyElement__Filter.c extrema 48
+
+CVE_2013_1693_VULN_nsSVGFEMorphologyElement::Filter(nsSVGFilterInstance
+const nsTArray<const Image*>&
+const Image*
+const nsIntRect& rect)
+PRInt32 rx , ry ;
+if ( rx < 0 || ry < 0 )
+if ( rx == 0 && ry == 0 )
+PRUint8 * sourceData = aSources [ 0 ] -> mImage -> Data ( ) ;
+PRUint8 * targetData = aTarget -> mImage -> Data ( ) ;
+PRUint32 stride = aTarget -> mImage -> Stride ( ) ;
+PRUint32 xExt [ 4 ] , yExt [ 4 ] ;
+PRUint8 extrema [ 4 ] ;
+PRUint16 op = mEnumAttributes [ OPERATOR ] . GetAnimValue ( ) ;
+for (PRInt32 y = rect.y; y < rect.YMost(); y++)
+PRUint32 startY = NS_MAX ( 0 , y - ry ) ;
+PRUint32 endY = NS_MIN ( y + ry , instance -> GetSurfaceHeight ( ) - 1 ) ;
+for (PRInt32 x = rect.x; x < rect.XMost(); x++)
+PRUint32 startX = NS_MAX ( 0 , x - rx ) ;
+PRUint32 endX = NS_MIN ( x + rx , instance -> GetSurfaceWidth ( ) - 1 ) ;
+PRUint32 targIndex = y * stride + 4 * x ;
+if ( x == rect . x || xExt [ 0 ] <= startX || xExt [ 1 ] <= startX || xExt [ 2 ] <= startX || xExt [ 3 ] <= startX )
+PRUint32 i ;
+for (i = 0; i < 4; i++)
+extrema [ i ] = sourceData [ targIndex + i ];
+for (PRUint32 y1 = startY; y1 <= endY; y1++)
+for (PRUint32 x1 = startX; x1 <= endX; x1++)
+for (i = 0; i < 4; i++)
+PRUint8 pixel = sourceData [ y1 * stride + 4 * x1 + i ] ;
+if ( ( extrema [ i ] >= pixel && op == nsSVGFEMorphologyElement :: SVG_OPERATOR_ERODE ) || ( extrema [ i ] <= pixel && op == nsSVGFEMorphologyElement :: SVG_OPERATOR_DILATE ) )
+extrema [ i ] = pixel;
+xExt [ i ] = x1;
+yExt [ i ] = y1;
+for (PRUint32 y1 = startY; y1 <= endY; y1++)
+for (PRUint32 i = 0; i < 4; i++)
+PRUint8 pixel = sourceData [ y1 * stride + 4 * endX + i ] ;
+if ( ( extrema [ i ] >= pixel && op == nsSVGFEMorphologyElement :: SVG_OPERATOR_ERODE ) || ( extrema [ i ] <= pixel && op == nsSVGFEMorphologyElement :: SVG_OPERATOR_DILATE ) )
+extrema [ i ] = pixel;
+xExt [ i ] = endX;
+yExt [ i ] = y1;
+targetData [ targIndex ] = extrema [ 0 ];
+targetData [ targIndex + 1 ] = extrema [ 1 ];
+targetData [ targIndex + 2 ] = extrema [ 2 ];
+targetData [ targIndex + 3 ] = extrema [ 3 ];
+0
+------------------------------
+287379 79761/CWE134_Uncontrolled_Format_String__char_environment_printf_67a.c dataBuffer 90
+static void goodB2G()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+size_t dataLen = strlen ( data ) ;
+strncat ( data + dataLen , environment , 100 - dataLen - 1 );
+myStruct . structFirst = data;
+CWE134_Uncontrolled_Format_String__char_environment_printf_67b_goodB2GSink ( myStruct );
+void CWE134_Uncontrolled_Format_String__char_environment_printf_67b_goodB2GSink(CWE134_Uncontrolled_Format_String__char_environment_printf_67_structType myStruct)
+char * data = myStruct . structFirst ;
+printf ( "%s\n" , data );
+0
+------------------------------
+13540 CVE-2016-4006/Wireshark_2.0.2_CVE_2016_4006_epan_proto.c trunc_str 6477
+
+proto_item_fill_label(field_info *fi, gchar *label_str)
+header_field_info * hfinfo ;
+if ( ! fi )
+hfinfo = fi -> hfinfo;
+switch ( hfinfo -> type )
+if ( hfinfo -> bitmask )
+fill_label_number ( fi , label_str , TRUE );
+static
+fill_label_number(field_info *fi, gchar *label_str, gboolean is_signed)
+header_field_info * hfinfo = fi -> hfinfo ;
+guint32 value ;
+char buf [ 32 ] ;
+const char * out ;
+if ( is_signed )
+value = fvalue_get_sinteger ( & fi -> value );
+value = fvalue_get_uinteger ( & fi -> value );
+if ( hfinfo -> display == BASE_CUSTOM )
+if ( hfinfo -> strings && hfinfo -> type != FT_FRAMENUM )
+const char * val_str = hf_try_val_to_str_const ( value , hfinfo , "Unknown" ) ;
+out = hfinfo_number_vals_format ( hfinfo , buf , value );
+if ( out == NULL )
+label_fill ( label_str , 0 , hfinfo , val_str );
+static
+label_fill(char *label_str, gsize pos, const header_field_info *hfinfo, const char *text)
+gsize name_pos ;
+name_pos = pos = label_concat ( label_str , pos , hfinfo -> name );
+pos = label_concat ( label_str , pos , ": " );
+pos = label_concat ( label_str , pos , text ? text : "(null)" );
+if ( pos >= ITEM_LABEL_LENGTH )
+label_mark_truncated ( label_str , name_pos );
+static
+label_mark_truncated(char *label_str, gsize name_pos)
+static const char trunc_str [ ] = " [truncated]" ;
+const size_t trunc_len = sizeof ( trunc_str ) - 1 ;
+if ( name_pos < ITEM_LABEL_LENGTH - trunc_len )
+memmove ( label_str + name_pos + trunc_len , label_str + name_pos , ITEM_LABEL_LENGTH - name_pos - trunc_len );
+memcpy ( label_str + name_pos , trunc_str , trunc_len );
+if ( name_pos < ITEM_LABEL_LENGTH )
+g_strlcpy ( label_str + name_pos , trunc_str , ITEM_LABEL_LENGTH - name_pos );
+0
+------------------------------
+139395 68455/CWE122_Heap_Based_Buffer_Overflow__cpp_CWE805_char_ncat_34.cpp source 45
+void bad()
+char source [ 100 ] ;
+memset ( source , 'C' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+strncat ( data , source , 100 );
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+delete [ ] data
+1
+------------------------------
+112135 64998/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_memmove_07.c source 115
+static void goodG2B2()
+twoIntsStruct * data ;
+twoIntsStruct dataGoodBuffer [ 100 ] ;
+if ( staticFive == 5 )
+data = dataGoodBuffer;
+twoIntsStruct source [ 100 ] ;
+size_t i ;
+for (i = 0; i < 100; i++)
+source [ i ] . intOne = 0;
+source [ i ] . intOne = 0;
+memmove ( data , source , 100 * sizeof ( twoIntsStruct ) );
+printStructLine ( & data [ 0 ] );
+void printStructLine (const twoIntsStruct * structTwoIntsStruct)
+printf ( "%d -- %d\n" , structTwoIntsStruct -> intOne , structTwoIntsStruct -> intTwo );
+0
+------------------------------
+288195 85375/CWE191_Integer_Underflow__int_fgets_multiply_02.c CHAR_ARRAY_SIZE 71
+static void goodB2G1()
+if ( 1 )
+char inputBuffer [ CHAR_ARRAY_SIZE ] = "" ;
+if ( fgets ( inputBuffer , CHAR_ARRAY_SIZE , stdin ) != NULL )
+data = atoi ( inputBuffer );
+if ( data < 0 )
+if ( data > ( INT_MIN / 2 ) )
+int result = data * 2 ;
+printIntLine ( result );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+0
+------------------------------
+296587 98684/CWE400_Resource_Exhaustion__fgets_fwrite_12.c inputBuffer 39
+void CWE400_Resource_Exhaustion__fgets_fwrite_12_bad()
+int count ;
+if ( globalReturnsTrueOrFalse ( ) )
+int globalReturnsTrueOrFalse()
+return ( rand ( ) % 2 ) ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] = "" ;
+if ( fgets ( inputBuffer , CHAR_ARRAY_SIZE , stdin ) != NULL )
+count = atoi ( inputBuffer );
+for (i = 0; i < (size_t)count; i++)
+if ( count > 0 && count <= 20 )
+for (i = 0; i < (size_t)count; i++)
+1
+------------------------------
+8546 CVE-2010-3849/CVE_2010_3849_VULN_econet_sendmsg.c iov 194
+static int CVE_2010_3849_VULN_econet_sendmsg(struct kiocb *iocb, struct socket
+struct msghdr *msg, size_t len)
+struct sock * sk = sock -> sk ;
+struct sockaddr_ec * saddr = ( struct sockaddr_ec * ) msg -> msg_name ;
+struct net_device * dev ;
+struct ec_addr addr ;
+unsigned char port , cb ;
+struct iovec iov [ msg -> msg_iovlen + 1 ] ;
+struct aunhdr ah ;
+if ( msg -> msg_flags & ~ ( MSG_DONTWAIT | MSG_CMSG_COMPAT ) )
+if ( saddr == NULL )
+struct econet_sock * eo = ec_sk ( sk ) ;
+addr . station = eo -> station;
+addr . net = eo -> net;
+port = eo -> port;
+cb = eo -> cb;
+if ( msg -> msg_namelen < sizeof ( struct sockaddr_ec ) )
+addr . station = saddr -> addr . station;
+addr . net = saddr -> addr . net;
+port = saddr -> port;
+cb = saddr -> cb;
+dev = net2dev_map [ addr . net ];
+if ( dev == NULL )
+dev = net2dev_map [ 0 ];
+if ( dev == NULL )
+if ( len + 15 > dev -> mtu )
+if ( dev -> type == ARPHRD_ECONET )
+if ( udpsock == NULL )
+ah . port = port;
+ah . cb = cb & 0x7f;
+ah . code = 2;
+ah . pad = 0;
+iov [ 0 ] . iov_base = ( void * ) & ah;
+iov [ 0 ] . iov_len = size;
+void __user * base = msg -> msg_iov [ i ] . iov_base ;
+size_t iov_len = msg -> msg_iov [ i ] . iov_len ;
+if ( ! access_ok ( VERIFY_READ , base , iov_len ) )
+iov [ i + 1 ] . iov_base = base;
+iov [ i + 1 ] . iov_len = iov_len;
+size += iov_len;
+udpmsg . msg_iov = & iov [ 0 ];
+udpmsg . msg_iovlen = msg -> msg_iovlen + 1;
+udpmsg . msg_control = NULL;
+udpmsg . msg_controllen = 0;
+udpmsg . msg_flags = 0;
+err = sock_sendmsg ( udpsock , & udpmsg , size );
+return err ;
+0
+------------------------------
+113916 70978/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_wchar_t_cpy_03.c source 87
+static void goodG2B2()
+wchar_t * data ;
+data = NULL;
+if ( 5 == 5 )
+data = ( wchar_t * ) malloc ( ( 10 + 1 ) * sizeof ( wchar_t ) );
+wchar_t source [ 10 + 1 ] = SRC_STRING ;
+wcscpy ( data , source );
+printWLine ( data );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+free ( data );
+0
+------------------------------
+111795 73049/CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_10.c dest 65
+static void goodG2B1()
+char * data ;
+data = ( char * ) malloc ( 100 * sizeof ( char ) );
+if ( globalFalse )
+memset ( data , 'A' , 50 - 1 );
+data [ 50 - 1 ] = '\0';
+char dest [ 50 ] = "" ;
+strcpy ( dest , data );
+0
+------------------------------
+13848 CVE-2016-4006/Wireshark_2.0.2_CVE_2016_4006_epan_proto.c tmp 7053
+
+proto_item_prepend_text(proto_item *pi, const char *format, ...)
+char representation [ ITEM_LABEL_LENGTH ] ;
+fi = PITEM_FINFO ( pi );
+if ( fi == NULL )
+if ( ! PROTO_ITEM_IS_HIDDEN ( pi ) )
+if ( fi -> rep == NULL )
+proto_item_fill_label ( fi , representation );
+
+proto_item_fill_label(field_info *fi, gchar *label_str)
+header_field_info * hfinfo ;
+if ( ! fi )
+hfinfo = fi -> hfinfo;
+switch ( hfinfo -> type )
+if ( hfinfo -> bitmask )
+fill_label_number ( fi , label_str , TRUE );
+static
+fill_label_number(field_info *fi, gchar *label_str, gboolean is_signed)
+header_field_info * hfinfo = fi -> hfinfo ;
+if ( hfinfo -> display == BASE_CUSTOM )
+gchar tmp [ ITEM_LABEL_LENGTH ] ;
+if ( hfinfo -> strings && hfinfo -> type != FT_FRAMENUM )
+if ( IS_BASE_PORT ( hfinfo -> display ) )
+gchar tmp [ ITEM_LABEL_LENGTH ] ;
+label_fill ( label_str , 0 , hfinfo , tmp );
+0
+------------------------------
+11743 CVE-2016-2328/Ffmpeg_2.8.2_CVE_2016_2328_libswscale_swscale_unscaled.c dest 916
+static int rgbToPlanarRgbWrapper(SwsContext *c, const uint8_t
+int srcStride[], int srcSliceY, int
+uint8_t *dst[], int dstStride[])
+int alpha_first = 0 ;
+int stride102 [ ] = { dstStride [ 1 ] , dstStride [ 0 ] , dstStride [ 2 ] } ;
+uint8_t * dst102 [ ] = { dst [ 1 ] + srcSliceY * dstStride [ 1 ] , dst [ 0 ] + srcSliceY * dstStride [ 0 ] , dst [ 2 ] + srcSliceY * dstStride [ 2 ] } ;
+switch ( c -> srcFormat )
+alpha_first = 1;
+alpha_first = 1;
+packedtogbr24p ( ( const uint8_t * ) src [ 0 ] , srcStride [ 0 ] , dst102 , stride102 , srcSliceH , alpha_first , 4 , c -> srcW );
+static void packedtogbr24p(const uint8_t *src, int
+uint8_t *dst[], int dstStride[], int
+int alpha_first, int inc_size, int width)
+uint8_t * dest [ 3 ] ;
+int x , h ;
+dest [ 0 ] = dst [ 0 ];
+dest [ 1 ] = dst [ 1 ];
+dest [ 2 ] = dst [ 2 ];
+if ( alpha_first )
+src ++;
+for (h = 0; h < srcSliceH; h++)
+for (x = 0; x < width; x++)
+dest [ 0 ] [ x ] = src [ 0 ];
+dest [ 1 ] [ x ] = src [ 1 ];
+dest [ 2 ] [ x ] = src [ 2 ];
+src += inc_size;
+src += srcStride - width * inc_size;
+dest [ 0 ] += dstStride [ 0 ];
+dest [ 1 ] += dstStride [ 1 ];
+dest [ 2 ] += dstStride [ 2 ];
+0
+------------------------------
+114553 62546/CWE121_Stack_Based_Buffer_Overflow__CWE129_connect_socket_52c.c buffer 85
+static void goodG2B()
+int data ;
+data = - 1;
+data = 7;
+CWE121_Stack_Based_Buffer_Overflow__CWE129_connect_socket_52b_goodG2BSink ( data );
+void CWE121_Stack_Based_Buffer_Overflow__CWE129_connect_socket_52b_goodG2BSink(int data)
+CWE121_Stack_Based_Buffer_Overflow__CWE129_connect_socket_52c_goodG2BSink ( data );
+void CWE121_Stack_Based_Buffer_Overflow__CWE129_connect_socket_52c_goodG2BSink(int data)
+int i ;
+int buffer [ 10 ] = { 0 } ;
+if ( data >= 0 )
+buffer [ data ] = 1;
+for(i = 0; i < 10; i++)
+printIntLine ( buffer [ i ] );
+0
+------------------------------
+110216 149786/timestamp.c stonesoup_buffer 206
+void caviya_opalines(void (*melampyrum_deidamia)(struct networks_neurypnologist *))
+struct networks_neurypnologist bhadgaon_indianan = { 0 } ;
+if ( bhadgaon_indianan . diffusionism_abstersion != 0 )
+gopherwood_fieriest ( bhadgaon_indianan );
+void gopherwood_fieriest(const struct networks_neurypnologist chrisse_hoddypeak)
+char stonesoup_buffer [ 80 ] ;
+pictet_senile = ( ( char * ) ( ( struct networks_neurypnologist ) chrisse_hoddypeak ) . diffusionism_abstersion );
+stonesoup_pFile = fopen ( pictet_senile , "r" );
+stonesoup_buffer [ 0 ] = 0;
+fgets ( stonesoup_buffer , 79 , stonesoup_pFile );
+stonesoup_printf ( stonesoup_buffer );
+void stonesoup_printf(char * format, ...)
+va_start ( argptr , format );
+vfprintf ( stonesoup_printf_context , format , argptr );
+1
+------------------------------
+7019 CVE-2012-5237/CVE_2012_5237_PATCHED_dissect_hsrp.c auth_buf 236
+static
+CVE_2012_5237_PATCHED_dissect_hsrp(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree)
+gchar dst [ 16 ] ;
+if ( pinfo -> destport != UDP_PORT_HSRP && pinfo -> destport != UDP_PORT_HSRP2_V6 )
+if ( pinfo -> dst . type == AT_IPv4 && strcmp ( dst , HSRP_DST_IP_ADDR ) == 0 )
+if ( ( pinfo -> dst . type == AT_IPv4 && strcmp ( dst , HSRP2_DST_IP_ADDR ) == 0 ) || ( pinfo -> dst . type == AT_IPv6 && pinfo -> destport == UDP_PORT_HSRP2_V6 ) )
+guint offset = 0 , offset2 ;
+proto_tree * hsrp_tree = NULL ;
+guint8 type , len ;
+if ( tree )
+ti = proto_tree_add_item ( tree , proto_hsrp , tvb , offset , - 1 , ENC_NA );
+hsrp_tree = proto_item_add_subtree ( ti , ett_hsrp );
+while ( tvb_reported_length_remaining ( tvb , offset ) > 0 )
+type = tvb_get_guint8 ( tvb , offset );
+len = tvb_get_guint8 ( tvb , offset + 1 );
+offset2 = offset;
+if ( type == 1 && len == 40 )
+offset += 2;
+if ( tree )
+offset ++;
+offset ++;
+offset ++;
+ipver = tvb_get_guint8 ( tvb , offset );
+if ( ipver == 4 )
+if ( ipver == 6 )
+if ( type == 2 && len == 4 )
+if ( type == 3 && len == 8 )
+if ( tree )
+proto_tree * text_auth_tlv ;
+gchar auth_buf [ 8 + 1 ] ;
+ti = proto_tree_add_uint_format ( hsrp_tree , hf_hsrp2_text_auth_tlv , tvb , offset , 1 , type , "Text Authentication TLV: Type=%d Len=%d" , type , len );
+offset += 2;
+text_auth_tlv = proto_item_add_subtree ( ti , ett_hsrp2_text_auth_tlv );
+auth_buf [ sizeof auth_buf - 1 ] = '\0';
+proto_tree_add_string_format ( text_auth_tlv , hf_hsrp2_auth_data , tvb , offset , 8 , auth_buf , "Authentication Data: %sDefault (%s)" , ( tvb_strneql ( tvb , offset , "cisco" , strlen ( "cisco" ) ) ) == 0 ? "" : "Non-" , auth_buf );
+if ( type == 4 && len == 28 )
+offset = offset2 + len + 2;
+0
+------------------------------
+287018 151540/utils.c buf 1306
+int ff_codec_open2_recursive(AVCodecContext *avctx,const AVCodec *codec,AVDictionary **options)
+ret = avcodec_open2 ( avctx , codec , options );
+int avcodec_open2(AVCodecContext *avctx,const AVCodec *codec,AVDictionary **options)
+if ( avcodec_is_open ( avctx ) )
+if ( ! codec && ! avctx -> codec )
+if ( codec && avctx -> codec && codec != avctx -> codec )
+if ( ! codec )
+codec = avctx -> codec;
+if ( avctx -> extradata_size < 0 || avctx -> extradata_size >= ( 1 << 28 ) - 16 )
+ret = ff_lock_avcodec ( avctx );
+if ( ret < 0 )
+avctx -> internal = ( av_mallocz ( sizeof ( AVCodecInternal ) ) );
+if ( ! avctx -> internal )
+if ( codec -> priv_data_size > 0 )
+if ( ! avctx -> priv_data )
+avctx -> priv_data = av_mallocz ( ( codec -> priv_data_size ) );
+if ( ! avctx -> priv_data )
+if ( codec -> priv_class )
+* ( ( const AVClass * * ) ( avctx -> priv_data ) ) = codec -> priv_class;
+if ( codec -> priv_class && ( ret = av_opt_set_dict ( avctx -> priv_data , & tmp ) ) < 0 )
+avctx -> priv_data = ( ( void * ) 0 );
+if ( ( ret = av_opt_set_dict ( avctx , & tmp ) ) < 0 )
+if ( ( avctx -> channels ) > 128U )
+avctx -> codec = codec;
+if ( ( ( avctx -> codec_type ) == AVMEDIA_TYPE_UNKNOWN || ( avctx -> codec_type ) == ( codec -> type ) ) && ( avctx -> codec_id ) == AV_CODEC_ID_NONE )
+avctx -> codec_type = codec -> type;
+avctx -> codec_id = codec -> id;
+if ( ( avctx -> codec_id ) != ( codec -> id ) || ( avctx -> codec_type ) != ( codec -> type ) && ( avctx -> codec_type ) != AVMEDIA_TYPE_ATTACHMENT )
+avctx -> frame_number = 0;
+avctx -> codec_descriptor = avcodec_descriptor_get ( avctx -> codec_id );
+if ( avctx -> codec -> capabilities & 0x0200 && avctx -> strict_std_compliance > - 2 )
+if ( ( avctx -> codec_type ) == AVMEDIA_TYPE_AUDIO && ( ! avctx -> time_base . num || ! avctx -> time_base . den ) )
+avctx -> time_base . num = 1;
+avctx -> time_base . den = avctx -> sample_rate;
+if ( 1 )
+ret = ff_frame_thread_encoder_init ( avctx , ( options ? * options : ( ( void * ) 0 ) ) );
+if ( ret < 0 )
+if ( 1 && ! avctx -> thread_opaque && ! ( avctx -> internal -> frame_thread_encoder && avctx -> active_thread_type & 1 ) )
+ret = ff_thread_init ( avctx );
+if ( ret < 0 )
+if ( ! 1 && ! ( codec -> capabilities & 0x8000 ) )
+avctx -> thread_count = 1;
+if ( ( avctx -> codec -> max_lowres ) < avctx -> lowres || avctx -> lowres < 0 )
+if ( av_codec_is_encoder ( avctx -> codec ) )
+int i ;
+if ( avctx -> codec -> sample_fmts )
+for (i = 0; avctx -> codec -> sample_fmts[i] != AV_SAMPLE_FMT_NONE; i++)
+if ( ( avctx -> sample_fmt ) == avctx -> codec -> sample_fmts [ i ] )
+if ( avctx -> channels == 1 && ( av_get_planar_sample_fmt ( avctx -> sample_fmt ) ) == ( av_get_planar_sample_fmt ( avctx -> codec -> sample_fmts [ i ] ) ) )
+avctx -> sample_fmt = avctx -> codec -> sample_fmts [ i ];
+if ( avctx -> codec -> sample_fmts [ i ] == AV_SAMPLE_FMT_NONE )
+if ( avctx -> codec -> pix_fmts )
+for (i = 0; avctx -> codec -> pix_fmts[i] != AV_PIX_FMT_NONE; i++)
+if ( ( avctx -> pix_fmt ) == avctx -> codec -> pix_fmts [ i ] )
+if ( avctx -> codec -> pix_fmts [ i ] == AV_PIX_FMT_NONE && ! ( ( ( avctx -> codec_id ) == AV_CODEC_ID_MJPEG || ( avctx -> codec_id ) == AV_CODEC_ID_LJPEG ) && avctx -> strict_std_compliance <= - 1 ) )
+if ( avctx -> codec -> supported_samplerates )
+for (i = 0; avctx -> codec -> supported_samplerates[i] != 0; i++)
+if ( avctx -> sample_rate == avctx -> codec -> supported_samplerates [ i ] )
+if ( avctx -> codec -> supported_samplerates [ i ] == 0 )
+if ( avctx -> codec -> channel_layouts )
+if ( ! avctx -> channel_layout )
+for (i = 0; avctx -> codec -> channel_layouts[i] != 0; i++)
+if ( avctx -> channel_layout == avctx -> codec -> channel_layouts [ i ] )
+if ( avctx -> codec -> channel_layouts [ i ] == 0 )
+if ( avctx -> channel_layout && avctx -> channels )
+int channels = av_get_channel_layout_nb_channels ( avctx -> channel_layout ) ;
+if ( channels != avctx -> channels )
+char buf [ 512 ] ;
+av_get_channel_layout_string ( buf , ( sizeof ( buf ) ) , - 1 , avctx -> channel_layout );
+av_log ( avctx , 16 , "Channel layout '%s' with %d channels does not match number of specified channels %d\n" , buf , channels , avctx -> channels );
+0
+------------------------------
+177408 110832/CWE680_Integer_Overflow_to_Buffer_Overflow__new_listen_socket_68a.cpp inputBuffer 108
+void bad()
+int data ;
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+data = atoi ( inputBuffer );
+while ( 0 )
+CWE680_Integer_Overflow_to_Buffer_Overflow__new_listen_socket_68_badData = data;
+0
+------------------------------
+137433 69071/CWE122_Heap_Based_Buffer_Overflow__cpp_CWE805_wchar_t_memcpy_16.cpp source 42
+void bad()
+wchar_t * data ;
+data = NULL;
+while ( 1 )
+data = new wchar_t [ 50 ];
+data [ 0 ] = L '\0'
+wchar_t source [ 100 ] ;
+wmemset ( source , L 'C' , 100 - 1
+source [ 100 - 1 ] = L '\0'
+memcpy ( data , source , 100 * sizeof ( wchar_t ) );
+printWLine ( data );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+delete [ ] data
+1
+------------------------------
+6533 CVE-2012-4293/CVE_2012_4293_PATCHED_dissect_ecat_eoe.c szText 27
+static void CVE_2012_4293_PATCHED_dissect_ecat_eoe(tvbuff_t *tvb, gint offset, packet_info *pinfo, proto_tree *tree)
+char szText [ 200 ] ;
+int nMax = sizeof ( szText ) - 1 ;
+guint eoe_length = tvb_reported_length ( tvb ) - offset ;
+if ( eoe_length >= ETHERCAT_EOE_HEADER_LEN )
+ETHERCAT_EOE_HEADER eoe ;
+if ( eoe . anEoeHeaderInfoUnion . v . Type == EOE_TYPE_FRAME_FRAG )
+g_snprintf ( szText , nMax , "EoE-Frag %d" , eoe . anEoeHeaderDataUnion . v . Fragment );
+0
+------------------------------
+12023 CVE-2016-2328/Ffmpeg_2.8.2_CVE_2016_2328_libswscale_swscale_unscaled.c src 686
+static int planarRgb16ToRgb16Wrapper(SwsContext *c, const uint8_t
+int srcStride[], int srcSliceY, int
+uint8_t *dst[], int dstStride[])
+const uint16_t * src201 [ ] = { ( uint16_t * ) src [ 2 ] , ( uint16_t * ) src [ 0 ] , ( uint16_t * ) src [ 1 ] , ( uint16_t * ) src [ 3 ] } ;
+int stride201 [ ] = { srcStride [ 2 ] , srcStride [ 0 ] , srcStride [ 1 ] , srcStride [ 3 ] } ;
+const AVPixFmtDescriptor * src_format = av_pix_fmt_desc_get ( c -> srcFormat ) ;
+const AVPixFmtDescriptor * dst_format = av_pix_fmt_desc_get ( c -> dstFormat ) ;
+int bits_per_sample = src_format -> comp [ 0 ] . depth_minus1 + 1 ;
+int swap = 0 ;
+if ( HAVE_BIGENDIAN && ! ( src_format -> flags & AV_PIX_FMT_FLAG_BE ) || ! HAVE_BIGENDIAN && src_format -> flags & AV_PIX_FMT_FLAG_BE )
+swap ++;
+if ( HAVE_BIGENDIAN && ! ( dst_format -> flags & AV_PIX_FMT_FLAG_BE ) || ! HAVE_BIGENDIAN && dst_format -> flags & AV_PIX_FMT_FLAG_BE )
+swap += 2;
+if ( ( src_format -> flags & ( AV_PIX_FMT_FLAG_PLANAR | AV_PIX_FMT_FLAG_RGB ) ) != ( AV_PIX_FMT_FLAG_PLANAR | AV_PIX_FMT_FLAG_RGB ) || bits_per_sample <= 8 )
+switch ( c -> dstFormat )
+gbr16ptopacked16 ( src201 , stride201 , dst [ 0 ] + srcSliceY * dstStride [ 0 ] , dstStride [ 0 ] , srcSliceH , 0 , swap , bits_per_sample , c -> srcW );
+static void gbr16ptopacked16(const uint16_t *src[], int
+uint8_t *dst, int dstStride, int
+int alpha, int swap, int bpp, int width)
+int x , h , i ;
+int src_alpha = src [ 3 ] != NULL ;
+int scale_high = 16 - bpp , scale_low = ( bpp - 8 ) * 2 ;
+for (h = 0; h < srcSliceH; h++)
+uint16_t * dest = ( uint16_t * ) ( dst + dstStride * h ) ;
+switch ( swap )
+if ( alpha && ! src_alpha )
+if ( alpha && src_alpha )
+for (x = 0; x < width; x++)
+* dest ++ = av_bswap16 ( src [ 0 ] [ x ] ) << scale_high | av_bswap16 ( src [ 0 ] [ x ] ) >> scale_low;
+* dest ++ = av_bswap16 ( src [ 1 ] [ x ] ) << scale_high | av_bswap16 ( src [ 1 ] [ x ] ) >> scale_low;
+* dest ++ = av_bswap16 ( src [ 2 ] [ x ] ) << scale_high | av_bswap16 ( src [ 2 ] [ x ] ) >> scale_low;
+* dest ++ = src [ 0 ] [ x ] << scale_high | src [ 0 ] [ x ] >> scale_low;
+* dest ++ = src [ 1 ] [ x ] << scale_high | src [ 1 ] [ x ] >> scale_low;
+* dest ++ = src [ 2 ] [ x ] << scale_high | src [ 2 ] [ x ] >> scale_low;
+* dest ++ = 0xffff;
+for (i = 0; i < 3 + src_alpha; i++)
+src [ i ] += srcStride [ i ] >> 1;
+0
+------------------------------
+138976 79792/CWE134_Uncontrolled_Format_String__char_environment_snprintf_33.cpp dest 89
+static void goodG2B()
+char * data ;
+char * & dataRef = data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+strcpy ( data , "fixedstringtest" );
+char * data = dataRef ;
+char dest [ 100 ] = "" ;
+SNPRINTF ( dest , 100 - 1 , data );
+0
+------------------------------
+115843 104463/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_04.c string1 76
+static void good1()
+if ( STATIC_CONST_FALSE )
+char string1 [ ] = SOURCE_STRING ;
+char * slashInString1 ;
+size_t indexOfSlashInString1 ;
+slashInString1 = strchr ( string1 , '/' );
+indexOfSlashInString1 = ( size_t ) ( slashInString1 - string1 );
+printUnsignedLine ( indexOfSlashInString1 );
+void printUnsignedLine(unsigned unsignedNumber)
+printf ( "%u\n" , unsignedNumber );
+0
+------------------------------
+288381 76057/CWE126_Buffer_Overread__char_alloca_memmove_02.c dest 108
+static void goodG2B2()
+char * data ;
+char * dataGoodBuffer = ( char * ) ALLOCA ( 100 * sizeof ( char ) ) ;
+memset ( dataGoodBuffer , 'A' , 100 - 1 );
+dataGoodBuffer [ 100 - 1 ] = '\0';
+if ( 1 )
+data = dataGoodBuffer;
+char dest [ 100 ] ;
+memset ( dest , 'C' , 100 - 1 );
+dest [ 100 - 1 ] = '\0';
+memmove ( dest , data , strlen ( dest ) * sizeof ( char ) );
+dest [ 100 - 1 ] = '\0';
+printLine ( dest );
+0
+------------------------------
+137020 120242/CWE78_OS_Command_Injection__char_listen_socket_w32spawnl_74a.cpp dataBuffer 72
+void bad()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+size_t dataLen = strlen ( data ) ;
+recvResult = recv ( acceptSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+replace = strchr ( data , '\n' );
+if ( replace )
+* replace = '\0';
+dataMap [ 0 ] = data;
+dataMap [ 1 ] = data;
+dataMap [ 2 ] = data;
+badSink ( dataMap );
+void badSink(map<int, char *> dataMap)
+char * data = dataMap [ 2 ] ;
+0
+------------------------------
+15200 CVE-2016-1957/Firefox_44.0b9_CVE_2016_1957_media_libstagefright_frameworks_av_media_libstagefright_MPEG4Extractor.cpp buffer 1437
+status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth)
+uint32_t hdr [ 2 ] ;
+ssize_t nbytes ;
+if ( ( nbytes = mDataSource -> readAt ( * offset , hdr , 8 ) ) < 8 )
+uint64_t chunk_size = ntohl ( hdr [ 0 ] ) ;
+off64_t data_offset = * offset + 8 ;
+if ( chunk_size == 1 )
+if ( mDataSource -> readAt ( * offset + 8 , & chunk_size , 8 ) < 8 )
+chunk_size = ntoh64 ( chunk_size );
+data_offset += 8;
+if ( chunk_size < 16 )
+if ( chunk_size < 8 )
+if ( chunk_size >= kMAX_ALLOCATION )
+char buffer [ 256 ] ;
+if ( chunk_data_size < 8 )
+uint8_t buffer [ 8 ] ;
+if ( chunk_data_size == 4 )
+uint8_t buffer [ 8 + 20 ] ;
+uint8_t buffer [ 78 ] ;
+if ( chunk_data_size < ( ssize_t ) sizeof ( buffer ) )
+if ( mDataSource -> readAt ( data_offset , buffer , sizeof ( buffer ) ) < ( ssize_t ) sizeof ( buffer ) )
+uint16_t width = U16_AT ( & buffer [ 6 + 18 ] ) ;
+if ( width == 0 )
+mLastTrack -> meta -> setInt32 ( kKeyWidth , width );
+0
+------------------------------
+285295 64862/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_64b.c source 62
+void CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_64b_goodG2BSink(void * dataVoidPtr)
+twoIntsStruct source [ 100 ] ;
+size_t i ;
+for (i = 0; i < 100; i++)
+source [ i ] . intOne = 0;
+source [ i ] . intOne = 0;
+memcpy ( data , source , 100 * sizeof ( twoIntsStruct ) );
+printStructLine ( & data [ 0 ] );
+void printStructLine (const twoIntsStruct * structTwoIntsStruct)
+printf ( "%d -- %d\n" , structTwoIntsStruct -> intOne , structTwoIntsStruct -> intTwo );
+0
+------------------------------
+289556 78864/CWE127_Buffer_Underread__wchar_t_alloca_ncpy_07.c dest 78
+static void goodG2B1()
+wchar_t * data ;
+wchar_t * dataBuffer = ( wchar_t * ) ALLOCA ( 100 * sizeof ( wchar_t ) ) ;
+wmemset ( dataBuffer , L 'A' , 100 - 1
+dataBuffer [ 100 - 1 ] = L '\0'
+if ( staticFive != 5 )
+data = dataBuffer;
+wchar_t dest [ 100 ] ;
+wmemset ( dest , L 'C' , 100 - 1
+dest [ 100 - 1 ] = L '\0'
+wcsncpy ( dest , data , wcslen ( dest ) );
+printWLine ( dest );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+0
+------------------------------
+139695 95778/CWE36_Absolute_Path_Traversal__char_console_fopen_01.cpp dataBuffer 84
+static void goodG2B()
+char * data ;
+char dataBuffer [ FILENAME_MAX ] = "" ;
+data = dataBuffer;
+strcat ( data , "c:\\temp\\file.txt" );
+pFile = FOPEN ( data , "wb+" );
+if ( pFile != NULL )
+fclose ( pFile );
+0
+------------------------------
+10708 CVE-2016-8658/linux_kernel_4.7.4_CVE_2016_8658_drivers_net_wireless_broadcom_brcm80211_brcmfmac_cfg80211.c cmd 3470
+static s32 brcmf_cfg80211_suspend(struct wiphy
+struct cfg80211_wowlan *wowl)
+struct brcmf_cfg80211_info * cfg = wiphy_to_cfg ( wiphy ) ;
+struct net_device * ndev = cfg_to_ndev ( cfg ) ;
+struct brcmf_if * ifp = netdev_priv ( ndev ) ;
+if ( ! check_vif_up ( ifp -> vif ) )
+static bool check_vif_up(struct brcmf_cfg80211_vif *vif)
+if ( ! test_bit ( BRCMF_VIF_STATUS_READY , & vif -> sme_state ) )
+return false ;
+return true ;
+if ( wowl == NULL )
+brcmf_configure_wowl ( cfg , ifp , wowl );
+static void brcmf_configure_wowl(struct brcmf_cfg80211_info
+struct brcmf_if
+struct cfg80211_wowlan *wowl)
+u32 i ;
+if ( ( wowl -> patterns ) && ( wowl -> n_patterns ) )
+for (i = 0; i < wowl->n_patterns; i++)
+brcmf_config_wowl_pattern ( ifp , "add" , ( u8 * ) wowl -> patterns [ i ] . pattern , wowl -> patterns [ i ] . pattern_len , ( u8 * ) wowl -> patterns [ i ] . mask , wowl -> patterns [ i ] . pkt_offset );
+static s32 brcmf_config_wowl_pattern(struct brcmf_if *ifp, u8
+u8 *pattern, u32 patternsize, u8
+u32 packet_offset)
+struct brcmf_fil_wowl_pattern_le * filter ;
+u32 masksize ;
+u8 * buf ;
+u32 bufsize ;
+masksize = ( patternsize + 7 ) / 8;
+bufsize = sizeof ( * filter ) + patternsize + masksize;
+buf = kzalloc ( bufsize , GFP_KERNEL );
+if ( ! buf )
+filter = ( struct brcmf_fil_wowl_pattern_le * ) buf;
+memcpy ( filter -> cmd , cmd , 4 );
+filter -> masksize = cpu_to_le32 ( masksize );
+filter -> offset = cpu_to_le32 ( packet_offset );
+filter -> patternoffset = cpu_to_le32 ( patternoffset );
+filter -> patternsize = cpu_to_le32 ( patternsize );
+filter -> type = cpu_to_le32 ( BRCMF_WOWL_PATTERN_TYPE_BITMAP );
+memcpy ( buf + sizeof ( * filter ) , mask , masksize );
+memcpy ( buf + sizeof ( * filter ) + masksize , pattern , patternsize );
+ret = brcmf_fil_iovar_data_set ( ifp , "wowl_pattern" , buf , bufsize );
+kfree ( buf );
+return ret ;
+0
+------------------------------
+8801 CVE-2016-4453/qemu_2.3.0_CVE-2016-4453_vmware_vga.c ptr 428
+static void vmsvga_io_write(void *opaque, hwaddr
+uint64_t data, unsigned size)
+struct vmsvga_state_s * s = opaque ;
+switch ( addr )
+vmsvga_value_write ( s , addr , data );
+static void vmsvga_value_write(void *opaque, uint32_t address, uint32_t value)
+struct vmsvga_state_s * s = opaque ;
+switch ( s -> index )
+if ( value == SVGA_ID_2 || value == SVGA_ID_1 || value == SVGA_ID_0 )
+s -> svgaid = value;
+s -> enable = ! ! value;
+s -> invalidated = 1;
+if ( value <= SVGA_MAX_WIDTH )
+s -> new_width = value;
+s -> invalidated = 1;
+if ( value <= SVGA_MAX_HEIGHT )
+s -> new_height = value;
+s -> invalidated = 1;
+if ( value != 32 )
+s -> config = 0;
+s -> invalidated = 1;
+if ( value )
+s -> fifo = ( uint32_t * ) s -> fifo_ptr;
+if ( ( CMD ( min ) | CMD ( max ) | CMD ( next_cmd ) | CMD ( stop ) ) & 3 )
+if ( CMD ( min ) < ( uint8_t * ) s -> cmd -> fifo - ( uint8_t * ) s -> fifo )
+if ( CMD ( max ) > SVGA_FIFO_SIZE )
+if ( CMD ( max ) < CMD ( min ) + 10 * 1024 )
+s -> config = ! ! value;
+s -> syncing = 1;
+vmsvga_fifo_run ( s );
+static void vmsvga_fifo_run(struct vmsvga_state_s *s)
+uint32_t cmd , colour ;
+int args , len ;
+int x , y , dx , dy , width , height ;
+struct vmsvga_cursor_definition_s cursor ;
+len = vmsvga_fifo_length ( s );
+while ( len > 0 )
+switch ( cmd = vmsvga_fifo_read ( s ) )
+len -= 5;
+len -= 6;
+if ( len < 0 )
+colour = vmsvga_fifo_read ( s );
+x = vmsvga_fifo_read ( s );
+y = vmsvga_fifo_read ( s );
+width = vmsvga_fifo_read ( s );
+height = vmsvga_fifo_read ( s );
+if ( vmsvga_fill_rect ( s , colour , x , y , width , height ) == 0 )
+args = 0;
+len -= 7;
+if ( len < 0 )
+x = vmsvga_fifo_read ( s );
+y = vmsvga_fifo_read ( s );
+dx = vmsvga_fifo_read ( s );
+dy = vmsvga_fifo_read ( s );
+width = vmsvga_fifo_read ( s );
+height = vmsvga_fifo_read ( s );
+if ( vmsvga_copy_rect ( s , x , y , dx , dy , width , height ) == 0 )
+args = 0;
+len -= 8;
+if ( len < 0 )
+cursor . id = vmsvga_fifo_read ( s );
+cursor . hot_x = vmsvga_fifo_read ( s );
+cursor . hot_y = vmsvga_fifo_read ( s );
+cursor . width = x = vmsvga_fifo_read ( s );
+cursor . height = y = vmsvga_fifo_read ( s );
+cursor . bpp = vmsvga_fifo_read ( s );
+args = SVGA_BITMAP_SIZE ( x , y ) + SVGA_PIXMAP_SIZE ( x , y , cursor . bpp );
+if ( SVGA_BITMAP_SIZE ( x , y ) > sizeof cursor . mask || SVGA_PIXMAP_SIZE ( x , y , cursor . bpp ) > sizeof cursor . image )
+len -= args;
+if ( len < 0 )
+for (args = 0; args < SVGA_BITMAP_SIZE(x, y); args++)
+cursor . mask [ args ] = vmsvga_fifo_read_raw ( s );
+for (args = 0; args < SVGA_PIXMAP_SIZE(x, y, cursor.bpp); args++)
+cursor . image [ args ] = vmsvga_fifo_read_raw ( s );
+len -= 6;
+if ( len < 0 )
+x = vmsvga_fifo_read ( s );
+y = vmsvga_fifo_read ( s );
+args = x * y;
+args = 6;
+args = 7;
+len -= 4;
+if ( len < 0 )
+args = 7 + ( vmsvga_fifo_read ( s ) >> 2 );
+args = 12;
+args = 0;
+len -= args;
+if ( len < 0 )
+while ( args -- )
+static inline int vmsvga_copy_rect(struct vmsvga_state_s
+int x0, int y0, int x1, int y1, int w, int h)
+DisplaySurface * surface = qemu_console_surface ( s -> vga . con ) ;
+uint8_t * vram = s -> vga . vram_ptr ;
+int bypl = surface_stride ( surface ) ;
+int bypp = surface_bytes_per_pixel ( surface ) ;
+int line = h ;
+uint8_t * ptr [ 2 ] ;
+if ( ! vmsvga_verify_rect ( surface , "vmsvga_copy_rect/src" , x0 , y0 , w , h ) )
+if ( ! vmsvga_verify_rect ( surface , "vmsvga_copy_rect/dst" , x1 , y1 , w , h ) )
+if ( y1 > y0 )
+ptr [ 0 ] = vram + bypp * x0 + bypl * ( y0 + h - 1 );
+ptr [ 1 ] = vram + bypp * x1 + bypl * ( y1 + h - 1 );
+for (; line > 0; line --, ptr[0] -= bypl, ptr[1] -= bypl)
+memmove ( ptr [ 1 ] , ptr [ 0 ] , width );
+0
+------------------------------
+10126 CVE-2016-3062/Ffmpeg_0.11_CVE_2016_3062_libavformat_mov.c filename 2079
+static int mov_read_trak(MOVContext *c, AVIOContext *pb, MOVAtom atom)
+AVStream * st ;
+MOVStreamContext * sc ;
+int ret ;
+st = avformat_new_stream ( c -> fc , NULL );
+if ( ! st )
+st -> id = c -> fc -> nb_streams;
+sc = av_mallocz ( sizeof ( MOVStreamContext ) );
+if ( ! sc )
+st -> priv_data = sc;
+st -> codec -> codec_type = AVMEDIA_TYPE_DATA;
+sc -> ffindex = st -> index;
+if ( ( ret = mov_read_default ( c , pb , atom ) ) < 0 )
+static int mov_read_default(MOVContext *c, AVIOContext *pb, MOVAtom atom)
+int64_t total_size = 0 ;
+MOVAtom a ;
+int i ;
+if ( atom . size < 0 )
+atom . size = INT64_MAX;
+while ( total_size + 8 <= atom . size && ! url_feof ( pb ) )
+a . size = atom . size;
+a . type = 0;
+if ( atom . size >= 8 )
+a . size = avio_rb32 ( pb );
+a . type = avio_rl32 ( pb );
+if ( atom . type != MKTAG ( 'r' , 'o' , 'o' , 't' ) && atom . type != MKTAG ( 'm' , 'o' , 'o' , 'v' ) )
+if ( a . type == MKTAG ( 't' , 'r' , 'a' , 'k' ) || a . type == MKTAG ( 'm' , 'd' , 'a' , 't' ) )
+return 0 ;
+total_size += 8;
+if ( a . size == 1 )
+a . size = avio_rb64 ( pb ) - 8;
+total_size += 8;
+if ( a . size == 0 )
+a . size = atom . size - total_size + 8;
+a . size -= 8;
+if ( a . size < 0 )
+a . size = FFMIN ( a . size , atom . size - total_size );
+for (i = 0; mov_default_parse_table[i].type; i++)
+if ( mov_default_parse_table [ i ] . type == a . type )
+parse = mov_default_parse_table [ i ] . parse;
+if ( ! parse && ( atom . type == MKTAG ( 'u' , 'd' , 't' , 'a' ) || atom . type == MKTAG ( 'i' , 'l' , 's' , 't' ) ) )
+parse = mov_read_udta_string;
+if ( ! parse )
+int64_t start_pos = avio_tell ( pb ) ;
+int err = parse ( c , pb , a ) ;
+if ( err < 0 )
+return err ;
+if ( c -> found_moov && c -> found_mdat && ( ( ! pb -> seekable || c -> fc -> flags & AVFMT_FLAG_IGNIDX ) || start_pos + a . size == avio_size ( pb ) ) )
+return 0 ;
+total_size += a . size;
+return 0 ;
+if ( sc -> chunk_count && ( ! sc -> stts_count || ! sc -> stsc_count || ( ! sc -> sample_size && ! sc -> sample_count ) ) )
+if ( sc -> time_scale <= 0 )
+sc -> time_scale = c -> time_scale;
+if ( sc -> time_scale <= 0 )
+sc -> time_scale = 1;
+if ( sc -> dref_id - 1 < sc -> drefs_count && sc -> drefs [ sc -> dref_id - 1 ] . path )
+MOVDref * dref = & sc -> drefs [ sc -> dref_id - 1 ] ;
+if ( mov_open_dref ( & sc -> pb , c -> fc -> filename , dref , & c -> fc -> interrupt_callback , c -> use_absolute_path , c -> fc ) < 0 )
+static int mov_open_dref(AVIOContext **pb, const char *src, MOVDref
+AVIOInterruptCB *int_cb, int use_absolute_path, AVFormatContext *fc)
+if ( ref -> nlvl_to > 0 && ref -> nlvl_from > 0 )
+char filename [ 1024 ] ;
+const char * src_path ;
+int i , l ;
+src_path = strrchr ( src , '/' );
+if ( src_path )
+src_path ++;
+src_path = src;
+for (i = 0, l = strlen(ref->path) - 1; l >= 0; l--)
+if ( ref -> path [ l ] == '/' )
+if ( i == ref -> nlvl_to - 1 )
+i ++;
+if ( i == ref -> nlvl_to - 1 && src_path - src < sizeof ( filename ) )
+memcpy ( filename , src , src_path - src );
+filename [ src_path - src ] = 0;
+av_strlcat ( filename , ref -> path + l + 1 , 1024 );
+0
+------------------------------
+6835 CVE-2006-4813/CVE_2006_4813_PATCHED___block_prepare_write.c wait_bh 77
+static int CVE_2006_4813_PATCHED___block_prepare_write(struct inode *inode, struct page
+unsigned from, unsigned to, get_block_t *get_block)
+unsigned block_start , block_end ;
+sector_t block ;
+unsigned blocksize , bbits ;
+struct buffer_head * bh , * head , * wait [ 2 ] , * * wait_bh = wait ;
+blocksize = 1 << inode -> i_blkbits;
+head = page_buffers ( page );
+bbits = inode -> i_blkbits;
+block = ( sector_t ) page -> index << ( PAGE_CACHE_SHIFT - bbits );
+for(bh = head, block_start = 0; bh != head ||
+block++, block_start=block_end, bh = bh->b_this_page)
+block_end = block_start + blocksize;
+if ( block_end <= from || block_start >= to )
+if ( ! buffer_mapped ( bh ) )
+err = get_block ( inode , block , bh , 1 );
+if ( err )
+if ( buffer_new ( bh ) )
+if ( PageUptodate ( page ) )
+if ( ! buffer_uptodate ( bh ) && ! buffer_delay ( bh ) && ( block_start < from || block_end > to ) )
+* wait_bh ++ = bh;
+while ( wait_bh > wait )
+wait_on_buffer ( * -- wait_bh );
+0
+------------------------------
+288514 79241/CWE134_Uncontrolled_Format_String__char_connect_socket_snprintf_84a.cpp dataBuffer 30
+void bad()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+CWE134_Uncontrolled_Format_String__char_connect_socket_snprintf_84_bad * badObject = new CWE134_Uncontrolled_Format_String__char_connect_socket_snprintf_84_bad ( data ) ;
+CWE134_Uncontrolled_Format_String__char_connect_socket_snprintf_84_bad::CWE134_Uncontrolled_Format_String__char_connect_socket_snprintf_84_bad(char * dataCopy)
+data = dataCopy;
+WSADATA wsaData ;
+int wsaDataInit = 0 ;
+int recvResult ;
+struct sockaddr_in service ;
+char * replace ;
+SOCKET connectSocket = INVALID_SOCKET ;
+size_t dataLen = strlen ( data ) ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+break ;
+wsaDataInit = 1;
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+break ;
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+break ;
+recvResult = recv ( connectSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+break ;
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+replace = strchr ( data , '\n' );
+if ( replace )
+* replace = '\0';
+while ( 0 )
+if ( connectSocket != INVALID_SOCKET )
+CLOSE_SOCKET ( connectSocket );
+if ( wsaDataInit )
+WSACleanup ( );
+delete badObject
+CWE134_Uncontrolled_Format_String__char_connect_socket_snprintf_84_bad::~CWE134_Uncontrolled_Format_String__char_connect_socket_snprintf_84_bad()
+char dest [ 100 ] = "" ;
+SNPRINTF ( dest , 100 - 1 , data );
+printLine ( dest );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+297646 98553/CWE400_Resource_Exhaustion__connect_socket_fwrite_41.c inputBuffer 120
+void CWE400_Resource_Exhaustion__connect_socket_fwrite_41_bad()
+int count ;
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( connectSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+count = atoi ( inputBuffer );
+while ( 0 )
+badSink ( count );
+static void badSink(int count)
+for (i = 0; i < (size_t)count; i++)
+1
+------------------------------
+112056 74067/CWE124_Buffer_Underwrite__char_declare_memmove_06.c source 100
+static void goodG2B2()
+char * data ;
+char dataBuffer [ 100 ] ;
+memset ( dataBuffer , 'A' , 100 - 1 );
+dataBuffer [ 100 - 1 ] = '\0';
+if ( STATIC_CONST_FIVE == 5 )
+data = dataBuffer;
+char source [ 100 ] ;
+memset ( source , 'C' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+memmove ( data , source , 100 * sizeof ( char ) );
+data [ 100 - 1 ] = '\0';
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+116144 120757/CWE78_OS_Command_Injection__wchar_t_connect_socket_w32_spawnvp_52c.c args 69
+void CWE78_OS_Command_Injection__wchar_t_connect_socket_w32_spawnvp_52c_badSink(wchar_t * data)
+wchar_t * args [ ] = { COMMAND_INT_PATH , COMMAND_ARG1 , COMMAND_ARG2 , COMMAND_ARG3 , NULL } ;
+_wspawnvp ( _P_WAIT , COMMAND_INT , args );
+1
+------------------------------
+291748 77896/CWE127_Buffer_Underread__malloc_char_memmove_15.c dest 122
+static void goodG2B2()
+char * data ;
+data = NULL;
+switch ( 6 )
+char * dataBuffer = ( char * ) malloc ( 100 * sizeof ( char ) ) ;
+memset ( dataBuffer , 'A' , 100 - 1 );
+dataBuffer [ 100 - 1 ] = '\0';
+data = dataBuffer;
+char dest [ 100 ] ;
+memset ( dest , 'C' , 100 - 1 );
+dest [ 100 - 1 ] = '\0';
+memmove ( dest , data , 100 * sizeof ( char ) );
+dest [ 100 - 1 ] = '\0';
+printLine ( dest );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+143194 110665/CWE680_Integer_Overflow_to_Buffer_Overflow__new_fgets_18.cpp inputBuffer 39
+void bad()
+int data ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] = "" ;
+if ( fgets ( inputBuffer , CHAR_ARRAY_SIZE , stdin ) != NULL )
+data = atoi ( inputBuffer );
+dataBytes = data * sizeof ( int );
+intPointer = ( int * ) new char [ dataBytes ];
+for (i = 0; i < (size_t)data; i++)
+intPointer [ i ] = 0;
+printIntLine ( intPointer [ 0 ] );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+delete [ ] intPointer
+1
+------------------------------
+140744 67054/CWE121_Stack_Based_Buffer_Overflow__placement_new_declare_64a.cpp dataGoodBuffer 51
+static void goodG2B()
+char * data ;
+char dataGoodBuffer [ sizeof ( TwoIntsClass ) ] ;
+data = dataGoodBuffer;
+goodG2BSink ( & data );
+void goodG2BSink(void * dataVoidPtr)
+char * * dataPtr = ( char * * ) dataVoidPtr ;
+char * data = ( * dataPtr ) ;
+0
+------------------------------
+110815 64545/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memmove_67a.c dataBadBuffer 37
+void CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memmove_67_bad()
+int64_t * data ;
+int64_t dataBadBuffer [ 50 ] ;
+data = dataBadBuffer;
+myStruct . structFirst = data;
+CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memmove_67b_badSink ( myStruct );
+void CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memmove_67b_badSink(CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_memmove_67_structType myStruct)
+int64_t * data = myStruct . structFirst ;
+memmove ( data , source , 100 * sizeof ( int64_t ) );
+printLongLongLine ( data [ 0 ] );
+void printLongLongLine (int64_t longLongIntNumber)
+printf ( "%lld\n" , longLongIntNumber );
+0
+------------------------------
+12487 CVE-2015-4517/Firefox_40.0b9_CVE_2015_4517_dom_system_gonk_NetworkUtils.cpp command 894
+void NetworkUtils::untetherInterface(CommandChain*
+CommandCallback
+NetworkResultOptions& aResult)
+char command [ MAX_COMMAND_SIZE ] ;
+snprintf ( command , MAX_COMMAND_SIZE - 1 , "tether interface remove %s" , GET_CHAR ( mIfname ) );
+doCommand ( command , aChain , aCallback );
+1
+------------------------------
+293219 85342/CWE191_Integer_Underflow__int_connect_socket_sub_17.c inputBuffer 86
+void CWE191_Integer_Underflow__int_connect_socket_sub_17_bad()
+int i , j ;
+for(i = 0; i < 1; i++)
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+connectSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( connectSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = inet_addr ( IP_ADDRESS );
+service . sin_port = htons ( TCP_PORT );
+if ( connect ( connectSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+recvResult = recv ( connectSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+data = atoi ( inputBuffer );
+while ( 0 )
+int result = data - 1 ;
+printIntLine ( result );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+1
+------------------------------
+13698 CVE-2016-4006/Wireshark_2.0.2_CVE_2016_4006_epan_proto.c trunc_str 6463
+
+proto_item_fill_label(field_info *fi, gchar *label_str)
+header_field_info * hfinfo ;
+if ( ! fi )
+hfinfo = fi -> hfinfo;
+switch ( hfinfo -> type )
+if ( hfinfo -> bitmask )
+fill_label_number64 ( fi , label_str , FALSE );
+static
+fill_label_number64(field_info *fi, gchar *label_str, gboolean is_signed)
+header_field_info * hfinfo = fi -> hfinfo ;
+guint64 value ;
+char buf [ 48 ] ;
+const char * out ;
+if ( is_signed )
+value = fvalue_get_sinteger64 ( & fi -> value );
+value = fvalue_get_uinteger64 ( & fi -> value );
+if ( hfinfo -> display == BASE_CUSTOM )
+if ( hfinfo -> strings )
+const char * val_str = hf_try_val64_to_str_const ( value , hfinfo , "Unknown" ) ;
+out = hfinfo_number_vals_format64 ( hfinfo , buf , value );
+if ( out == NULL )
+label_fill_descr ( label_str , 0 , hfinfo , val_str , out );
+static
+label_fill_descr(char *label_str, gsize pos, const header_field_info *hfinfo, const char *text, const char *descr)
+gsize name_pos ;
+name_pos = pos = label_concat ( label_str , pos , hfinfo -> name );
+pos = label_concat ( label_str , pos , ": " );
+pos = label_concat ( label_str , pos , text ? text : "(null)" );
+pos = label_concat ( label_str , pos , " (" );
+pos = label_concat ( label_str , pos , descr ? descr : "(null)" );
+pos = label_concat ( label_str , pos , ")" );
+if ( pos >= ITEM_LABEL_LENGTH )
+label_mark_truncated ( label_str , name_pos );
+static
+label_mark_truncated(char *label_str, gsize name_pos)
+static const char trunc_str [ ] = " [truncated]" ;
+const size_t trunc_len = sizeof ( trunc_str ) - 1 ;
+if ( name_pos < ITEM_LABEL_LENGTH - trunc_len )
+memmove ( label_str + name_pos + trunc_len , label_str + name_pos , ITEM_LABEL_LENGTH - name_pos - trunc_len );
+memcpy ( label_str + name_pos , trunc_str , trunc_len );
+last_char = g_utf8_prev_char ( & label_str [ ITEM_LABEL_LENGTH ] );
+* last_char = '\0';
+g_strlcpy ( label_str + name_pos , trunc_str , ITEM_LABEL_LENGTH - name_pos );
+0
+------------------------------
+7075 CVE-2008-1390/CVE_2008_1390_PATCHED_generic_http_callback.c tmp 106
+static char *CVE_2008_1390_PATCHED_generic_http_callback(int format, struct sockaddr_in *requestor, const char *uri, struct ast_variable *params, int *status, char **title, int *contentlength)
+unsigned long ident = 0 ;
+struct ast_variable * v ;
+for (v = params; v; v = v->next)
+if ( ! strcasecmp ( v -> name , "mansession_id" ) )
+if ( ! ( s = find_session ( ident ) ) )
+if ( ! ( s = ast_calloc ( 1 , sizeof ( * s ) ) ) )
+memcpy ( & s -> sin , requestor , sizeof ( s -> sin ) );
+s -> fd = - 1;
+s -> waiting_thread = AST_PTHREADT_NULL;
+s -> send_events = 0;
+s -> inuse = 1;
+while ( ( s -> managerid = rand ( ) ^ ( unsigned long ) s ) == 0 )
+s -> eventq = master_eventq;
+while ( s -> eventq -> next )
+s -> eventq = s -> eventq -> next;
+if ( ! s -> authenticated && ( httptimeout > 5 ) )
+s -> sessiontimeout += 5;
+s -> sessiontimeout += httptimeout;
+if ( s )
+struct message m = { 0 } ;
+char tmp [ 80 ] ;
+unsigned int x ;
+size_t hdrlen ;
+for (x = 0, v = params; v && (x < AST_MAX_MANHEADERS); x++, v = v->next)
+hdrlen = strlen ( v -> name ) + strlen ( v -> value ) + 3;
+m . headers [ m . hdrcount ] = alloca ( hdrlen );
+snprintf ( ( char * ) m . headers [ m . hdrcount ] , hdrlen , "%s: %s" , v -> name , v -> value );
+m . hdrcount = x + 1;
+if ( process_message ( s , & m ) )
+s -> needdestroy = 1;
+if ( s -> outputstr )
+char * tmp ;
+if ( format == FORMAT_XML )
+if ( format == FORMAT_HTML )
+tmp = s -> outputstr -> str;
+if ( tmp )
+retval = malloc ( strlen ( workspace ) + strlen ( tmp ) + 128 );
+if ( retval )
+strcpy ( retval , workspace );
+strcpy ( retval + strlen ( retval ) , tmp );
+c = retval + strlen ( retval );
+if ( tmp != s -> outputstr -> str )
+free ( tmp );
+ast_build_string ( & c , & len , "</ajax-response>\n" );
+ast_build_string ( & c , & len , "</table></body>\r\n" );
+return retval ;
+0
+------------------------------
+137198 68136/CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_wchar_t_loop_68b.cpp source 47
+void badSink()
+wchar_t * data = CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_wchar_t_loop_68_badData ;
+wchar_t source [ 10 + 1 ] = SRC_STRING ;
+size_t i , sourceLen ;
+sourceLen = wcslen ( source );
+for (i = 0; i < sourceLen + 1; i++)
+data [ i ] = source [ i ];
+printWLine ( data );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+delete [ ] data
+1
+------------------------------
+113664 73880/CWE124_Buffer_Underwrite__char_alloca_memmove_31.c source 65
+static void goodG2B()
+char source [ 100 ] ;
+memset ( source , 'C' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+memmove ( data , source , 100 * sizeof ( char ) );
+data [ 100 - 1 ] = '\0';
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+6504 CVE-2009-2768/CVE_2009_2768_PATCHED_load_flat_shared_library.c buf 11
+static int CVE_2009_2768_PATCHED_load_flat_shared_library(int id, struct lib_info *libs)
+struct linux_binprm bprm ;
+char buf [ 16 ] ;
+sprintf ( buf , "/lib/lib%d.so" , id );
+bprm . filename = buf;
+bprm . file = open_exec ( bprm . filename );
+res = PTR_ERR ( bprm . file );
+if ( IS_ERR ( bprm . file ) )
+return res ;
+bprm . cred = prepare_exec_creds ( );
+if ( ! bprm . cred )
+res = prepare_binprm ( & bprm );
+if ( res <= ( unsigned long ) - 4096 )
+res = load_flat_file ( & bprm , libs , id , NULL );
+abort_creds ( bprm . cred );
+allow_write_access ( bprm . file );
+fput ( bprm . file );
+return ( res ) ;
+1
+------------------------------
+113075 63126/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_memcpy_15.c source 110
+static void goodG2B2()
+char * data ;
+char * dataGoodBuffer = ( char * ) ALLOCA ( ( 10 + 1 ) * sizeof ( char ) ) ;
+switch ( 6 )
+data = dataGoodBuffer;
+data [ 0 ] = '\0';
+char source [ 10 + 1 ] = SRC_STRING ;
+memcpy ( data , source , ( strlen ( source ) + 1 ) * sizeof ( char ) );
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+11221 CVE-2015-0829/Firefox_35.0b8_CVE_2015_0829_media_libstagefright_frameworks_av_media_libstagefright_MPEG4Extractor.cpp buffer 1775
+status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth)
+uint32_t hdr [ 2 ] ;
+if ( mDataSource -> readAt ( * offset , hdr , 8 ) < 8 )
+uint64_t chunk_size = ntohl ( hdr [ 0 ] ) ;
+off64_t data_offset = * offset + 8 ;
+if ( chunk_size == 1 )
+if ( mDataSource -> readAt ( * offset + 8 , & chunk_size , 8 ) < 8 )
+chunk_size = ntoh64 ( chunk_size );
+data_offset += 8;
+if ( chunk_size < 16 )
+if ( chunk_size < 8 )
+char buffer [ 256 ] ;
+if ( chunk_type == FOURCC ( 's' , 't' , 'b' , 'l' ) )
+if ( mDataSource -> flags ( ) & ( DataSource :: kWantsPrefetching | DataSource :: kIsCachingDataSource ) )
+sp < MPEG4DataSource > cachedSource = new MPEG4DataSource ( mDataSource ) ;
+MPEG4DataSource::MPEG4DataSource(const sp<DataSource> &source)
+if ( cachedSource -> setCachedRange ( * offset , chunk_size ) == OK )
+mDataSource = cachedSource;
+mLastTrack -> sampleTable = new SampleTable ( mDataSource );
+bool isTrack = false ;
+if ( chunk_type == FOURCC ( 't' , 'r' , 'a' , 'k' ) )
+isTrack = true;
+Track * track = new Track
+track -> next = NULL;
+if ( mLastTrack )
+mLastTrack -> next = track;
+mFirstTrack = track;
+mLastTrack = track;
+track -> meta = new MetaData
+off64_t stop_offset = * offset + chunk_size ;
+* offset = data_offset;
+while ( * offset < stop_offset )
+status_t err = parseChunk ( offset , depth + 1 ) ;
+if ( err != OK )
+if ( * offset != stop_offset )
+if ( isTrack )
+if ( mLastTrack -> skipTrack )
+Track * cur = mFirstTrack ;
+if ( cur == mLastTrack )
+delete mLastTrack
+uint8_t version ;
+PsshInfo pssh ;
+if ( mDataSource -> readAt ( data_offset , & version , 4 ) < 4 )
+if ( mDataSource -> readAt ( data_offset + 4 , & pssh . uuid , 16 ) < 16 )
+pssh . datalen = chunk_data_size + 8;
+pssh . data = new uint8_t [ pssh . datalen ];
+if ( chunk_data_size < 8 )
+uint8_t buffer [ 8 ] ;
+uint8_t buffer [ 8 + 20 ] ;
+uint8_t buffer [ 78 ] ;
+if ( chunk_data_size < 8 )
+char buffer [ 18 ] ;
+if ( chunk_data_size < 4 )
+uint8_t buffer [ 256 ] ;
+sp < ABuffer > buffer = new ABuffer ( chunk_data_size ) ;
+char buffer [ 23 ] ;
+uint8_t buffer [ 4 ] ;
+uint32_t buffer ;
+if ( mDataSource -> readAt ( data_offset + 8 , & buffer , 4 ) < 4 )
+* offset += chunk_size;
+const void * data ;
+size_t size = 0 ;
+if ( ! mLastTrack -> meta -> findData ( kKeyTextFormatData , & type , & data , & size ) )
+size = 0;
+uint8_t * buffer = new uint8_t [ size + chunk_size ] ;
+if ( size > 0 )
+memcpy ( buffer , data , size );
+if ( ( size_t ) ( mDataSource -> readAt ( * offset , buffer + size , chunk_size ) ) < chunk_size )
+buffer = NULL;
+if ( mFileMetaData != NULL )
+sp < ABuffer > buffer = new ABuffer ( chunk_data_size + 1 ) ;
+if ( mDataSource -> readAt ( data_offset , buffer -> data ( ) , chunk_data_size ) != ( ssize_t ) chunk_data_size )
+const int kSkipBytesOfDataBox = 16 ;
+mFileMetaData -> setData ( kKeyAlbumArt , MetaData :: TYPE_NONE , buffer -> data ( ) + kSkipBytesOfDataBox , chunk_data_size - kSkipBytesOfDataBox );
+0
+------------------------------
+137351 85657/CWE191_Integer_Underflow__int_listen_socket_sub_74a.cpp inputBuffer 110
+void bad()
+int data ;
+WSADATA wsaData ;
+int recvResult ;
+struct sockaddr_in service ;
+char inputBuffer [ CHAR_ARRAY_SIZE ] ;
+if ( WSAStartup ( MAKEWORD ( 2 , 2 ) , & wsaData ) != NO_ERROR )
+listenSocket = socket ( AF_INET , SOCK_STREAM , IPPROTO_TCP );
+if ( listenSocket == INVALID_SOCKET )
+memset ( & service , 0 , sizeof ( service ) );
+service . sin_family = AF_INET;
+service . sin_addr . s_addr = INADDR_ANY;
+service . sin_port = htons ( TCP_PORT );
+if ( bind ( listenSocket , ( struct sockaddr * ) & service , sizeof ( service ) ) == SOCKET_ERROR )
+if ( listen ( listenSocket , LISTEN_BACKLOG ) == SOCKET_ERROR )
+acceptSocket = accept ( listenSocket , NULL , NULL );
+if ( acceptSocket == SOCKET_ERROR )
+recvResult = recv ( acceptSocket , inputBuffer , CHAR_ARRAY_SIZE - 1 , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+inputBuffer [ recvResult ] = '\0';
+data = atoi ( inputBuffer );
+while ( 0 )
+dataMap [ 0 ] = data;
+dataMap [ 1 ] = data;
+dataMap [ 2 ] = data;
+badSink ( dataMap );
+void badSink(map<int, int> dataMap)
+int data = dataMap [ 2 ] ;
+int result = data - 1 ;
+printIntLine ( result );
+void printIntLine (int intNumber)
+printf ( "%d\n" , intNumber );
+0
+------------------------------
+117441 120277/CWE78_OS_Command_Injection__char_listen_socket_w32_spawnv_52a.c dataBuffer 67
+void CWE78_OS_Command_Injection__char_listen_socket_w32_spawnv_52_bad()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+size_t dataLen = strlen ( data ) ;
+recvResult = recv ( acceptSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+replace = strchr ( data , '\n' );
+if ( replace )
+* replace = '\0';
+CWE78_OS_Command_Injection__char_listen_socket_w32_spawnv_52b_badSink ( data );
+void CWE78_OS_Command_Injection__char_listen_socket_w32_spawnv_52b_badSink(char * data)
+CWE78_OS_Command_Injection__char_listen_socket_w32_spawnv_52c_badSink ( data );
+void CWE78_OS_Command_Injection__char_listen_socket_w32_spawnv_52c_badSink(char * data)
+0
+------------------------------
+113819 63431/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_ncpy_82a.cpp dataGoodBuffer 51
+static void goodG2B()
+char * data ;
+char dataGoodBuffer [ 10 + 1 ] ;
+data = dataGoodBuffer;
+data [ 0 ] = '\0';
+baseObject -> action ( data );
+void CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_ncpy_82_goodG2B::action(char * data)
+strncpy ( data , source , strlen ( source ) + 1 );
+printLine ( data );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------
+116572 118331/CWE78_OS_Command_Injection__char_connect_socket_w32_spawnvp_05.c dataBuffer 71
+void CWE78_OS_Command_Injection__char_connect_socket_w32_spawnvp_05_bad()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+size_t dataLen = strlen ( data ) ;
+recvResult = recv ( connectSocket , ( char * ) ( data + dataLen ) , sizeof ( char ) * ( 100 - dataLen - 1 ) , 0 );
+if ( recvResult == SOCKET_ERROR || recvResult == 0 )
+data [ dataLen + recvResult / sizeof ( char ) ] = '\0';
+replace = strchr ( data , '\r' );
+if ( replace )
+* replace = '\0';
+replace = strchr ( data , '\n' );
+if ( replace )
+* replace = '\0';
+0
+------------------------------
+115384 118307/CWE78_OS_Command_Injection__char_connect_socket_w32_spawnv_45.c dataBuffer 170
+static void goodG2B()
+char * data ;
+char dataBuffer [ 100 ] = "" ;
+data = dataBuffer;
+strcat ( data , "*.*" );
+CWE78_OS_Command_Injection__char_connect_socket_w32_spawnv_45_goodG2BData = data;
+0
+------------------------------
+287582 86585/CWE194_Unexpected_Sign_Extension__fgets_memmove_12.c dest 99
+static void goodG2B()
+short data ;
+data = 0;
+if ( globalReturnsTrueOrFalse ( ) )
+int globalReturnsTrueOrFalse()
+return ( rand ( ) % 2 ) ;
+data = 100 - 1;
+data = 100 - 1;
+char source [ 100 ] ;
+char dest [ 100 ] = "" ;
+memset ( source , 'A' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+if ( data < 100 )
+memmove ( dest , source , data );
+dest [ data ] = '\0';
+printLine ( dest );
+0
+------------------------------
+291914 78977/CWE127_Buffer_Underread__wchar_t_declare_loop_82a.cpp dataBuffer 32
+void bad()
+wchar_t * data ;
+wchar_t dataBuffer [ 100 ] ;
+wmemset ( dataBuffer , L 'A' , 100 - 1
+dataBuffer [ 100 - 1 ] = L '\0'
+data = dataBuffer - 8;
+baseObject -> action ( data );
+void CWE127_Buffer_Underread__wchar_t_declare_loop_82_bad::action(wchar_t * data)
+dest [ i ] = data [ i ];
+printWLine ( dest );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+0
+------------------------------
+117560 109898/CWE665_Improper_Initialization__wchar_t_ncat_02.c dataBuffer 27
+void CWE665_Improper_Initialization__wchar_t_ncat_02_bad()
+wchar_t * data ;
+wchar_t dataBuffer [ 100 ] ;
+data = dataBuffer;
+wcsncat ( data , source , sourceLen );
+printWLine ( data );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+0
+------------------------------
+285302 63722/CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_memcpy_11.c source 44
+void CWE121_Stack_Based_Buffer_Overflow__CWE193_wchar_t_declare_memcpy_11_bad()
+wchar_t * data ;
+wchar_t dataBadBuffer [ 10 ] ;
+if ( globalReturnsTrue ( ) )
+int globalReturnsTrue()
+return 1 ;
+data = dataBadBuffer;
+data [ 0 ] = L '\0'
+wchar_t source [ 10 + 1 ] = SRC_STRING ;
+memcpy ( data , source , ( wcslen ( source ) + 1 ) * sizeof ( wchar_t ) );
+printWLine ( data );
+void printWLine (const wchar_t * line)
+if ( line != NULL )
+wprintf ( L "%ls\n" , line )
+1
+------------------------------
+142095 89841/CWE23_Relative_Path_Traversal__char_console_fopen_32.cpp dataBuffer 98
+static void goodG2B()
+char * data ;
+char dataBuffer [ FILENAME_MAX ] = BASEPATH ;
+data = dataBuffer;
+strcat ( data , "file.txt" );
+* dataPtr1 = data;
+pFile = FOPEN ( data , "wb+" );
+if ( pFile != NULL )
+fclose ( pFile );
+0
+------------------------------
+11120 CVE-2015-0829/Firefox_35.0b8_CVE_2015_0829_media_libstagefright_frameworks_av_media_libstagefright_MPEG4Extractor.cpp buffer 1528
+status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth)
+uint32_t hdr [ 2 ] ;
+if ( mDataSource -> readAt ( * offset , hdr , 8 ) < 8 )
+uint64_t chunk_size = ntohl ( hdr [ 0 ] ) ;
+off64_t data_offset = * offset + 8 ;
+if ( chunk_size == 1 )
+if ( mDataSource -> readAt ( * offset + 8 , & chunk_size , 8 ) < 8 )
+chunk_size = ntoh64 ( chunk_size );
+data_offset += 8;
+if ( chunk_size < 16 )
+if ( chunk_size < 8 )
+char buffer [ 256 ] ;
+if ( chunk_type == FOURCC ( 's' , 't' , 'b' , 'l' ) )
+if ( mDataSource -> flags ( ) & ( DataSource :: kWantsPrefetching | DataSource :: kIsCachingDataSource ) )
+sp < MPEG4DataSource > cachedSource = new MPEG4DataSource ( mDataSource ) ;
+MPEG4DataSource::MPEG4DataSource(const sp<DataSource> &source)
+if ( cachedSource -> setCachedRange ( * offset , chunk_size ) == OK )
+mDataSource = cachedSource;
+if ( chunk_data_size < 8 )
+uint8_t buffer [ 8 ] ;
+uint8_t buffer [ 8 + 20 ] ;
+uint8_t buffer [ 78 ] ;
+if ( chunk_data_size < 8 )
+char buffer [ 18 ] ;
+off64_t location_length = chunk_data_size - 5 ;
+if ( location_length >= ( off64_t ) sizeof ( buffer ) )
+if ( mDataSource -> readAt ( data_offset + 4 , buffer , location_length ) < location_length )
+buffer [ location_length ] = '\0';
+if ( chunk_data_size < 4 )
+uint8_t buffer [ 256 ] ;
+if ( chunk_data_size > ( off64_t ) sizeof ( buffer ) )
+if ( mDataSource -> readAt ( data_offset , buffer , chunk_data_size ) < chunk_data_size )
+0
+------------------------------
+138504 78258/CWE127_Buffer_Underread__new_char_cpy_68b.cpp dest 60
+void goodG2BSink()
+char * data = CWE127_Buffer_Underread__new_char_cpy_68_goodG2BData ;
+char dest [ 100 * 2 ] ;
+memset ( dest , 'C' , 100 * 2 - 1 );
+dest [ 100 * 2 - 1 ] = '\0';
+strcpy ( dest , data );
+printLine ( dest );
+0
+------------------------------
+109611 153172/dfa.c buf 1927
+static void closure()
+int i ;
+while ( tok == QMARK || tok == STAR || tok == PLUS || tok == REPMN )
+if ( tok == REPMN && ( minrep || maxrep ) )
+for (; i < maxrep; ++i)
+addtok ( CAT );
+tok = lex ( );
+if ( tok == REPMN )
+tok = lex ( );
+tok = lex ( );
+static void addtok(token t)
+if ( __ctype_get_mb_cur_max ( ) > 1 && t == MBCSET )
+_Bool need_or = 0 ;
+struct mb_char_classes * work_mbc = & dfa -> mbcsets [ dfa -> nmbcsets - 1 ] ;
+if ( ! work_mbc -> invert )
+size_t i ;
+for (i = 0; i < work_mbc -> nchars; i++)
+need_or = 1;
+work_mbc -> nchars = 0;
+if ( work_mbc -> invert || ! using_utf8 ( ) && work_mbc -> cset != ( - 1 ) || work_mbc -> nchars != 0 || work_mbc -> nch_classes != 0 || work_mbc -> nranges != 0 || work_mbc -> nequivs != 0 || work_mbc -> ncoll_elems != 0 )
+if ( work_mbc -> cset != ( - 1 ) )
+if ( need_or )
+addtok ( OR );
+static void addtok(token t)
+if ( __ctype_get_mb_cur_max ( ) > 1 && t == MBCSET )
+struct mb_char_classes * work_mbc = & dfa -> mbcsets [ dfa -> nmbcsets - 1 ] ;
+if ( ! work_mbc -> invert )
+size_t i ;
+addtok_wc ( work_mbc -> chars [ i ] );
+static void addtok_wc(wint_t wc)
+unsigned char buf [ 16 ] ;
+int i ;
+cur_mb_len = ( wcrtomb ( ( ( char * ) buf ) , wc , & s ) );
+if ( cur_mb_len <= 0 )
+buf [ 0 ] = 0;
+for (i = 1; i < cur_mb_len; i++)
+addtok_mb ( buf [ i ] , ( i == cur_mb_len - 1 ? 2 : 0 ) );
+0
+------------------------------
+11659 CVE-2016-9923/qemu_0.11.0_CVE-2016-9923_qemu-char.c buf 1513
+static int win_chr_pipe_poll(void *opaque)
+CharDriverState * chr = opaque ;
+DWORD size ;
+if ( size > 0 )
+win_chr_read ( chr );
+static void win_chr_read(CharDriverState *chr)
+WinCharState * s = chr -> opaque ;
+if ( s -> len > s -> max_size )
+s -> len = s -> max_size;
+if ( s -> len == 0 )
+win_chr_readfile ( chr );
+static void win_chr_readfile(CharDriverState *chr)
+WinCharState * s = chr -> opaque ;
+int ret , err ;
+uint8_t buf [ 1024 ] ;
+s -> orecv . hEvent = s -> hrecv;
+ret = ReadFile ( s -> hcom , buf , s -> len , & size , & s -> orecv );
+if ( ! ret )
+0
+------------------------------
+293918 94486/CWE327_Use_Broken_Crypto__w32_DES_11.c toBeDecrypted 101
+void CWE327_Use_Broken_Crypto__w32_DES_11_bad()
+if ( globalReturnsTrue ( ) )
+int globalReturnsTrue()
+return 1 ;
+char toBeDecrypted [ 100 ] ;
+DWORD toBeDecryptedLen = sizeof ( toBeDecrypted ) - 1 ;
+toBeDecrypted [ 99 ] = '\0';
+toBeDecrypted [ toBeDecryptedLen ] = '\0';
+printLine ( toBeDecrypted );
+0
+------------------------------
+286963 86549/CWE194_Unexpected_Sign_Extension__fgets_memcpy_34.c source 94
+static void goodG2B()
+short data ;
+CWE194_Unexpected_Sign_Extension__fgets_memcpy_34_unionType myUnion ;
+data = 0;
+data = 100 - 1;
+myUnion . unionFirst = data;
+short data = myUnion . unionSecond ;
+char source [ 100 ] ;
+char dest [ 100 ] = "" ;
+memset ( source , 'A' , 100 - 1 );
+source [ 100 - 1 ] = '\0';
+if ( data < 100 )
+memcpy ( dest , source , data );
+dest [ data ] = '\0';
+printLine ( dest );
+void printLine (const char * line)
+if ( line != NULL )
+printf ( "%s\n" , line );
+0
+------------------------------

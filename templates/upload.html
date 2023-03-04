@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+</head>
+<body>
+    <form action="" method="post" enctype=“multipart/form-data”>
+    <!-- <form action="/upload/" method="post">  必须是post且有enctype参数 服务器端才能接收到表单FILES文件内容，否则FILES是空字典-->
+        {% csrf_token %}
+        <!--
+        code: <input type="text" name="code">
+        code: <input type="file" name="code" accept="text">
+        -->
+        {{ form.as_p }}
+        <!-- <button class="btn btn-info form-control" type="submit" value="submit">subimt</button> -->
+        <button class="btn btn-info form-control" type="submit">subimt</button>
+        <!-- 表格标签 -->
+        <!-- <table>  -->
+
+            <!-- <tr> -->
+                <!-- tr 是行； th td是列，前者定义表头，后者定义一般单元格-->
+                <!--- <td>code: <input type="file" name="file"></td> -->
+
+            <!-- </tr> -->
+            <!-- <br> 换行标签-->
+            <!-- <tr> -->
+                <!-- <td><input type="submit" value="upload"></td> -->
+            <!-- </tr> -->
+        <!-- </table> -->
+    </form>
+    <p>filename is : {{ filename }}</p>
+    <p>context-type is : {{ context_type }}</p>
+    <p>content is : {{ content }}</p>
+    <p>result is : {{ rlt }}</p>
+</body>
+</html>
